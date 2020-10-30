@@ -13,6 +13,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Static Views */
+
 Route::get('/', function () {
     return view('web.sections.static.home');
 })->name('home');
+
+Route::get('about', function () {
+    return view('web.sections.static.about');
+})->name('about');
+
+Route::get('contact', function () {
+    return view('web.sections.static.contact');
+})->name('contact');
+
+Route::get('faq', function () {
+    return view('web.sections.static.faq');
+})->name('faq');
+
+Route::get('services', function () {
+    return view('web.sections.static.services');
+})->name('services');
+
+
+/* Dynamic Views */
+
+

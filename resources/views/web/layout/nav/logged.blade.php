@@ -1,7 +1,7 @@
 <li><a href="{{route('home')}}">Mi Cuenta</a></li>
 <li><a href="{{route('home')}}">Mis Vehiculos</a></li>
 <li><a href="{{route('home')}}">Mis Turnos</a></li>
-<li><a href="{{route('home')}}">Trabajos</a></li>
+<li><a href="{{route('home')}}">Mis Trabajos</a></li>
 @if (Auth::check() and Auth::user()->isAdmin)
     @include('layouts.partials.nav.admin')
 @endif
