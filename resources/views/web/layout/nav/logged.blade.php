@@ -13,9 +13,9 @@
 <li>
     <a href="{{ route('logout') }}"
     onclick="event.preventDefault();
-    document.getElementById('logout-form').submit();">Cerrar sesión </a>
+    document.getElementById('logout-form').submit();">Cerrar sesión</a>
 </li>
-
+<li><a href="{{route('change.password')}}">Cambiar Contraseña</a></li>
 <form method="POST" id="logout-form" action="{{ route('logout') }}">
     @csrf
 </form>

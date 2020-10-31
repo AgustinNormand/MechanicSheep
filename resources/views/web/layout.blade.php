@@ -8,6 +8,7 @@
     <title>MechanicSheep - @yield('title')</title>
     <!-- favicon -->
     <!-- estilos -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>    
     @include('web.layout.header')
