@@ -1,1 +1,3 @@
-<li><a href="{{route('home')}}">Moderar</a></li>
+<li class="nav-item">
+    <a class="nav-link" href="#">Moderar</a>
+</li>

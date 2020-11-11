@@ -1,22 +1,25 @@
-<li><a href="{{route('home')}}">Mi Cuenta</a></li>
-<li><a href="{{route('home')}}">Mis Vehiculos</a></li>
-<li><a href="{{route('home')}}">Mis Turnos</a></li>
-<li><a href="{{route('home')}}">Mis Trabajos</a></li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Mis turnos </a>
+        <a class="dropdown-item" href="#">Mis Vehiculos </a>
+        <a class="dropdown-item" href="#">Mis Turnos</a>
+        <a class="dropdown-item" href="#">Trabajos realizados</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+           document.getElementById('logout-form').submit();">Cerrar sesión</a>
+        <a class="dropdown-item" href="{{route('change.password')}}">Cambiar Contraseña</a>
+        <form method="POST" id="logout-form" action="{{ route('logout') }}">
+            @csrf
+        </form>
+    </div>
+</li>
+
 @if (Auth::check() and Auth::user()->isAdmin)
-    @include('layouts.partials.nav.admin')
+    @include('web.layout.nav.administrator')
 @endif
 
 @if (Auth::check() and Auth::user()->isModerator or Auth::user()->isAdmin)
-    @include('layouts.partials.nav.moderator')
-@endif 
-
-<li>
-    <a href="{{ route('logout') }}"
-    onclick="event.preventDefault();
-    document.getElementById('logout-form').submit();">Cerrar sesión</a>
-</li>
-<li><a href="{{route('change.password')}}">Cambiar Contraseña</a></li>
-<form method="POST" id="logout-form" action="{{ route('logout') }}">
-    @csrf
-</form>
-
+    @include('web.layout.nav.moderator')
+@endif
