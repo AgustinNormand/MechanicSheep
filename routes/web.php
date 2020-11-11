@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 /* Static Views */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('Appointment', [App\Http\Controllers\AppointmentController::class, 'viewLoad'])->name('Appointment');
 
 Route::get('about', function () {
     return view('web.sections.static.about');

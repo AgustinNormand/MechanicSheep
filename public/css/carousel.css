@@ -47,17 +47,6 @@ body {
     background-position: center;
 }
 
-/* Nav configuration and home buttons*/
-
-.navbar , .btn-secondary , .carousel-item .btn{
-    background-color: #313D57;
-}
-
-.btn-secondary:hover , .carousel-item .btn:hover{
-    background: #FCB705;
-    color: black;
-}
-
 /*.carousel-item > img {*/
 /*  position: absolute;*/
 /*  top: 0;*/
