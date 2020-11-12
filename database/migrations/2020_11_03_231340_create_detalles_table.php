@@ -23,6 +23,7 @@ class CreateDetallesTable extends Migration
             $table->text("APELLIDO_CLIENTE")->nullable();
             $table->text("NOMBRE_CLIENTE")->nullable();
             $table->text("PATENTE")->nullable();
+            $table->text("COMPROBANTE")->nullable();
             $table->timestamps();
         });
     }
