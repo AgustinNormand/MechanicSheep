@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $primaryKey = 'ID_USUARIO';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -40,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function persona(){
+        return $this->belongsTo('App\Models\Persona','ID_PERSONA');
+    }
+
+    public function rols(){
+        return $this->belongsToMany('App\Models\Rol', 'rol_usuarios', 'ID_USUARIO', 'ID_ROL');
+    }
 }
