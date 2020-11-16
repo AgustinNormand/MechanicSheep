@@ -14,20 +14,14 @@ class CreateTrabajosTable extends Migration
     public function up()
     {
         Schema::create('trabajos', function (Blueprint $table) {
-            $table->bigInteger("ID_TRABAJO")->primary();
-            $table->text("NUMERO")->nullable();
-            $table->text("FECHA")->nullable();
-            $table->text("PATENTE")->nullable();
-            $table->text("MODELO")->nullable();
-            $table->text("APELLIDO")->nullable();
-            $table->text("NOMBRE")->nullable();
-            $table->text("ESTADO")->nullable();
-            $table->text("DESCRIPCION")->nullable();
-            $table->text("EMPLEADO")->nullable();
-            $table->text("KILOMETROS")->nullable();
-            $table->text("FECHA_FINALIZACION")->nullable();
-            $table->text("NRO_SUCURSAL")->nullable();
-            $table->text("NRO_MOVIMIENTO")->nullable();
+            $table->id("ID_TRABAJO");
+            $table->date("fecha")->nullable();
+            $table->string("descripcion",200)->nullable();
+            $table->string("kilometraje_auto",50)->nullable();
+            $table->unsignedBigInteger("ID_SERVICIO")->nullable();
+            $table->unsignedBigInteger("ID_VEHICULO")->nullable();
+            $table->foreign('ID_SERVICIO')->references('ID_SERVICIO')->on('servicios')->onDelete('set null');
+            $table->foreign('ID_VEHICULO')->references('ID_VEHICULO')->on('vehiculos')->onDelete('cascade');;
             $table->timestamps();
         });
     }

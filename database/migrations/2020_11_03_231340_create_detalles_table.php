@@ -14,16 +14,12 @@ class CreateDetallesTable extends Migration
     public function up()
     {
         Schema::create('detalles', function (Blueprint $table) {
-            $table->bigInteger('ID_DETALLE')->primary();
-            $table->text("CODIGO")->nullable();
-            $table->text("DESCRIPCION")->nullable();
-            $table->text("CANTIDAD")->nullable();
-            $table->text("NUMERO_TRABAJO")->nullable();
-            $table->text("SUCURSAL")->nullable();
-            $table->text("APELLIDO_CLIENTE")->nullable();
-            $table->text("NOMBRE_CLIENTE")->nullable();
-            $table->text("PATENTE")->nullable();
-            $table->text("COMPROBANTE")->nullable();
+            $table->unsignedBigInteger('ID_DETALLE');
+            $table->unsignedBigInteger("ID_TRABAJO");
+            $table->string("descripcion",50)->nullable();
+            $table->integer("cantidad")->nullable();
+            $table->primary(['ID_DETALLE','ID_TRABAJO']);
+            $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos')->onDelete('cascade');
             $table->timestamps();
         });
     }

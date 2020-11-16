@@ -20,4 +20,17 @@ class Vehiculo extends Model
     public function persona(){
         return $this->belongsTo('App\Models\Persona','ID_PERSONA');
     }
+
+    //Relacion uno a muchos Vehiculo - turno_pendiente
+    public function turno_pendiente(){
+        return $this->hasMany('App\Models\Turno_pendiente','ID_VEHICULO');
+    }
+
+    public function trabajo(){
+        return $this->hasMany('App\Models\Trabajo','ID_VEHICULO');
+    }
+
+    public function estimacion(){
+        return $this->hasOne('App\Models\Estimacion','ID_VEHICULO');
+    }
 }
