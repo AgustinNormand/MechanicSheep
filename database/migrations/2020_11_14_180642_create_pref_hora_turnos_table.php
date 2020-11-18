@@ -16,8 +16,8 @@ class CreatePrefHoraTurnosTable extends Migration
         Schema::create('pref_hora_turnos', function (Blueprint $table) {
             $table->unsignedBigInteger('ID_PREF');
             $table->unsignedBigInteger('ID_TURNO_P');
-            $table->string('Dia',15);
-            $table->string('Hora',15);
+            $table->string('DIA',15);
+            $table->string('HORA',15);
             $table->primary(['ID_PREF','ID_TURNO_P']);
             $table->foreign('ID_TURNO_P')->references('ID_TURNO_P')->on('turno_pendientes');
             $table->timestamps();

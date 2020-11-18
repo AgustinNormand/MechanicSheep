@@ -15,11 +15,11 @@ class CreateVehiculosTable extends Migration
     {
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->id('ID_VEHICULO');
-            $table->string('patente',10);
-            $table->string('vin',100);
-            $table->string('anio',10);
-            $table->string('nro_motor',100);
-            $table->unsignedBigInteger('ID_MODELO')->nulleable();
+            $table->string('PATENTE',10);
+            $table->string('VIN',100);
+            $table->string('ANIO',10);
+            $table->string('NUMERO_MOTOR',100);
+            $table->unsignedBigInteger('ID_MODELO')->nullable();
             $table->unsignedBigInteger('ID_PERSONA');
             $table->timestamps();
         });

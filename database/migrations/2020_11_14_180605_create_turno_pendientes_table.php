@@ -15,9 +15,9 @@ class CreateTurnoPendientesTable extends Migration
     {
         Schema::create('turno_pendientes', function (Blueprint $table) {
             $table->id('ID_TURNO_P');
-            $table->date('fecha_solicitud');
-            $table->string('comentarios',300)->nulleable();
-            $table->boolean('estado');
+            $table->date('FECHA_SOLICITUD');
+            $table->string('COMENTARIOS',300)->nullable();
+            $table->boolean('ESTADO');
             $table->unsignedBigInteger('ID_USUARIO');
             $table->unsignedBigInteger('ID_VEHICULO');
 

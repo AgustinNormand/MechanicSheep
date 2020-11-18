@@ -15,8 +15,8 @@ class CreateTipoDocsTable extends Migration
     {
         Schema::create('tipo_docs', function (Blueprint $table) {
             $table->id('ID_TIPO_DOC');
-            $table->string('Nombre', 50);
-            $table->string('Descripcion', 50)->nulleable();
+            $table->string('NOMBRE', 50);
+            $table->string('DESCRIPCION', 50)->nullable();
             $table->timestamps();
         });
     }

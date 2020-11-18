@@ -15,12 +15,12 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id('ID_EMPLEADO');
-            $table->string('nombre',200);
-            $table->string('apellido',200);
-            $table->date('fecha_inicio_act');
-            $table->date('fecha_nac');
-            $table->string('telefono',50)->nulleable();
-            $table->string('correo',200)->nulleable();
+            $table->string('NOMBRE',200);
+            $table->string('APELLIDO',200);
+            $table->date('FECHA_INICIO_ACT');
+            $table->date('FECHA_NAC');
+            $table->string('TELEFONO',50)->nullable();
+            $table->string('CORREO',200)->nullable();
             $table->unsignedBigInteger('ID_TIPOEMPLEADO');
             $table->timestamps();
         });

@@ -15,9 +15,9 @@ class CreateTurnoConfirmadosTable extends Migration
     {
         Schema::create('turno_confirmados', function (Blueprint $table) {
             $table->id('ID_TURNO_C');
-            $table->dateTime('fecha_hora');
+            $table->dateTime('FECHA_HORA');
             $table->unsignedBigInteger('ID_TURNO_P');
-            $table->boolean('estado');
+            $table->boolean('ESTADO');
 
             $table->foreign('ID_TURNO_P')->references('ID_TURNO_P')->on('turno_pendientes');
             $table->timestamps();

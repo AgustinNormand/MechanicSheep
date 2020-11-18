@@ -15,8 +15,8 @@ class CreateDetallesTable extends Migration
     {
         Schema::create('detalles', function (Blueprint $table) {
             $table->unsignedBigInteger('ID_DETALLE');
-            $table->string("descripcion",50)->nullable();
-            $table->integer("cantidad")->nullable();
+            $table->string("DESCRIPCION",50)->nullable();
+            $table->integer("CANTIDAD")->nullable();
             $table->timestamps();
         });
     }

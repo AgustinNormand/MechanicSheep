@@ -15,15 +15,15 @@ class CreateTallersTable extends Migration
     {
         Schema::create('tallers', function (Blueprint $table) {
             $table->id('ID_TALLER');
-            $table->string('nombre',200);
-            $table->string('descripcion',200)->nulleable();
-            $table->string('calle',200)->nulleable();
-            $table->integer('nro_calle')->nulleable();
-            $table->string('localidad',200)->nulleable();
-            $table->string('pais',200)->nulleable();
-            $table->string('email',200)->nulleable();
-            $table->string('telefono',50)->nulleable();
-            $table->boolean('estado');
+            $table->string('NOMBRE',200);
+            $table->string('DESCRIPCION',200)->nullable();
+            $table->string('CALLE',200)->nullable();
+            $table->integer('NRO_CALLE')->nullable();
+            $table->string('LOCALIDAD',200)->nullable();
+            $table->string('PAIS',200)->nullable();
+            $table->string('EMAIL',200)->nullable();
+            $table->string('TELEFONO',50)->nullable();
+            $table->boolean('ESTADO');
             $table->timestamps();
         });
     }

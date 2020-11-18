@@ -16,7 +16,7 @@ class CreateTrabajoEmpleadoTable extends Migration
         Schema::create('trabajo_empleado', function (Blueprint $table) {
             $table->unsignedBigInteger('ID_TRABAJO');
             $table->unsignedBigInteger('ID_EMPLEADO');
-            $table->string('descripcion',200)->nulleable();
+            $table->string('DESCRIPCION',200)->nullable();
             $table->primary(['ID_TRABAJO','ID_EMPLEADO']);
             $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos');
             $table->timestamps();

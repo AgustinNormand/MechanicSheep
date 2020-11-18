@@ -15,9 +15,9 @@ class CreatePermisosTable extends Migration
     {
         Schema::create('permisos', function (Blueprint $table) {
             $table->id('ID_PERMISO');
-            $table->string('nombre');
-            $table->string('descripcion')->nulleable();
-            $table->boolean('estado');
+            $table->string('NOMBRE');
+            $table->string('DESCRCIPCION')->nullable();
+            $table->boolean('ESTADO');
             $table->timestamps();
         });
     }

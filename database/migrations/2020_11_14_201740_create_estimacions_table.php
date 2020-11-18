@@ -15,11 +15,11 @@ class CreateEstimacionsTable extends Migration
     {
         Schema::create('estimacions', function (Blueprint $table) {
             $table->id('ID_ESTIMACION');
-            $table->date('fecha_estimada_aviso');
-            $table->float('promedio');
-            $table->boolean('mail_enviado');
-            $table->date('fecha_ultimo_trabajo');
-            $table->boolean('activada');
+            $table->date('FECHA_ESTIMADA_AVISO');
+            $table->float('PROMEDIO');
+            $table->boolean('MAIL_ENVIADO');
+            $table->date('FECHA_ULTIMO_TRABAJO');
+            $table->boolean('ACTIVADA');
             $table->unsignedBigInteger('ID_VEHICULO');
             $table->foreign('ID_VEHICULO')->references('ID_VEHICULO')->on('vehiculos')->onDelete('cascade');
             $table->timestamps();

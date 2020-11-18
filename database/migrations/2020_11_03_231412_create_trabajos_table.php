@@ -15,9 +15,9 @@ class CreateTrabajosTable extends Migration
     {
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id("ID_TRABAJO");
-            $table->date("fecha")->nullable();
-            $table->string("descripcion",200)->nullable();
-            $table->string("kilometraje_auto",50)->nullable();
+            $table->date("FECHA")->nullable();
+            $table->string("DESCRIPCION",200)->nullable();
+            $table->string("KILOMETROS",50)->nullable();
             $table->unsignedBigInteger("ID_SERVICIO")->nullable();
             $table->unsignedBigInteger("ID_VEHICULO")->nullable();
             $table->timestamps();

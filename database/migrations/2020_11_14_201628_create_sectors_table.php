@@ -16,9 +16,9 @@ class CreateSectorsTable extends Migration
         Schema::create('sectors', function (Blueprint $table) {
             $table->unsignedBigInteger('ID_TALLER')->index();
             $table->unsignedBigInteger('ID_SECTOR')->index();
-            $table->string('nombre',200);
-            $table->string('descripcion',50)->nulleable();
-            $table->boolean('estado');
+            $table->string('NOMBRE',200);
+            $table->string('DESCRIPCION',50)->nullable();
+            $table->boolean('ESTADO');
             $table->primary(['ID_TALLER','ID_SECTOR']);
             $table->timestamps();
         });
