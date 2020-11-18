@@ -17,7 +17,7 @@ class CreateVehiculosTable extends Migration
             $table->id('ID_VEHICULO');
             $table->string('PATENTE',10);
             $table->string('VIN',100);
-            $table->string('ANIO',10);
+            $table->string('ANIO',10)->nullable();
             $table->string('NUMERO_MOTOR',100);
             $table->unsignedBigInteger('ID_MODELO')->nullable();
             $table->unsignedBigInteger('ID_PERSONA');
