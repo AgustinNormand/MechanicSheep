@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 class AppointmentController extends Controller
 {
     //
-    function viewLoad() {
-        return view('web.appointment');
+    function viewGetAp() {
+        return view('web.sections.appointment.appointment');
+    }
+
+    function viewListAp() {
+        return view('web.sections.appointment.list-ap');
     }
 }

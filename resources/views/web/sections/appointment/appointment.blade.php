@@ -9,7 +9,6 @@
 @section('content')
 
     <div class="container" id="app-form">
-
         <h1>Solicitud de turno</h1>
         <form>
             <div class="form-group">

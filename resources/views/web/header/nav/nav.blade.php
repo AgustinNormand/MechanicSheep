@@ -11,9 +11,9 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             @if (Auth::check())
-                @include('web.layout.nav.logged')
+                @include('web.header.nav.logged')
             @else
-                @include('web.layout.nav.unlogged')
+                @include('web.header.nav.unlogged')
             @endif
             <li class="nav-item">
                 <a class="nav-link" href="{{route('Appointment')}}">Pedir turno</a>
