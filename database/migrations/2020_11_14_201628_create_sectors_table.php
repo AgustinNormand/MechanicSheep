@@ -17,7 +17,7 @@ class CreateSectorsTable extends Migration
             $table->unsignedBigInteger('ID_TALLER')->index();
             $table->unsignedBigInteger('ID_SECTOR')->index();
             $table->string('nombre',200);
-            $table->string('descripcion',50);
+            $table->string('descripcion',50)->nulleable();
             $table->boolean('estado');
             $table->primary(['ID_TALLER','ID_SECTOR']);
             $table->timestamps();

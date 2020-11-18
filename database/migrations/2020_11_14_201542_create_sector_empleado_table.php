@@ -17,7 +17,7 @@ class CreateSectorEmpleadoTable extends Migration
             $table->unsignedBigInteger('ID_SECTOR');
             $table->unsignedBigInteger('ID_EMPLEADO');
             $table->unsignedBigInteger('ID_TALLER');
-            $table->string('descripcion',50);
+            $table->string('descripcion',50)->nulleable();
             $table->primary(['ID_SECTOR','ID_EMPLEADO','ID_TALLER']);
             
             $table->timestamps();

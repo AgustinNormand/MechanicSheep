@@ -19,7 +19,7 @@ class CreateVehiculosTable extends Migration
             $table->string('vin',100);
             $table->string('anio',10);
             $table->string('nro_motor',100);
-            $table->unsignedBigInteger('ID_MODELO');
+            $table->unsignedBigInteger('ID_MODELO')->nulleable();
             $table->unsignedBigInteger('ID_PERSONA');
             $table->timestamps();
         });

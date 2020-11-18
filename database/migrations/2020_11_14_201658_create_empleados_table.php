@@ -19,8 +19,8 @@ class CreateEmpleadosTable extends Migration
             $table->string('apellido',200);
             $table->date('fecha_inicio_act');
             $table->date('fecha_nac');
-            $table->string('telefono',50);
-            $table->string('correo',200);
+            $table->string('telefono',50)->nulleable();
+            $table->string('correo',200)->nulleable();
             $table->unsignedBigInteger('ID_TIPOEMPLEADO');
             $table->timestamps();
         });

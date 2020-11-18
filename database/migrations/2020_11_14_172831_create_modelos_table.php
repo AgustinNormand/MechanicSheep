@@ -21,7 +21,7 @@ class CreateModelosTable extends Migration
             $table->string('COMBUSTIBLE',50)->nullable();
             $table->integer('PUERTAS')->nullable();
             $table->integer('POTENCIA')->nullable();
-            $table->unsignedBigInteger('ID_MARCA');
+            $table->unsignedBigInteger('ID_MARCA')->nulleable();
             $table->timestamps();
         });
     }
