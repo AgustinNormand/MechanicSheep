@@ -22,7 +22,6 @@ class CreateEmpleadosTable extends Migration
             $table->string('telefono',50);
             $table->string('correo',200);
             $table->unsignedBigInteger('ID_TIPOEMPLEADO');
-            $table->foreign('ID_TIPOEMPLEADO')->references('ID_TIPOEMPLEADO')->on('tipo_empleados');
             $table->timestamps();
         });
     }

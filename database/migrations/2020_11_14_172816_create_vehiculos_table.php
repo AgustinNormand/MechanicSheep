@@ -21,8 +21,6 @@ class CreateVehiculosTable extends Migration
             $table->string('nro_motor',100);
             $table->unsignedBigInteger('ID_MODELO');
             $table->unsignedBigInteger('ID_PERSONA');
-            $table->foreign('ID_MODELO')->references('ID_MODELO')->on('modelos')->onDelete('set null');
-            $table->foreign('ID_PERSONA')->references('ID_PERSONA')->on('personas')->onDelete('set null');
             $table->timestamps();
         });
     }

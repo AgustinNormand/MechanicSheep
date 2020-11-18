@@ -20,8 +20,6 @@ class CreateTrabajosTable extends Migration
             $table->string("kilometraje_auto",50)->nullable();
             $table->unsignedBigInteger("ID_SERVICIO")->nullable();
             $table->unsignedBigInteger("ID_VEHICULO")->nullable();
-            $table->foreign('ID_SERVICIO')->references('ID_SERVICIO')->on('servicios')->onDelete('set null');
-            $table->foreign('ID_VEHICULO')->references('ID_VEHICULO')->on('vehiculos')->onDelete('cascade');;
             $table->timestamps();
         });
     }

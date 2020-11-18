@@ -19,8 +19,7 @@ class CreateServicioSectorTable extends Migration
             $table->unsignedBigInteger('ID_TALLER');
             $table->primary(['ID_SERVICIO','ID_SECTOR','ID_TALLER']);
             $table->foreign('ID_SERVICIO')->references('ID_SERVICIO')->on('servicios');
-            $table->foreign('ID_SECTOR')->references('ID_SECTOR')->on('sectors');
-            $table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');
+            
             $table->timestamps();
         });
     }

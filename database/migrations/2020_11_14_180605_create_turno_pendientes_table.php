@@ -21,7 +21,7 @@ class CreateTurnoPendientesTable extends Migration
             $table->unsignedBigInteger('ID_USUARIO');
             $table->unsignedBigInteger('ID_VEHICULO');
 
-            $table->foreign('ID_USUARIO')->references('ID_USUARIO')->on('usuarios');
+            $table->foreign('ID_USUARIO')->references('ID_USUARIO')->on('users');
             $table->foreign('ID_VEHICULO')->references('ID_VEHICULO')->on('vehiculos');
             $table->timestamps();
         });

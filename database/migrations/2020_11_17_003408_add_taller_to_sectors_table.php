@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetallesTable extends Migration
+class AddTallerToSectorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateDetallesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalles', function (Blueprint $table) {
-            $table->unsignedBigInteger('ID_DETALLE');
-            $table->string("descripcion",50)->nullable();
-            $table->integer("cantidad")->nullable();
-            $table->timestamps();
+        Schema::table('sectors', function (Blueprint $table) {
+            $table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateDetallesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalles');
+        Schema::table('sectors', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -13,13 +13,13 @@ class CreateConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configurations', function (Blueprint $table) {
+        /*Schema::create('configurations', function (Blueprint $table) {
             #$table->id();
             $table->string("NAME", 30)->primary();
             $table->text("VALUE");
             #$table->text("DESCRIPTION");
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateConfigurationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configuration');
+        Schema::dropIfExists('configurations');
     }
 }

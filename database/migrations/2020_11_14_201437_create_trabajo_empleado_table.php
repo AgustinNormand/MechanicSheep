@@ -19,7 +19,6 @@ class CreateTrabajoEmpleadoTable extends Migration
             $table->string('descripcion',200);
             $table->primary(['ID_TRABAJO','ID_EMPLEADO']);
             $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos');
-            $table->foreign('ID_EMPLEADO')->references('ID_EMPLEADO')->on('empleados');
             $table->timestamps();
         });
     }

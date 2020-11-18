@@ -18,6 +18,8 @@ class CreateServicioTurnoTable extends Migration
             $table->unsignedBigInteger('ID_TURNO_P');
             $table->string('observaciones',300)->nullable();
             $table->primary(['ID_SERVICIO','ID_TURNO_P']);
+            $table->foreign('ID_TURNO_P')->references('ID_TURNO_P')->on('turno_pendientes');
+            $table->foreign('ID_SERVICIO')->references('ID_SERVICIO')->on('servicios');
             $table->timestamps();
         });
     }

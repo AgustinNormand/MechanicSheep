@@ -20,8 +20,6 @@ class CreateTrabajoEmpleadoSectorTable extends Migration
             $table->string('observaciones',200);
             $table->primary(['ID_TRABAJO','ID_EMPLEADO','ID_SECTOR']);
             $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajo_empleado');
-            $table->foreign('ID_EMPLEADO')->references('ID_EMPLEADO')->on('trabajo_empleado');
-            $table->foreign('ID_SECTOR')->references('ID_SECTOR')->on('sector_empleado');
             $table->timestamps();
         });
     }

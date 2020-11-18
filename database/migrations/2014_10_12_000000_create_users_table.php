@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('descripcion', 200);
             $table->string('email',200)->unique();
             $table->boolean('estado');
-            $table->unsignedBigInteger('ID_PERSONA')->unique();
-            $table->foreign('ID_PERSONA')->references('ID_PERSONA')->on('personas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

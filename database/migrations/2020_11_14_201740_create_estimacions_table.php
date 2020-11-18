@@ -20,7 +20,7 @@ class CreateEstimacionsTable extends Migration
             $table->boolean('mail_enviado');
             $table->date('fecha_ultimo_trabajo');
             $table->boolean('activada');
-            $table->boolean('ID_VEHICULO');
+            $table->unsignedBigInteger('ID_VEHICULO');
             $table->foreign('ID_VEHICULO')->references('ID_VEHICULO')->on('vehiculos')->onDelete('cascade');
             $table->timestamps();
         });

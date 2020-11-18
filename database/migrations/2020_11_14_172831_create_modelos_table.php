@@ -15,14 +15,13 @@ class CreateModelosTable extends Migration
     {
         Schema::create('modelos', function (Blueprint $table) {
             $table->id('ID_MODELO');
-            $table->string('nombre_fantasia',200);
-            $table->string('descripcion',200);
-            $table->string('cambio',50);
-            $table->string('combustible',50);
-            $table->integer('puertas');
-            $table->integer('potencia');
+            $table->string('NOMBRE_FANTASIA',200);
+            $table->string('DESCRIPCION',200)->nullable();
+            $table->string('CAMBIO',50)->nullable();
+            $table->string('COMBUSTIBLE',50)->nullable();
+            $table->integer('PUERTAS')->nullable();
+            $table->integer('POTENCIA')->nullable();
             $table->unsignedBigInteger('ID_MARCA');
-            $table->foreign('ID_MARCA')->references('ID_MARCA')->on('marcas')->onDelete('set null');
             $table->timestamps();
         });
     }

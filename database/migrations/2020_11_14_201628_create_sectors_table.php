@@ -14,13 +14,12 @@ class CreateSectorsTable extends Migration
     public function up()
     {
         Schema::create('sectors', function (Blueprint $table) {
-            $table->unsignedBigInteger('ID_TALLER');
-            $table->unsignedBigInteger('ID_SECTOR');
+            $table->unsignedBigInteger('ID_TALLER')->index();
+            $table->unsignedBigInteger('ID_SECTOR')->index();
             $table->string('nombre',200);
             $table->string('descripcion',50);
             $table->boolean('estado');
             $table->primary(['ID_TALLER','ID_SECTOR']);
-            $table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');
             $table->timestamps();
         });
     }

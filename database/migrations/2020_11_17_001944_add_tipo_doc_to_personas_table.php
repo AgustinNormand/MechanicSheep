@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetallesTable extends Migration
+class AddTipoDocToPersonasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateDetallesTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalles', function (Blueprint $table) {
-            $table->unsignedBigInteger('ID_DETALLE');
-            $table->string("descripcion",50)->nullable();
-            $table->integer("cantidad")->nullable();
-            $table->timestamps();
+        Schema::table('personas', function (Blueprint $table) {
+            $table->foreign('ID_TIPO_DOC')->references('ID_TIPO_DOC')->on('tipo_docs');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateDetallesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalles');
+        Schema::table('personas', function (Blueprint $table) {
+            //
+        });
     }
 }
