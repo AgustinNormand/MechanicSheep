@@ -19,7 +19,6 @@ class CreateTrabajosTable extends Migration
             $table->date("FECHA")->nullable();
             $table->string("DESCRIPCION",200)->nullable();
             $table->string("KILOMETROS",50)->nullable();
-            $table->boolean("DUPLICATED")->default(0);
             $table->unsignedBigInteger("ID_SERVICIO")->nullable();
             $table->unsignedBigInteger("ID_VEHICULO")->nullable();
             $table->timestamps();
