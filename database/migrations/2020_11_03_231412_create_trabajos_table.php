@@ -15,6 +15,7 @@ class CreateTrabajosTable extends Migration
     {
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id("ID_TRABAJO");
+            $table->unsignedBigInteger("NRO_TRABAJO")-->nullable();
             $table->date("FECHA")->nullable();
             $table->string("DESCRIPCION",200)->nullable();
             $table->string("KILOMETROS",50)->nullable();
