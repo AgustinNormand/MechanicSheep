@@ -1,0 +1,11 @@
+#app-form {
+    padding: 2em;
+}
+#time-preference {
+    padding: 1em;
+}
+
+[for="any"] {
+    font-weight: bold;
+}
+

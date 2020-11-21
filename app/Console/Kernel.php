@@ -2,8 +2,11 @@
 
 namespace App\Console;
 
+use App\Models\Estimacion;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,9 +27,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
-        // $schedule->command('inspire')->hourly();
-
         $schedule->call(function () {
             $estimaciones = Estimacion::all();
             /* Obtengo el día de hoy en formato date*/

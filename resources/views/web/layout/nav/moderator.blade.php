@@ -1,1 +1,0 @@
-<li><a href="{{route('home')}}">Moderar</a></li>

@@ -1,0 +1,17 @@
+* {
+    font-family: Renault Mecanorma;
+}
+
+/* Nav configuration and home buttons*/
+
+.navbar , .btn {
+    background-color: #313D57;
+}
+
+.btn:hover {
+    background: #FCB705;
+    color: black;
+}
+
+
+

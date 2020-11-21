@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 /* Static Views */
 
-Route::get('/', function () {
-    return view('web.sections.static.home');
-})->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('Appointment', [App\Http\Controllers\AppointmentController::class, 'viewGetAp'])->name('Appointment');
+Route::get('ListAp', [App\Http\Controllers\AppointmentController::class, 'viewListAp'])->name('ListAp');
 
 Route::get('about', function () {
     return view('web.sections.static.about');
@@ -38,4 +39,13 @@ Route::get('services', function () {
 
 /* Dynamic Views */
 
+
+Auth::routes();
+
+Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index'])->name('change.password');
+
+Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
+Route::get('/cars', [App\Http\Controllers\ProfileController::class, 'cars'])->name('cars');
 
