@@ -11,6 +11,8 @@ class ContactanosMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $nombre_persona;
+
     public $subject = "¡Hola! Es hora de sacar tú turno";
 
     /**
@@ -18,9 +20,9 @@ class ContactanosMailable extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($nombre_persona)
     {
-        //
+        $this->nombre_persona = $nombre_persona;
     }
 
     /**
