@@ -15,6 +15,11 @@ class ProfileController extends Controller
 
     public function profile()
     {
-        return view('web.sections.profile.index');
+        return view('web.sections.profile.myProfile');
+    }
+
+    public function cars()
+    {
+        return view('web.sections.profile.myCars');
     }
 }

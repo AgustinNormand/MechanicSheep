@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,3 +47,5 @@ Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordControlle
 Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
+Route::get('/cars', [App\Http\Controllers\ProfileController::class, 'cars'])->name('cars');
+

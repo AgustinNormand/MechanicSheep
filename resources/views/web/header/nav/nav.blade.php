@@ -27,6 +27,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('contact')}}">Contacto</a>
             </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('about')}}">Acerca de nosotros</a>
+                </li>
         </ul>
     </div>
 </nav>
