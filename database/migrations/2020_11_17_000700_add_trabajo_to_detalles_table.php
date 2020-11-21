@@ -15,7 +15,7 @@ class AddTrabajoToDetallesTable extends Migration
     {
         Schema::table('detalles', function (Blueprint $table) {
             $table->unsignedBigInteger("ID_TRABAJO");
-            $table->primary(['ID_DETALLE','ID_TRABAJO']);
+            $table->index(['ID_DETALLE','ID_TRABAJO']);
             $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos')->onDelete('cascade');
         });
     }

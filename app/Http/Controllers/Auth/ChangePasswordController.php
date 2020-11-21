@@ -7,6 +7,8 @@ use App\Http\Requests\StorePassword;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+use function PHPUnit\Framework\isNull;
+
 class ChangePasswordController extends Controller
 {
     public function __construct()
@@ -23,9 +25,8 @@ class ChangePasswordController extends Controller
 
     public function store(StorePassword $request)
     {
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-
-        dd('Password change successfully.');
+        User::find(auth()->user()->ID_USUARIO)->update(['password'=> Hash::make($request->new_password)]);
+        return redirect(route('profile'))->with('success', 'Contraseña cambiada correctamente');;
 
     }
 }

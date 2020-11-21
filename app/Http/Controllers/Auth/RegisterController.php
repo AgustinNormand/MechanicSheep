@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Persona;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,8 +51,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'Nombre' => ['required', 'string', 'max:200'],
+            'Apellido' => ['required', 'string', 'max:200'],
+            'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +66,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $persona = Persona::where([
+            ['NOMBRE', 'LIKE', '%'.$data['Nombre'].'%'],
+            ['APELLIDO', 'LIKE', '%'.$data['Apellido'].'%'],
+        ])->first();
+
         return User::create([
-            'name' => $data['name'],
+            'Nombre' => $data['Nombre'],
+            'Apellido' => $data['Apellido'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'estado' => true,
+            'ID_PERSONA' => $persona->ID_PERSONA,
         ]);
     }
 }
