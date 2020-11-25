@@ -18,15 +18,15 @@
                     </div>
                     <div class="form-group">
                         <label for="VIN">VIN</label>
-                        <input type="text" class="form-control" id="VIN" value="">
+                        <input type="text" class="form-control" id="VIN" value="{{$vehiculo->VIN}}">
                     </div>
                     <div class="form-group">
                         <label for="anio">Año</label>
-                        <input type="text" class="form-control" id="anio">
+                        <input type="text" class="form-control" id="anio" value="{{$vehiculo->ANIO}}">
                     </div>
                     <div class="form-group">
                         <label for="nro_motor">Número de motor</label>
-                        <input type="email" class="form-control" id="nro_motor">
+                        <input type="email" class="form-control" id="nro_motor" value="{{$vehiculo->NUMERO_MOTOR}}">
                     </div>
                     <div class="form-group">
                         <label for="modelo">Modelo</label>
@@ -41,7 +41,7 @@
             <div class="col-6">
                 <div class="container">
                     <a href="#" role="button"> <button type="submit" class="btn btn-secondary btn-lg">Guardar</button> </a>
-                    <a href="#" role="button"> <button type="submit" class="btn btn-secondary btn-lg">Ver trabajos</button> </a>
+                    <a href="{{route('jobs.show')}}" role="button"> <button type="submit" class="btn btn-secondary btn-lg">Ver trabajos</button> </a>
                 </div>
             </div>
         </div>
