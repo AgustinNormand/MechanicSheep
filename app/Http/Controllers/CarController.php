@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vehiculo;
+use App\Models\Marca;
+use App\Models\Modelo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,16 +17,22 @@ class CarController extends Controller
     }
 
     public function store(Request $request){ //Despues debe ser un StoreCar o StoreVehiculo
-        //return $request->PATENTE;
-        
-        Vehiculo::create(
-            ["PATENTE" => $request->PATENTE],
-            ["VIN" => $request->VIN],
-            ["ANIO" => $request->ANIO],
-            ["NUMERO_MOTOR" => $request->NUMERO_MOTOR],
 
-        );
-        
+        $marca = Marca::firstOrCreate(["RAZON_SOCIAL" => $request->MARCA]);
+
+        $modelo = Modelo::firstOrCreate(["NOMBRE_FANTASIA" => $request->MODELO], ["ID_MARCA" => $marca->ID_MARCA]);
+
+        $idPersona = Auth::user()->persona->ID_PERSONA;
+
+        Vehiculo::create([
+            "PATENTE" => $request->PATENTE,
+            "VIN" => $request->VIN,
+            "ANIO" => $request->ANIO,
+            "NUMERO_MOTOR" => $request->NUMERO_MOTOR,
+            "ID_MODELO" => $modelo->ID_MODELO,
+            "ID_PERSONA" => $idPersona,
+        ]);
+        return redirect()->route('cars.index');
     }
 
     public function create(){

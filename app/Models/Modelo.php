@@ -11,6 +11,8 @@ class Modelo extends Model
 
     protected $primaryKey = 'ID_MODELO';
 
+    protected $guarded = [];
+
     //Relacion uno a muchos (Inversa) Modelo - Marca
     public function marca(){
         return $this->belongsTo('App\Models\Marca','ID_MARCA');

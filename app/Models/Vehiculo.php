@@ -11,6 +11,8 @@ class Vehiculo extends Model
 
     protected $primaryKey = 'ID_VEHICULO';
 
+    protected $guarded = [];
+
     public static function getByPatente($patente){
         return self::where("PATENTE", $patente)->get();
     }

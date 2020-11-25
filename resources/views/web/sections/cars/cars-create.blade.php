@@ -57,6 +57,17 @@
         <br>
     @enderror
 
+    <label for="MARCA">
+        Marca:
+        <input type="text" name="MARCA" value={{old('MARCA')}}>
+    </label>
+
+    @error('MARCA')
+        <br>
+        <small>*{{$message}}</small>
+        <br>
+    @enderror
+
     <label for="MODELO">
         Modelo:
         <input type="text" name="MODELO" value={{old('MODELO')}}>

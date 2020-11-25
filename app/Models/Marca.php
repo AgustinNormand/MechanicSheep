@@ -11,6 +11,8 @@ class Marca extends Model
 
     protected $primaryKey = 'ID_MARCA';
 
+    protected $guarded = [];
+
     //Relacion uno a muchos ~ Marca - Modelo
     public function modelo(){
         return $this->hasMany('App\Models\Modelo','ID_MARCA');
