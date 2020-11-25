@@ -18,7 +18,7 @@ class CarPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        return false;
     }
 
     /**
@@ -30,8 +30,7 @@ class CarPolicy
      */
     public function view(User $user, Vehiculo $vehiculo)
     {
-        return true;
-        //return $user->persona->ID_PERSONA === $vehiculo->ID_PERSONA;
+        return $user->persona->ID_PERSONA === $vehiculo->ID_PERSONA;
     }
 
     /**
@@ -42,7 +41,7 @@ class CarPolicy
      */
     public function create(User $user)
     {
-        //
+        return false;
     }
 
     /**
@@ -54,7 +53,7 @@ class CarPolicy
      */
     public function update(User $user, Vehiculo $vehiculo)
     {
-        return true;
+        return $user->persona->ID_PERSONA === $vehiculo->ID_PERSONA;;
     }
 
     /**
@@ -66,7 +65,7 @@ class CarPolicy
      */
     public function delete(User $user, Vehiculo $vehiculo)
     {
-        return true;
+        return $user->persona->ID_PERSONA === $vehiculo->ID_PERSONA;;
     }
 
     /**
@@ -78,7 +77,7 @@ class CarPolicy
      */
     public function restore(User $user, Vehiculo $vehiculo)
     {
-        //
+        return false;
     }
 
     /**
@@ -90,6 +89,6 @@ class CarPolicy
      */
     public function forceDelete(User $user, Vehiculo $vehiculo)
     {
-        //
+        return false;
     }
 }

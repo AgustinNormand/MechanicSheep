@@ -80,10 +80,8 @@ class CarController extends Controller
     }
 
     public function show(Vehiculo $vehiculo){
-        //$vehiculo = Vehiculo::find($vehiculo->ID_VEHICULO);
-        //return $vehiculo;
-        //$this->authorize('view', [$vehiculo]);
-        //if(Auth::user()->can('view', $vehiculo))
+        $this->authorize('view', [$vehiculo]);
+
         return view('web.sections.cars.cars-show', compact('vehiculo'));
     }
 
