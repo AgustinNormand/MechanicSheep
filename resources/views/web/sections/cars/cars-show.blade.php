@@ -9,17 +9,16 @@
 @section('content')
     <div class="container cars-container">
         <h1>Datos del vehículo</h1>
-        <p>HOLAAAAAAAAAA {{$vehiculo->PATENTE}}</p>
         <div class="row">
             <div class="col-6">
                 <form>
                     <div class="form-group">
                         <label for="patente">Patente</label>
-                        <input type="text" class="form-control" id="patente" disabled value={{$vehiculo->PATENTE}}>
+                        <input type="text" class="form-control" id="patente" disabled value="{{$vehiculo->PATENTE}}">
                     </div>
                     <div class="form-group">
                         <label for="VIN">VIN</label>
-                        <input type="text" class="form-control" id="VIN" value={{$vehiculo->VIN}}>
+                        <input type="text" class="form-control" id="VIN" value="">
                     </div>
                     <div class="form-group">
                         <label for="anio">Año</label>

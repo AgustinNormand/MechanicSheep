@@ -52,7 +52,7 @@ Route::get("cars/locate", [App\Http\Controllers\CarController::class, 'getLocate
 
 Route::post("cars/locate", [App\Http\Controllers\CarController::class, 'pushLocate'])->name('cars.locate');
 
-Route::resource("cars", App\Http\Controllers\CarController::class);
+Route::resource("cars", App\Http\Controllers\CarController::class)->parameters(['cars' => 'vehiculo']);
 
 
 

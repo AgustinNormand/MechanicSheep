@@ -8,7 +8,7 @@
 
 @section('content')
     @foreach($vehiculos as $vehiculo)
-        <p> Vehiculo: {{$vehiculo}}</p>
+        <p> Vehiculo: {{$vehiculo->ID_VEHICULO}}</p>
     @endforeach
 
     <div class="container cars-container">
