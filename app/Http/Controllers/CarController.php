@@ -57,14 +57,34 @@ class CarController extends Controller
             return "Más de un vehiculo encontrado, tengo que darle a elegir";
     }
 
-    public function update(){
+    public function edit(Vehiculo $vehiculo){
+        return view('web.sections.cars.cars-edit', compact('vehiculo'));
+    }
 
+    public function update(Request $request, Vehiculo $vehiculo){
+        $request->validate([
+            //TO-DO
+        ]);
+
+        $vehiculo->VIN = $request->VIN;
+        $vehiculo->NUMERO_MOTOR = $request->NUMERO_MOTOR;
+        $vehiculo->ANIO = $request->ANIO;
+
+        $idMarca = Marca::firstOrCreate(["RAZON_SOCIAL" => $request->MARCA])->ID_MARCA;
+
+        $idModelo = Modelo::firstOrCreate(["NOMBRE_FANTASIA" => $request->MODELO, "ID_MARCA" => $idMarca])->ID_MODELO;
+
+        $vehiculo->ID_MODELO = $idModelo;
+
+        $vehiculo->save();
     }
 
     public function show(Vehiculo $vehiculo){
-        $this->authorize('view', [$vehiculo]);
+        //$vehiculo = Vehiculo::find($vehiculo->ID_VEHICULO);
+        //return $vehiculo;
+        //$this->authorize('view', [$vehiculo]);
         //if(Auth::user()->can('view', $vehiculo))
-            return view('web.sections.cars.cars-show', compact('vehiculo'));
+        return view('web.sections.cars.cars-show', compact('vehiculo'));
     }
 
     public function destroy(Vehiculo $vehiculo){
