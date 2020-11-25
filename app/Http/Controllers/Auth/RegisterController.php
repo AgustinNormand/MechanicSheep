@@ -51,11 +51,29 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'Nombre' => ['required', 'string', 'max:200'],
-            'Apellido' => ['required', 'string', 'max:200'],
+            'dni' => ['required', 'integer'],
+            'nombre' => ['required', 'string', 'max:200'],
+            'apellido' => ['required', 'string', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    private function tryToGetIdPersona(array $data){
+        $idPersona = null;
+
+        $personas = Persona::getByDni($data["dni"]);
+
+        if(count($personas) == 1)
+            $idPersona = $personas[0]->ID_PERSONA;
+        else
+        {
+            $personas = Persona::getByExactNameAndSurname($data["nombre"], $data["apellido"]);
+            if(count($personas) == 1)
+                $idPersona = $personas[0]->ID_PERSONA;
+        }
+
+        return $idPersona;
     }
 
     /**
@@ -66,18 +84,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $persona = Persona::where([
-            ['NOMBRE', 'LIKE', '%'.$data['Nombre'].'%'],
-            ['APELLIDO', 'LIKE', '%'.$data['Apellido'].'%'],
-        ])->first();
+
+        $idPersona = $this->tryToGetIdPersona($data);
+
+        if(is_null($idPersona))
+            $idPersona = Persona::create([
+                "NOMBRE" => $data['nombre'],
+                "APELLIDO" => $data['apellido'],
+                "NRO_DOC" => $data["dni"],
+                //"CREATED_FROM_WEB => true,
+            ])->ID_PERSONA;
 
         return User::create([
-            'Nombre' => $data['Nombre'],
-            'Apellido' => $data['Apellido'],
+            'nombre' => $data['nombre'],
+            'apellido' => $data['apellido'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'estado' => true,
-            'ID_PERSONA' => $persona->ID_PERSONA,
+            'ID_PERSONA' => $idPersona,
         ]);
     }
 }
