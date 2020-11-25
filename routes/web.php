@@ -46,7 +46,11 @@ Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordControlle
 
 Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
+/* Profile Routes */
+
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
+Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
 /* Cars Routes */
 
