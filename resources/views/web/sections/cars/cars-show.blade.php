@@ -26,22 +26,22 @@
                     </div>
                     <div class="form-group">
                         <label for="nro_motor">Número de motor</label>
-                        <input type="email" class="form-control" id="nro_motor" value="{{$vehiculo->NUMERO_MOTOR}}">
+                        <input type="text" class="form-control" id="nro_motor" value="{{$vehiculo->NUMERO_MOTOR}}">
                     </div>
                     <div class="form-group">
                         <label for="modelo">Modelo</label>
-                        <input type="email" class="form-control" id="modelo">
+                        <input type="text" class="form-control" id="modelo" value="{{$vehiculo->modelo->NOMBRE_FANTASIA}}">
                     </div>
                     <div class="form-group">
                         <label for="marca">Marca</label>
-                        <input type="email" class="form-control" id="marca">
+                        <input type="text" class="form-control" id="marca" value="{{$vehiculo->modelo->marca->RAZON_SOCIAL}}">
                     </div>
                 </form>
             </div>
             <div class="col-6">
                 <div class="container">
                     <a href="#" role="button"> <button type="submit" class="btn btn-secondary btn-lg">Guardar</button> </a>
-                    <a href="{{route('jobs.show')}}" role="button"> <button type="submit" class="btn btn-secondary btn-lg">Ver trabajos</button> </a>
+                    <a href="{{route('jobs.show', $vehiculo)}}" role="button"> <button type="submit" class="btn btn-secondary btn-lg">Ver trabajos</button> </a>
                 </div>
             </div>
         </div>

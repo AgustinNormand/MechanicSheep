@@ -9,7 +9,8 @@ class Servicio extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = ['ID_SERVICIO','ID_SECTOR','ID_TALLER'];
+//    protected $primaryKey = ['ID_SERVICIO','ID_SECTOR','ID_TALLER'];
+    protected $primaryKey = 'ID_SERVICIO';
 
     public function turno_pendientes(){
         return $this->belongsToMany('App\Models\Turno_pendiente', 'servicio_turno', 'ID_SERVICIO', 'ID_TURNO_P');
