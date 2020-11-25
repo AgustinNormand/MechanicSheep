@@ -48,11 +48,18 @@ Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordControll
 
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
 
+/* Cars Routes */
+
 Route::get("cars/locate", [App\Http\Controllers\CarController::class, 'getLocate'])->name('cars.locate');
 
 Route::post("cars/locate", [App\Http\Controllers\CarController::class, 'pushLocate'])->name('cars.locate');
 
 Route::resource("cars", App\Http\Controllers\CarController::class)->parameters(['cars' => 'vehiculo']);
+
+/* Jobs Routes */
+
+Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show');
+
 
 
 
