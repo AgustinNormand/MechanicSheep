@@ -61,11 +61,14 @@ class CarController extends Controller
 
     }
 
-    public function show(){
-
+    public function show(Vehiculo $vehiculo){
+        $this->authorize('view', [$vehiculo]);
+        //if(Auth::user()->can('view', $vehiculo))
+            return view('web.sections.cars.cars-show', compact('vehiculo'));
     }
 
-    public function destroy(){
-
+    public function destroy(Vehiculo $vehiculo){
+        $vehiculo->ID_PERSONA = null;
+        $vehiculo->save();
     }
 }
