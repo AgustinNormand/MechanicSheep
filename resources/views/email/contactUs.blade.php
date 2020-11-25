@@ -10,11 +10,11 @@
 </head>
 <body>
     <p>
-        <span id="name"> Hola {{ $nombre_persona }} </span>
+        <span id="name"> Hola {{ $nombre_persona }} </span> <br>
         ¡Esperamos te encuentres bien! <br>
         Según nuestros cálculos, estás cerca de tu próximo service ;)<br>
 
-        No te olvides que podes sacar un turno desde nuestra página
+        No te olvides que podes sacar un turno desde nuestra página. <br>
 
         <span>Sacá tu turno <a href="https://github.com/AgustinNormand/MechanicSheep" target="_blank">acá</a></span>
     </p>

@@ -7,24 +7,63 @@
 @endsection
 
 @section('content')
-<h1>"Complete el siguente formulario para localizar un vehiculo.";</h1>
+    <div class="container cars-container" id="newCar-form">
+        <h1>Agregar/localizar vehículo</h1>
+        <form action="{{route('cars.locate')}}" method="post">
+            @csrf
+            <div class="form-group">
+                <label for="patente">Patente</label>
+                <input type="text" class="form-control" id="patente" value={{old('PATENTE')}}>
+            </div>
+            @error('PATENTE')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
+            <div class="form-group">
+                <a href="#" role="button"> <button type="submit" class="btn btn-secondary">Enviar</button> </a>
+            </div>
 
-<form action="{{route('cars.locate')}}" method="post">
+            <div class="form-group">
+                <label for="ANIO">Año</label>
+                <input type="text" class="form-control" id="ANIO" value={{old('ANIO')}}>
+            </div>
+            @error('ANIO')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
+            <div class="form-group">
+                <label for="modelo">Modelo</label>
+                <input type="text" class="form-control" id="modelo" value={{old('MODELO')}}>
+            </div>
+            @error('MODELO')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
+            <div class="form-group">
+                <label for="VIN">VIN</label>
+                <input type="text" class="form-control" id="VIN" value={{old('VIN')}}>
+            </div>
+            @error('VIN')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
+            <div class="form-group">
+                <label for="NRO-MOTOR">Número de motor</label>
+                <input type="text" class="form-control" id="NRO-MOTOR" value={{old('NUMERO_MOTOR')}}>
+            </div>
+            @error('NUMERO_MOTOR')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
+            <div class="form-group">
+                <a href="#" role="button"> <button type="submit" class="btn btn-secondary">Enviar</button> </a>
+            </div>
+        </form>
+    </div>
 
-    @csrf
-    
-    <label for="PATENTE">
-        Patente:
-        <input type="text" name="PATENTE" value={{old('PATENTE')}}>
-    </label>
-
-    @error('PATENTE')
-        <br>
-        <small>*{{$message}}</small>
-        <br>
-    @enderror
-
-    <br>
-    <input type="submit" value="Enviar">
-</form>
 @endsection

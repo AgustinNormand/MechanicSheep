@@ -1,0 +1,17 @@
+.cars-container {
+    padding: 2em;
+}
+
+#newCar {
+    text-align: center;
+    padding: 1em;
+}
+
+#newCar-border {
+    padding: 3em;
+    border: 0.125em dashed #FCB705;
+}
+
+#newCar-form {
+    width: 50%;
+}

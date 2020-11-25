@@ -52,7 +52,7 @@ class Kernel extends ConsoleKernel
                     $correo->build();
                 }
             }
-        })->everyMinute();
+        })->daily();
 
     }
 
