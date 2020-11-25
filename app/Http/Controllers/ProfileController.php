@@ -18,8 +18,4 @@ class ProfileController extends Controller
         return view('web.sections.profile.myProfile');
     }
 
-    public function cars()
-    {
-        return view('web.sections.profile.myCars');
-    }
 }

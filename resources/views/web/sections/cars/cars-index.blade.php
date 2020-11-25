@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
-
-    HOLAAAAA
+<a href="{{route('cars.locate')}}">Agregar vehiculo</a>
+    @foreach($vehiculos as $vehiculo)
+        <p> Vehiculo: {{$vehiculo}}</p>
+    @endforeach
 @endsection

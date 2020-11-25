@@ -11,6 +11,15 @@ class Vehiculo extends Model
 
     protected $primaryKey = 'ID_VEHICULO';
 
+    public static function getByPatente($patente){
+        return self::where("PATENTE", $patente)->get();
+    }
+    
+    public static function setPersona($vehiculo, $idPersona){
+        $vehiculo->ID_PERSONA = $idPersona;
+        $vehiculo->save();
+    }
+
     //Relacion uno a muchos (Inversa) Vehiculo - Modelo
     public function modelo(){
         return $this->belongsTo('App\Models\Modelo','ID_MODELO');

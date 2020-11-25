@@ -2,7 +2,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="{{route('profile')}}">Datos personales</a>
-        <a class="dropdown-item" href="{{route('cars')}}">Mis Vehiculos </a>
+        <a class="dropdown-item" href="{{route('cars.index')}}">Mis Vehiculos </a>
         <a class="dropdown-item" href="{{route('ListAp')}}">Mis Turnos</a>
         <a class="dropdown-item" href="#">Trabajos realizados</a>
         <div class="dropdown-divider"></div>
