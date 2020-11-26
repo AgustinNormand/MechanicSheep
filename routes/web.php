@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 /* Static Views */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('Appointment', [App\Http\Controllers\AppointmentController::class, 'viewGetAp'])->name('Appointment');
-Route::get('ListAp', [App\Http\Controllers\AppointmentController::class, 'viewListAp'])->name('ListAp');
 
 Route::get('about', function () {
     return view('web.sections.static.about');
@@ -38,7 +36,6 @@ Route::get('services', function () {
 
 
 /* Dynamic Views */
-
 
 Auth::routes();
 
@@ -64,6 +61,9 @@ Route::resource("cars", App\Http\Controllers\CarController::class)->parameters([
 
 Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show');
 
+Route::get('appointments', [App\Http\Controllers\AppointmentController::class, 'get'])->name('appointment.get');
 
+Route::get('appointments/show', [App\Http\Controllers\AppointmentController::class, 'show'])->name('appointment.show');
 
+Route::post('appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointment.store');
 

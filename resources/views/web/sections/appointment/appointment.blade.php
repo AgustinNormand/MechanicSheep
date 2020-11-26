@@ -10,26 +10,33 @@
 
     <div class="container" id="app-form">
         <h1>Solicitud de turno</h1>
-        <form>
+        <form action="{{route('appointment.store')}}" method="post">
+
+            @csrf
+
             <div class="form-group">
                 <label for="myCar">Seleccione un vehículo</label>
                 <select class="form-control" id="myCar">
-                    <option>Default select</option>
+                    @foreach ($vehiculos as $vehiculo)
+                        <option>{{$vehiculo->PATENTE}} - {{$vehiculo->modelo->marca->RAZON_SOCIAL}} - {{$vehiculo->modelo->NOMBRE_FANTASIA}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="service">Seleccione un servicio</label>
                 <select class="form-control" id="service">
-                    <option>S - 10k</option>
-                    <option>S - 20k</option>
-                    <option>S - 30k</option>
-                    <option>S - 40k</option>
-                    <option>S - 50k</option>
-                    <option>S - 60k</option>
-                    <option>S - 70k</option>
-                    <option>S - 80k</option>
-                    <option>S - 90k</option>
-                    <option>S - 10k</option>
+                    <option>Service - 10.000km</option>
+                    <option>Service - 20.000km</option>
+                    <option>Service - 30.000km</option>
+                    <option>Service - 40.000km</option>
+                    <option>Service - 50.000km</option>
+                    <option>Service - 60.000km</option>
+                    <option>Service - 70.000km</option>
+                    <option>Service - 80.000km</option>
+                    <option>Service - 90.000km</option>
+                    <option>Service - 100.000km</option>
+                    <option>Service - 110.000km</option>
+                    <option>Service - 120.000km</option>
                     <option>Otro servicio mecánico</option>
                 </select>
             </div>
@@ -182,8 +189,8 @@
                 <textarea class="form-control" id="additional-comments" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <a href="#" role="button"> <button type="button" class="btn btn-secondary btn-lg">Solicitar</button> </a>
-                <a href="#" role="button"> <button type="button" class="btn btn-secondary btn-lg">Cancelar</button> </a>
+                <input class="btn btn-secondary btn-lg" type="submit" value="Solicitar">
+                <a href="{{route('profile')}}" role="button"> <button type="button" class="btn btn-secondary btn-lg">Cancelar</button> </a>
             </div>
         </form>
         <hr class="featurette-divider">

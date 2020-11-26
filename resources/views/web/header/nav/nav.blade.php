@@ -16,7 +16,7 @@
                 @include('web.header.nav.unlogged')
             @endif
             <li class="nav-item">
-                <a class="nav-link" href="{{route('Appointment')}}">Pedir turno</a>
+                <a class="nav-link" href="{{route('appointment.get')}}">Pedir turno</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('services')}}">Servicios</a>
