@@ -59,11 +59,11 @@ Route::resource("cars", App\Http\Controllers\CarController::class)->parameters([
 
 /* Jobs Routes */
 
-Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show');
+Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show')->middleware('auth');
 
-Route::get('appointments', [App\Http\Controllers\AppointmentController::class, 'get'])->name('appointment.get');
+Route::get('appointments', [App\Http\Controllers\AppointmentController::class, 'get'])->name('appointment.get')->middleware('auth');
 
-Route::get('appointments/show', [App\Http\Controllers\AppointmentController::class, 'show'])->name('appointment.show');
+Route::get('appointments/show', [App\Http\Controllers\AppointmentController::class, 'show'])->name('appointment.show')->middleware('auth');
 
-Route::post('appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointment.store');
+Route::post('appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointment.store')->middleware('auth');
 
