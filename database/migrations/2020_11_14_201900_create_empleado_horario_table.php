@@ -14,10 +14,11 @@ class CreateEmpleadoHorarioTable extends Migration
     public function up()
     {
         Schema::create('empleado_horario', function (Blueprint $table) {
+            $table->id('ID_EMPLEADO_HORARIO');
             $table->unsignedBigInteger('ID_EMPLEADO');
             $table->unsignedBigInteger('ID_HORARIO');
             $table->string('DESCRIPCION',100)->nullable();
-            $table->primary(['ID_EMPLEADO','ID_HORARIO']);
+            $table->index(['ID_EMPLEADO','ID_HORARIO']);
             $table->foreign('ID_EMPLEADO')->references('ID_EMPLEADO')->on('empleados');
             $table->foreign('ID_HORARIO')->references('ID_HORARIO')->on('horarios');
             $table->timestamps();

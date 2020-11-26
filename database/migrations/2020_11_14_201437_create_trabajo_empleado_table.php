@@ -14,10 +14,11 @@ class CreateTrabajoEmpleadoTable extends Migration
     public function up()
     {
         Schema::create('trabajo_empleado', function (Blueprint $table) {
+            $table->id('ID_TRABAJO_EMPLEADO');
             $table->unsignedBigInteger('ID_TRABAJO');
             $table->unsignedBigInteger('ID_EMPLEADO');
             $table->string('DESCRIPCION',200)->nullable();
-            $table->primary(['ID_TRABAJO','ID_EMPLEADO']);
+            $table->index(['ID_TRABAJO','ID_EMPLEADO']);
             $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos');
             $table->timestamps();
         });

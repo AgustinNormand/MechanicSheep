@@ -14,10 +14,11 @@ class CreateServicioSectorTable extends Migration
     public function up()
     {
         Schema::create('servicio_sector', function (Blueprint $table) {
+            $table->id('ID_SERVICIO_SECTOR');
             $table->unsignedBigInteger('ID_SERVICIO');
             $table->unsignedBigInteger('ID_SECTOR');
             $table->unsignedBigInteger('ID_TALLER');
-            $table->primary(['ID_SERVICIO','ID_SECTOR','ID_TALLER']);
+            $table->index(['ID_SERVICIO','ID_SECTOR','ID_TALLER']);
             $table->foreign('ID_SERVICIO')->references('ID_SERVICIO')->on('servicios');
             
             $table->timestamps();

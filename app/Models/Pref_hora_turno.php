@@ -9,7 +9,7 @@ class Pref_hora_turno extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = ['ID_PREF', 'ID_TURNO_P'];
+    protected $primaryKey = 'ID_PREF';
 
     //Relacion uno a muchos
     public function turno_pendiente(){
