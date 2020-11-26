@@ -11,6 +11,8 @@ class Turno_pendiente extends Model
 
     protected $primaryKey = 'ID_TURNO_P';
 
+    protected $guarded = [];
+
     public function pref_hora_turno(){
         return $this->hasMany('App\Models\Pref_hora_turno','ID_TURNO_P');
     }
