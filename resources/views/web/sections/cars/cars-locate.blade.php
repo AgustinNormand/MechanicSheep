@@ -12,8 +12,8 @@
         <form action="{{route('cars.locate')}}" method="post">
             @csrf
             <div class="form-group">
-                <label for="patente">Patente</label>
-                <input type="text" class="form-control" id="patente" value={{old('PATENTE')}}>
+                <label for="PATENTE">Patente</label>
+                <input name="PATENTE" type="text" class="form-control" id="PATENTE" value={{old('PATENTE')}}>
             </div>
             @error('PATENTE')
             <br>
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label for="ANIO">Año</label>
-                <input type="text" class="form-control" id="ANIO" value={{old('ANIO')}}>
+                <input name="ANIO" type="text" class="form-control" id="ANIO" value={{old('ANIO')}}>
             </div>
             @error('ANIO')
             <br>
@@ -44,7 +44,7 @@
             @enderror
             <div class="form-group">
                 <label for="VIN">VIN</label>
-                <input type="text" class="form-control" id="VIN" value={{old('VIN')}}>
+                <input name="VIN" type="text" class="form-control" id="VIN" value={{old('VIN')}}>
             </div>
             @error('VIN')
             <br>
@@ -52,8 +52,8 @@
             <br>
             @enderror
             <div class="form-group">
-                <label for="NRO-MOTOR">Número de motor</label>
-                <input type="text" class="form-control" id="NRO-MOTOR" value={{old('NUMERO_MOTOR')}}>
+                <label for="NUMERO_MOTOR">Número de motor</label>
+                <input name="NUMERO_MOTOR" type="text" class="form-control" id="NUMERO_MOTOR" value={{old('NUMERO_MOTOR')}}>
             </div>
             @error('NUMERO_MOTOR')
             <br>

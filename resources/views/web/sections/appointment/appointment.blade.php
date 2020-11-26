@@ -16,7 +16,7 @@
 
             <div class="form-group">
                 <label for="myCar">Seleccione un vehículo</label>
-                <select class="form-control" id="myCar">
+                <select name="select-vehiculo" class="form-control" id="myCar" required>
                     @foreach ($vehiculos as $vehiculo)
                         <option>{{$vehiculo->PATENTE}} - {{$vehiculo->modelo->marca->RAZON_SOCIAL}} - {{$vehiculo->modelo->NOMBRE_FANTASIA}}</option>
                     @endforeach
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="service">Seleccione un servicio</label>
-                <select class="form-control" id="service">
+                <select name="select-servicios" class="form-control" id="service" required>
                     <option>Service - 10.000km</option>
                     <option>Service - 20.000km</option>
                     <option>Service - 30.000km</option>
@@ -41,12 +41,17 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="problem">Cual es el problema en su auto?</label>
+                <textarea name="problem" class="form-control" id="problem" rows="1">Esto debería ocultarse si seleccionó "Service". Si selecionó "otro", deberia ser "required"</textarea>
+            </div>
+
             <label for="time-preference">Seleccione una preferencia horaria *</label>
             <div class="container" id="time-preference">
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="monday">
+                            <input name="checkbox-monday" class="form-check-input" type="checkbox" id="monday">
                             <label class="form-check-label" for="monday">
                                 Lunes
                             </label>
@@ -54,7 +59,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="monday-8">
+                            <input name="checkbox-monday-8" class="form-check-input" type="checkbox" id="monday-8">
                             <label class="form-check-label" for="monday-8">
                                 8 AM
                             </label>
@@ -62,7 +67,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="monday-2">
+                            <input name="checkbox-monday-2" class="form-check-input" type="checkbox" id="monday-2">
                             <label class="form-check-label" for="monday-2">
                                 2 PM
                             </label>
@@ -72,7 +77,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tuesday">
+                            <input name="checkbox-tuesday" class="form-check-input" type="checkbox" id="tuesday">
                             <label class="form-check-label" for="tuesday">
                                 Martes
                             </label>
@@ -80,7 +85,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tuesday-8">
+                            <input name="checkbox-tuesday-8" class="form-check-input" type="checkbox" id="tuesday-8">
                             <label class="form-check-label" for="tuesday-8">
                                 8 AM
                             </label>
@@ -88,7 +93,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="tuesday-2">
+                            <input name="checkbox-tuesday-2" class="form-check-input" type="checkbox" id="tuesday-2">
                             <label class="form-check-label" for="tuesday-2">
                                 2 PM
                             </label>
@@ -98,7 +103,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="wednesday">
+                            <input name="checkbox-wednesday" class="form-check-input" type="checkbox" id="wednesday">
                             <label class="form-check-label" for="wednesday">
                                 Miércoles
                             </label>
@@ -106,7 +111,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="wednesday-8">
+                            <input name="checkbox-wednesday-8" class="form-check-input" type="checkbox" id="wednesday-8">
                             <label class="form-check-label" for="wednesday-8">
                                 8 AM
                             </label>
@@ -114,7 +119,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="wednesday-2">
+                            <input name="checkbox-wednesday-2" class="form-check-input" type="checkbox" id="wednesday-2">
                             <label class="form-check-label" for="wednesday-2">
                                 2 PM
                             </label>
@@ -124,7 +129,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="thursday">
+                            <input name="checkbox-thursday" class="form-check-input" type="checkbox" id="thursday">
                             <label class="form-check-label" for="thursday">
                                 Jueves
                             </label>
@@ -132,7 +137,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="thursday-8">
+                            <input name="checkbox-thursday-8" class="form-check-input" type="checkbox" id="thursday-8">
                             <label class="form-check-label" for="thursday-8">
                                 8 AM
                             </label>
@@ -140,7 +145,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="thursday-2">
+                            <input name="checkbox-thursday-2" class="form-check-input" type="checkbox" id="thursday-2">
                             <label class="form-check-label" for="thursday-2">
                                 2 PM
                             </label>
@@ -150,7 +155,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="friday">
+                            <input name="checkbox-friday" class="form-check-input" type="checkbox" id="friday">
                             <label class="form-check-label" for="friday">
                                 Viernes
                             </label>
@@ -158,7 +163,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="friday-8">
+                            <input name="checkbox-friday-8" class="form-check-input" type="checkbox" id="friday-8">
                             <label class="form-check-label" for="friday-8">
                                 8 AM
                             </label>
@@ -166,7 +171,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="friday-2">
+                            <input name="checkbox-friday-2" class="form-check-input" type="checkbox" id="friday-2">
                             <label class="form-check-label" for="friday-2">
                                 2 PM
                             </label>
@@ -176,7 +181,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="any">
+                            <input name="checkbox-any" class="form-check-input" type="checkbox" id="any">
                             <label class="form-check-label" for="any">
                                 Cualquier día y horario
                             </label>
@@ -186,7 +191,7 @@
             </div>
             <div class="form-group">
                 <label for="additional-comments">Comentarios/Aclaraciones adicionales</label>
-                <textarea class="form-control" id="additional-comments" rows="3"></textarea>
+                <textarea name="additional-comments" class="form-control" id="additional-comments" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <input class="btn btn-secondary btn-lg" type="submit" value="Solicitar">
