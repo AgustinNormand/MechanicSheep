@@ -7,9 +7,6 @@
 @endsection
 
 @section('content')
-    @foreach($vehiculos as $vehiculo)
-        <p> Vehiculo: {{$vehiculo->ID_VEHICULO}}</p>
-    @endforeach
 
     <div class="container cars-container">
         <table class="table table-hover">
