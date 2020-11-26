@@ -28,6 +28,18 @@ class ProfileController extends Controller
     {
         $persona = Auth::user()->persona;
         $request->validate([
+            'fname' => 'required',
+            'lname' => 'required',
+            'tdoc' => 'required',
+            'ndoc' => 'required',
+            'born' => '',
+            'email' => '',
+            'address' => '',
+            'addressNumber' => '',
+            'city' => '',
+            'pais' => '',
+            'tel' => '',
+            'codPos' => ''
         ]);
         $persona->update([
             'NOMBRE' => $request->input('fname'),

@@ -28,7 +28,7 @@ class CreatePersonasTable extends Migration
             $table->string('DESCRIPCION', 200)->nullable();
             $table->string('CODIGO_POSTAL', 10)->nullable();
             $table->boolean('ESTADO', 50)->default(1);
-            $table->unsignedBigInteger('ID_TIPO_DOC')->nullable();
+            $table->unsignedBigInteger('ID_TIPO_DOC')->default(1);
             $table->timestamps();
         });
     }
