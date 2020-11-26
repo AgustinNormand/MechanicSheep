@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="born">Fecha Nacimiento</label>
-                                <input type="text" id="born" name="born" class="form-control" placeholder="Fecha Nacimiento" value="{{$persona->FECHA_NAC}}">
+                                <input type="text" id="born" name="born" class="form-control" placeholder="yyyy-mm-dd" value="{{$persona->FECHA_NAC}}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
