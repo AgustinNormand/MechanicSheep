@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Sector;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoDocSeeder::class);
         $this->call(PersonaAdminSeeder::class);
         $this->call(UserAdminSeeder::class);
+        $this->call(TallerSeeder::class);
+        $this->call(SectorSeeder::class);
+        $this->call(ServicioSeeder::class);
     }
 }
