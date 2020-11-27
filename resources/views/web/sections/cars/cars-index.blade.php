@@ -25,6 +25,11 @@
                     <td>{{$vehiculo->ANIO}}</td>
                     <td>
                         <a href="{{route('cars.show', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Visualizar</button> </a>
+                        <form action="{{route('cars.destroy', $vehiculo)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-secondary btn-sm">Eliminar</button>
+                        </form>
                     </td>
                     <td>
                         <a href="{{route('appointment.get', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
