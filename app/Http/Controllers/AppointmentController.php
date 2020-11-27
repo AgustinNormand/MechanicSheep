@@ -32,7 +32,8 @@ class AppointmentController extends Controller
     }
 
     function show() {
-        return view('web.sections.appointment.list-ap');
+        $turnos = Auth::user()->turno_pendiente;
+        return view('web.sections.appointment.list-ap',compact('turnos'));
     }
 
     function store(Request $request){

@@ -20,76 +20,31 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-            </tr>
+                @foreach ($turnos as $turno)
+                    @if ($turno->turno_confirmado)
+                        <tr>
+                            <th scope="row">{{ $turno->turno_confirmado->FECHA_HORA }}</th>
+                            <td>Confirmado</td>
+                            <td>{{ $turno->vehiculo->PATENTE }}</td>
+                            <td>{{ $turno->servicios->first()->NOMBRE }}</td>
+                            <td>
+                                <a href="#" role="button"><button type="button" class="btn btn-secondary btn-sm">Visualizar</button> </a>
+                                <a href="#" role="button"><button type="button" class="btn btn-secondary btn-sm">Cancelar</button> </a>
+                            </td>
+                        </tr>
+                    @else
+                        <tr>
+                            <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
+                            <td>Pendiente</td>
+                            <td>{{ $turno->vehiculo->PATENTE }}</td>
+                            <td>{{ $turno->servicios->first()->NOMBRE }}</td>
+                            <td>
+                                <a href="#" role="button"><button type="button" class="btn btn-secondary btn-sm">Visualizar</button> </a>
+                                <a href="#" role="button"><button type="button" class="btn btn-secondary btn-sm">Cancelar</button> </a>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
             </tbody>
         </table>
     </div>

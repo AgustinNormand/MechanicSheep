@@ -56,6 +56,6 @@ class User extends Authenticatable
     }
 
     public function turno_pendiente(){
-        return $this->hasMany('App\Models\Turno_pendiente','ID_USUARIO');
+        return $this->hasMany('App\Models\Turno_pendiente','ID_USUARIO')->orderBy('FECHA_SOLICITUD','DESC');
     }
 }
