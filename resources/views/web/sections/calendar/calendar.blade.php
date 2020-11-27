@@ -23,15 +23,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="text" name="txtID" id="txtID">
+                        id<input type="text" name="txtID" id="txtID">
                         <br>
-                        <input type="text" name="txtDate" id="txtDate">
+                        dia<input type="text" name="txtDate" id="txtDate">
                         <br>
-                        <input type="text" name="txtTitle" id="txtTitle">
+                        titulo<input type="text" name="txtTitle" id="txtTitle">
                         <br>
-                        <input type="text" name="txtHour" id="txtHour">
+                        hora<input type="text" name="txtHour" id="txtHour">
                         <br>
-                        <input type="text" name="txtDesc" id="txtDesc">
+                        desc<input type="text" name="txtDesc" id="txtDesc">
                         <br>
                         <input type="color" name="txtColor" id="txtColor">
                         <br>
@@ -50,6 +50,7 @@
 @endsection
 
 @section('scripts')
+
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
 
     <script src="{{ asset('js/calendar.js') }}"></script>

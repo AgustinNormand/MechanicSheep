@@ -64,7 +64,40 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.setOption('locale', 'Es');
     calendar.render();
 
-    function getDataGUI(method) {
+    $('#btnAdd').click(function () {
+        objEvent = getDataGUI("POST");
+        sendInfo('', objEvent);
+    });
 
+    function getDataGUI(method) {
+        newEvent = {
+            ID_EVENTO: $('#txtID').val(),
+            TITLE: $('#txtTitle').val(),
+            DESCRIPTION: $('#txtDesc').val(),
+            COLOR: $('#txtColor').val(),
+            TEXT_COLOR: $('#FFFFFF'),
+            START: $('#txtDate').val() + " " + $('#txtHour').val(),
+            END: $('#txtDate').val() + " " + $('#txtHour').val(),
+            '_token':$("meta[name='csrf-token']").attr("content"),
+            '_method':method,
+        }
+
+        return(newEvent);
+    }
+
+    function sendInfo(action, objEvent) {
+        $.ajax({
+            type:"POST",
+            url: "{{route('calendar')}}" + action,
+            data: objEvent,
+            success:function (msg) {
+                console.log(msg);
+            },
+            error:function(error) {
+                alert("There is an error");
+            },
+
+        }
+        );
     }
 });

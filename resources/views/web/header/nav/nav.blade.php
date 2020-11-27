@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{{route('about')}}">Acerca de nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('calendar')}}">Calendario</a>
+                    <a class="nav-link" href="{{route('calendar.index')}}">Calendario</a>
                 </li>
         </ul>
     </div>
