@@ -9,6 +9,8 @@ class Pref_hora_turno extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $primaryKey = 'ID_PREF';
 
     //Relacion uno a muchos
