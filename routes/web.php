@@ -61,11 +61,15 @@ Route::resource("cars", App\Http\Controllers\CarController::class)->parameters([
 
 Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show')->middleware('auth');
 
-Route::get('appointments/{selectedVehiculo?}', [App\Http\Controllers\AppointmentController::class, 'get'])->name('appointment.get')->middleware('auth');
+/* Appointments Routes */
+Route::post('appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointment.store')->middleware('auth');
 
 Route::get('appointments/show', [App\Http\Controllers\AppointmentController::class, 'show'])->name('appointment.show')->middleware('auth');
 
-Route::post('appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointment.store')->middleware('auth');
+Route::get('appointments/{selectedVehiculo?}', [App\Http\Controllers\AppointmentController::class, 'get'])->name('appointment.get')->middleware('auth');
+
+
 
 /*Calendar route*/
+
 Route::get('calendar', [App\Http\Controllers\CalendarController::class, 'view'])->name('calendar');
