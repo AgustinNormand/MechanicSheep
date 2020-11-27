@@ -35,9 +35,9 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group d-none" id="problemaDelAuto">
                 <label for="problem">Cual es el problema en su auto?</label>
-                <textarea name="problem" class="form-control" id="problem" rows="1">Esto debería ocultarse si seleccionó "Service". Si selecionó "otro", deberia ser "required"</textarea>
+                <textarea name="problem" class="form-control" id="problem" rows="1"> </textarea>
             </div>
 
             <label for="time-preference">Seleccione una preferencia horaria *</label>
@@ -192,4 +192,6 @@
 
 @endsection
 
-
+@section('scripts')
+    <script src="{{ asset('js/pedirTurno.js') }}"></script>
+@endsection
