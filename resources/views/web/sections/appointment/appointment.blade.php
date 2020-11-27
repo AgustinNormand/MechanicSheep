@@ -19,13 +19,16 @@
                 <select name="select_vehiculo" class="form-control" id="myCar" required>
                     @foreach ($vehiculos as $vehiculo)
                         {{$selected = old('select_vehiculo') == $vehiculo->ID_VEHICULO ? 'selected' : ''}}
+                        @if ($vehiculoSeleccionado == $vehiculo->ID_VEHICULO and $selected == '')
+                            {{$selected = "selected"}}
+                        @endif
                         <option value={{$vehiculo->ID_VEHICULO}} {{$selected}}>
                             {{$vehiculo->PATENTE}} - {{$vehiculo->modelo->marca->RAZON_SOCIAL}} - {{$vehiculo->modelo->NOMBRE_FANTASIA}}
                         </option>
                     @endforeach
                 </select>
                 @error('select-vehiculo')
-                <small>*{{$message}}</small>
+                    <small>*{{$message}}</small>
                 @enderror
             </div>
             
@@ -43,8 +46,12 @@
 
             <div class="form-group d-none" id="problemaDelAuto">
                 <label for="problem">Cual es el problema en su auto?</label>
-                <textarea name="problem" class="form-control" id="problem" rows="1"> </textarea>
+                <textarea name="problem" class="form-control" id="problem" rows="1"></textarea>
             </div>
+
+            @error('problem')
+                    <small>*{{$message}}</small>
+                @enderror
 
             <label for="time-preference">Seleccione una preferencia horaria *</label>
             <div class="container" id="time-preference">
@@ -166,14 +173,16 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <button type="button" class="btn btn-secondary btn-lg">Cualquier dia</button>
+                            <button type="button" class="btn btn-secondary btn-lg">Cualquier dia y horario</button>
                         </div>
                     </div>
                 </div>
             </div>
-            @error('days-of-preference')
+
+            @error('days_of_preference')
                 <small>*{{$message}}</small>
-                @enderror
+            @enderror
+
             <div class="form-group">
                 <label for="additional-comments">Comentarios/Aclaraciones adicionales</label>
                 <textarea name="additional-comments" class="form-control" id="additional-comments" rows="3"></textarea>
