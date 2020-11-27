@@ -27,7 +27,7 @@
                         <a href="{{route('cars.show', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Visualizar</button> </a>
                     </td>
                     <td>
-                        <a href="#" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
+                        <a href="{{route('appointment.get', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
                     </td>
                 </tr>
             @endforeach
