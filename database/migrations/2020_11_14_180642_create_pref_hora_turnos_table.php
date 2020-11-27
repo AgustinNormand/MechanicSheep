@@ -14,11 +14,11 @@ class CreatePrefHoraTurnosTable extends Migration
     public function up()
     {
         Schema::create('pref_hora_turnos', function (Blueprint $table) {
-            $table->unsignedBigInteger('ID_PREF');
+            $table->id('ID_PREF');
             $table->unsignedBigInteger('ID_TURNO_P');
             $table->string('DIA',15);
             $table->string('HORA',15);
-            $table->primary(['ID_PREF','ID_TURNO_P']);
+            $table->index(['ID_PREF','ID_TURNO_P']);
             $table->foreign('ID_TURNO_P')->references('ID_TURNO_P')->on('turno_pendientes');
             $table->timestamps();
         });

@@ -30,7 +30,7 @@
                 <label for="service">Seleccione un servicio</label>
                 <select name="select_servicios" class="form-control" id="service" required>
                     @foreach ($servicios as $servicio)
-                        <option value="{{$servicio/*Acá iria $servicio->ID_SERVICIO*/}}">{{$servicio}}</option>
+                        <option value="{{$servicio->ID_SERVICIO}}">{{$servicio->NOMBRE}}</option>
                     @endforeach
                 </select>
             </div>

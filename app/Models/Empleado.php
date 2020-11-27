@@ -24,6 +24,6 @@ class Empleado extends Model
     }
 
     public function sectors(){
-        return $this->belongsToMany('App\Models\Sector', 'sector_empleado' , 'ID_EMPLEADO', ['ID_TALLER','ID_SECTOR']);
+        return $this->belongsToMany('App\Models\Sector', 'sector_empleado' , 'ID_EMPLEADO', 'ID_SECTOR');
     }
 }

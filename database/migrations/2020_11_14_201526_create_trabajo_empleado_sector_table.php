@@ -14,11 +14,12 @@ class CreateTrabajoEmpleadoSectorTable extends Migration
     public function up()
     {
         Schema::create('trabajo_empleado_sector', function (Blueprint $table) {
+            $table->id('ID_TRABAJO_EMPLEADO_SECTOR');
             $table->unsignedBigInteger('ID_TRABAJO');
             $table->unsignedBigInteger('ID_EMPLEADO');
             $table->unsignedBigInteger('ID_SECTOR');
             $table->string('OBSERVACIONES',200)->nullable();
-            $table->primary(['ID_TRABAJO','ID_EMPLEADO','ID_SECTOR']);
+            $table->index(['ID_TRABAJO','ID_EMPLEADO','ID_SECTOR']);
             $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajo_empleado');
             $table->timestamps();
         });
