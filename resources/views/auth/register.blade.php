@@ -12,6 +12,24 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="tipo_dni" class="col-md-4 col-form-label text-md-right">{{ __('Tipo DNI') }}</label>
+                            
+                            <div class="col-md-6">
+                                <!--<input id="tipo_dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>-->
+                                <select name="tipo_dni" id="tipo_dni" class="form-control  @error('dni') is-invalid @enderror" required autofocus>
+                                    @foreach($tiposDeDoc as $tipoDeDoc)
+                                        <option value="{{$tipoDeDoc->ID_TIPO_DOC}}">{{$tipoDeDoc->NOMBRE}}</option>
+                                    @endforeach                            
+                                </select>
+                                @error('tipo_dni')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
 
                             <div class="col-md-6">

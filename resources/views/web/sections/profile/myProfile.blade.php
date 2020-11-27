@@ -21,11 +21,11 @@
                         <fieldset disabled>
                             <div class="form-group">
                                 <label for="fname">Nombre</label>
-                                <input type="text" id="fname" name="fname" class="form-control" placeholder="Nombre" value="{{$persona->NOMBRE}}">
+                                <input type="text" id="fname" name="fname" class="form-control" placeholder="Nombre" value="{{$persona->NOMBRE}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="lname">Apellido</label>
-                                <input type="text" id="lname" name="lname" class="form-control" placeholder="Apellido" value="{{$persona->APELLIDO}}">
+                                <input type="text" id="lname" name="lname" class="form-control" placeholder="Apellido" value="{{$persona->APELLIDO}}" required>
                             </div>
                             <!--<div class="form-group">
                                 <label for="tdoc">Tipo Documento</label>
@@ -33,7 +33,7 @@
                             </div>-->
                             <div class="form-group">
                                 <label for="tdoc">Tipo Documento</label>
-                                <select name="tdoc" class="form-control">
+                                <select name="tdoc" class="form-control" required>
                                     @foreach($tiposDeDoc as $tipoDeDoc)
                                     @if($tipoDeDoc->NOMBRE == $persona->tipo_doc->NOMBRE)
                                         <option value="{{$tipoDeDoc->ID_TIPO_DOC}}" selected>{{$tipoDeDoc->NOMBRE}}</option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="ndoc">Nro Documento</label>
-                                <input type="number" id="ndoc" name="ndoc" class="form-control" placeholder="Nro Documento" value="{{$persona->NRO_DOC}}">
+                                <input type="number" id="ndoc" name="ndoc" class="form-control" placeholder="Nro Documento" value="{{$persona->NRO_DOC}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="born">Fecha Nacimiento</label>

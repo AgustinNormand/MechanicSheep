@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Persona;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,6 +43,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $tiposDeDoc = DB::table('tipo_docs')->get();
+        return view('auth.register',compact('tiposDeDoc'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,7 +58,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'dni' => ['required', 'integer'],
+            'tipo_dni' => ['required', 'integer','min:1','max:5'],
+            'dni' => ['required', 'integer',],
             'nombre' => ['required', 'string', 'max:200'],
             'apellido' => ['required', 'string', 'max:200'],
             'email' => ['required', 'string', 'email', 'max:200', 'unique:users'],
@@ -92,6 +100,7 @@ class RegisterController extends Controller
                 "NOMBRE" => $data['nombre'],
                 "APELLIDO" => $data['apellido'],
                 "NRO_DOC" => $data["dni"],
+                "ID_TIPO_DOC" => $data["tipo_dni"],
                 //"CREATED_FROM_WEB => true,
             ])->ID_PERSONA;
 
@@ -101,6 +110,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'estado' => true,
+            'ID_TIPO_DOC' => $data["tipo_dni"],
             'ID_PERSONA' => $idPersona,
         ]);
     }
