@@ -68,4 +68,5 @@ Route::get('appointments/show', [App\Http\Controllers\AppointmentController::cla
 Route::post('appointments', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointment.store')->middleware('auth');
 
 /*Calendar route*/
-Route::get('calendar', [App\Http\Controllers\CalendarController::class, 'view'])->name('calendar');
+//Route::get('calendar', [App\Http\Controllers\CalendarController::class, 'view'])->name('calendar');
+Route::resource('calendar', App\Http\Controllers\CalendarController::class);
