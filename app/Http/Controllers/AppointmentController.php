@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pref_hora_turno;
 use App\Models\Sector;
 use App\Models\Taller;
 use App\Models\Turno_pendiente;
@@ -23,7 +24,7 @@ class AppointmentController extends Controller
 
     function show() {
         $turnos = Auth::user()->turno_pendiente;
-        return view('web.sections.appointment.list-ap',compact('turnos'));
+        return view('web.sections.appointment.appointments-index',compact('turnos'));
     }
 
     function store(Request $request){
@@ -35,14 +36,27 @@ class AppointmentController extends Controller
         ]);
 
         $vehiculo = Vehiculo::find($request->select_vehiculo);
-/*
-        Turno_pendiente::create([
+
+        $turnoPendiente = Turno_pendiente::create([
             "FECHA_SOLICITUD" => date("Y-m-d G:i:s"), //Ese es el formato MySql
             "ESTADO" => 1,
             "ID_USUARIO" => Auth::user()->ID_USUARIO,
             "ID_VEHICULO" => $vehiculo->ID_VEHICULO,
         ]);
-*/
-        return "Creado";
+
+        $idServicio = $request->select_servicios;
+
+        $turnoPendiente->servicios()->attach($idServicio);
+
+        //$turnoPendiente->pref_hora_turno()->associate($turnoPendiente);
+        foreach($request->days_of_preference as $day_of_preference){
+            list($dia, $hora) = explode("-", $day_of_preference);
+            Pref_hora_turno::create([
+                "ID_TURNO_P" => $turnoPendiente->ID_TURNO_P,
+                "DIA" => $dia,
+                "HORA" => $hora,
+            ]);
+        }
+        return redirect()->route('appointment.show');
     }
 }

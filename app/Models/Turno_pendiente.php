@@ -30,6 +30,6 @@ class Turno_pendiente extends Model
     }
 
     public function servicios(){
-        return $this->belongsToMany('App\Models\Servicio', 'servicio_turno', 'ID_TURNO_P', 'ID_SERVICIO');
+        return $this->belongsToMany('App\Models\Servicio', 'servicio_turno', 'ID_TURNO_P', 'ID_SERVICIO')->withTimestamps();
     }
 }

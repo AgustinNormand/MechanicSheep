@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="monday-8">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Lunes-8hs">
                             <label class="form-check-label" for="monday-8">
                                 8 AM
                             </label>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="monday-2">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Lunes-14hs">
                             <label class="form-check-label" for="monday-2">
                                 2 PM
                             </label>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="tuesday-8">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Martes-8hs">
                             <label class="form-check-label" for="tuesday-8">
                                 8 AM
                             </label>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="tuesday-2">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Martes-14hs">
                             <label class="form-check-label" for="tuesday-2">
                                 2 PM
                             </label>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="wednesday-8">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miércoles-8hs">
                             <label class="form-check-label" for="wednesday-8">
                                 8 AM
                             </label>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="wednesday-2">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miércoles-14hs">
                             <label class="form-check-label" for="wednesday-2">
                                 2 PM
                             </label>
@@ -132,7 +132,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="thursday-8">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Jueves-8hs">
                             <label class="form-check-label" for="thursday-8">
                                 8 AM
                             </label>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="thursday-2">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Jueves-14hs">
                             <label class="form-check-label" for="thursday-2">
                                 2 PM
                             </label>
@@ -155,7 +155,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="friday-8">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Viernes-8hs">
                             <label class="form-check-label" for="friday-8">
                                 8 AM
                             </label>
@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="friday-2">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Viernes-14hs">
                             <label class="form-check-label" for="friday-2">
                                 2 PM
                             </label>
