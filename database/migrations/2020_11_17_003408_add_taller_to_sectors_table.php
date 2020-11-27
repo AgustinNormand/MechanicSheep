@@ -14,7 +14,7 @@ class AddTallerToSectorsTable extends Migration
     public function up()
     {
         Schema::table('sectors', function (Blueprint $table) {
-            $table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');
+            /*$table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');*/
         });
     }
 

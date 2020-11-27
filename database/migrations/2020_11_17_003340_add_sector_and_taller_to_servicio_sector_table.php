@@ -15,7 +15,7 @@ class AddSectorAndTallerToServicioSectorTable extends Migration
     {
         Schema::table('servicio_sector', function (Blueprint $table) {
             $table->foreign('ID_SECTOR')->references('ID_SECTOR')->on('sectors');
-            $table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');
+            /*$table->foreign('ID_TALLER')->references('ID_TALLER')->on('tallers');*/
         });
     }
 

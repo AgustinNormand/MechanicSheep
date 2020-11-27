@@ -19,7 +19,7 @@ class CreateSectorsTable extends Migration
             $table->string('NOMBRE',200);
             $table->string('DESCRIPCION',50)->nullable();
             $table->boolean('ESTADO');
-            $table->index(['ID_TALLER','ID_SECTOR']);
+            $table->index(['ID_SECTOR', 'ID_TALLER']);
             $table->timestamps();
         });
     }
