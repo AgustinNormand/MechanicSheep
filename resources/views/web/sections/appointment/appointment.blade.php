@@ -18,7 +18,10 @@
                 <label for="myCar">Seleccione un vehículo</label>
                 <select name="select_vehiculo" class="form-control" id="myCar" required>
                     @foreach ($vehiculos as $vehiculo)
-                        <option value={{$vehiculo->ID_VEHICULO}}>{{$vehiculo->PATENTE}} - {{$vehiculo->modelo->marca->RAZON_SOCIAL}} - {{$vehiculo->modelo->NOMBRE_FANTASIA}}</option>
+                        {{$selected = old('select_vehiculo') == $vehiculo->ID_VEHICULO ? 'selected' : ''}}
+                        <option value={{$vehiculo->ID_VEHICULO}} {{$selected}}>
+                            {{$vehiculo->PATENTE}} - {{$vehiculo->modelo->marca->RAZON_SOCIAL}} - {{$vehiculo->modelo->NOMBRE_FANTASIA}}
+                        </option>
                     @endforeach
                 </select>
                 @error('select-vehiculo')
@@ -30,7 +33,10 @@
                 <label for="service">Seleccione un servicio</label>
                 <select name="select_servicios" class="form-control" id="service" required>
                     @foreach ($servicios as $servicio)
-                        <option value="{{$servicio->ID_SERVICIO}}">{{$servicio->NOMBRE}}</option>
+                        {{$selected = old('select_servicios') == $servicio->ID_SERVICIO ? 'selected' : ''}}
+                        <option value="{{$servicio->ID_SERVICIO}}" {{$selected}}>
+                            {{$servicio->NOMBRE}}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -160,10 +166,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="checkbox-any" class="form-check-input" type="checkbox" id="any">
-                            <label class="form-check-label" for="any">
-                                Cualquier día y horario
-                            </label>
+                            <button type="button" class="btn btn-secondary btn-lg">Cualquier dia</button>
                         </div>
                     </div>
                 </div>
