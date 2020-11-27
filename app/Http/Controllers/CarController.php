@@ -88,5 +88,7 @@ class CarController extends Controller
     public function destroy(Vehiculo $vehiculo){
         $vehiculo->ID_PERSONA = null;
         $vehiculo->save();
+
+        return redirect()->route('cars.index');
     }
 }
