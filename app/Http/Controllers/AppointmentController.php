@@ -12,19 +12,19 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
-    function get($vehiculoSeleccionado = null) {
+    function index() {
+        $turnos = Auth::user()->turno_pendiente;
+        return view('web.sections.appointments.appointments-index',compact('turnos'));
+    }
+
+    function request($vehiculoSeleccionado = null) {
         $sector = Sector::where("NOMBRE", "SectorPrincipal")->first();
 
         $servicios = $sector->servicios;
 
         $vehiculos = Auth::user()->persona->vehiculo;
 
-        return view('web.sections.appointment.appointment', compact('vehiculos', 'servicios', 'vehiculoSeleccionado'));
-    }
-
-    function show() {
-        $turnos = Auth::user()->turno_pendiente;
-        return view('web.sections.appointment.appointments-index',compact('turnos'));
+        return view('web.sections.appointments.appointments-request', compact('vehiculos', 'servicios', 'vehiculoSeleccionado'));
     }
 
     function store(Request $request){
@@ -57,6 +57,6 @@ class AppointmentController extends Controller
                 "HORA" => $hora,
             ]);
         }
-        return redirect()->route('appointment.show');
+        return redirect()->route('appointments.index');
     }
 }

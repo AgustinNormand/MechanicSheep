@@ -32,7 +32,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="{{route('appointment.get', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
+                        <a href="{{route('appointments.request', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
                     </td>
                 </tr>
             @endforeach

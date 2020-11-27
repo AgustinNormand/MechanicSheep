@@ -10,7 +10,7 @@
 
     <div class="container" id="app-form">
         <h1>Solicitud de turno</h1>
-        <form action="{{route('appointment.store')}}" method="post">
+        <form action="{{route('appointments.store')}}" method="post">
 
             @csrf
 

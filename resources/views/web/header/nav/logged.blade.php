@@ -3,7 +3,7 @@
     <div class="dropdown-menu">
         <a class="dropdown-item" href="{{route('profile')}}">Datos personales</a>
         <a class="dropdown-item" href="{{route('cars.index')}}">Mis Vehiculos </a>
-        <a class="dropdown-item" href="{{route('appointment.show')}}">Mis Turnos</a>
+        <a class="dropdown-item" href="{{route('appointments.index')}}">Mis Turnos</a>
         <a class="dropdown-item" href="#">Trabajos realizados</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{{ route('logout') }}"
