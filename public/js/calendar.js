@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
 
         dateClick:function (info){
+            $('#txtDate').val(info.dateStr);
+
             $('#exampleModal').modal();
             calendar.addEvent({
                 title:"Evento x",
@@ -61,4 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     calendar.setOption('locale', 'Es');
     calendar.render();
+
+    function getDataGUI(method) {
+
+    }
 });

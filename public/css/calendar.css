@@ -2,3 +2,27 @@
     max-width: 80%;
     padding: 2em;
 }
+
+#btnAdd {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#btnUpt {
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+#btnDel {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+#btnCancel {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
