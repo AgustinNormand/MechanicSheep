@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pref_hora_turno;
 use App\Models\Sector;
 use App\Models\Taller;
+use App\Models\Turno_confirmado;
 use App\Models\Turno_pendiente;
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class AppointmentController extends Controller
     }
 
     function store(Request $request){
-        //return $request;
+        //return redirect()->route('appointments.request')->withErrors(['Hola', 'Mundo']);
+
         $request->validate([
             'select_vehiculo' => 'required',
             'select_servicios' => 'required',
@@ -36,27 +38,67 @@ class AppointmentController extends Controller
         ]);
 
         $vehiculo = Vehiculo::find($request->select_vehiculo);
+        $idServicio = $request->select_servicios;
+        $daysOfPreference = $request->days_of_preference;
+        $comentarios = $request->additional_comments;
 
+        $error = $this->verifyIfAlreadyHasAppointment($vehiculo, Auth::user()->ID_USUARIO);
+        if(!is_null($error))
+            return redirect()->route('appointments.request')->withErrors(array("verifications" => $error));
+
+        $turnoPendiente = $this->storeTurnoPendiente($vehiculo->ID_VEHICULO, $comentarios);
+
+        $turnoPendiente->servicios()->attach($idServicio);
+
+        $this->storeDaysOfPreference($daysOfPreference, $turnoPendiente->ID_TURNO_P);
+        
+        return redirect()->route('appointments.index');
+    }
+
+    private function verifyIfAlreadyHasAppointment($vehiculo, $idUsuario)
+    {
+        $errorReturn = null;
+
+        $turnoPendiente = Turno_pendiente::where([
+            ["ID_USUARIO", $idUsuario],
+            ["ID_VEHICULO", $vehiculo->ID_VEHICULO],
+            ["ESTADO", 1]
+        ])->get();
+
+        if(count($turnoPendiente) > 0)
+        {
+            $turnoConfirmado = Turno_confirmado::where([
+                ["ID_TURNO_P", $turnoPendiente[0]->ID_TURNO_P],
+                ["ESTADO", 1]
+            ])->get();
+            if(count($turnoConfirmado) > 0)
+                $errorReturn = 'Usted ya tiene un turno confirmado para su vehiculo con patente ' . $vehiculo->PATENTE;
+            else
+                $errorReturn = 'Usted ya tiene un turno pendiente de confirmación para su vehiculo con patente ' . $vehiculo->PATENTE;
+        }
+        
+        return $errorReturn;
+    }
+
+    private function storeTurnoPendiente($idVehiculo)
+    {
         $turnoPendiente = Turno_pendiente::create([
             "FECHA_SOLICITUD" => date("Y-m-d G:i:s"), //Ese es el formato MySql
             "ESTADO" => 1,
             "ID_USUARIO" => Auth::user()->ID_USUARIO,
-            "ID_VEHICULO" => $vehiculo->ID_VEHICULO,
+            "ID_VEHICULO" => $idVehiculo,
         ]);
+        return $turnoPendiente;
+    }
 
-        $idServicio = $request->select_servicios;
-
-        $turnoPendiente->servicios()->attach($idServicio);
-
-        //$turnoPendiente->pref_hora_turno()->associate($turnoPendiente);
-        foreach($request->days_of_preference as $day_of_preference){
-            list($dia, $hora) = explode("-", $day_of_preference);
+    private function storeDaysOfPreference($daysOfPreference, $idTurnoPendiente){
+        foreach($daysOfPreference as $dayOfPreference){
+            list($dia, $hora) = explode("-", $dayOfPreference);
             Pref_hora_turno::create([
-                "ID_TURNO_P" => $turnoPendiente->ID_TURNO_P,
+                "ID_TURNO_P" => $idTurnoPendiente,
                 "DIA" => $dia,
                 "HORA" => $hora,
             ]);
         }
-        return redirect()->route('appointments.index');
     }
 }
