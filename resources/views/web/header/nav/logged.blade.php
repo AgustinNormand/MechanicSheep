@@ -16,10 +16,10 @@
     </div>
 </li>
 
-{{--@if (Auth::check() and Auth::user()->isAdmin)--}}
-{{--    @include('web.header.nav.administrator')--}}
-{{--@endif--}}
+@if (Auth::user()->hasRole("ADMINISTRADOR"))
+    @include('web.header.nav.administrator')
+@endif
 
-{{--@if (Auth::check() and Auth::user()->isModerator or Auth::user()->isAdmin)--}}
-{{--    @include('web.header.nav.moderator')--}}
-{{--@endif--}}
+@if (Auth::user()->hasAnyRole(["ADMINISTRADOR", "MODERADOR"]))
+    @include('web.header.nav.moderator')
+@endif
