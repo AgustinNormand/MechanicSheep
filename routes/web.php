@@ -71,9 +71,19 @@ Route::get('appointments/request/{selectedVehiculo?}', [App\Http\Controllers\App
 
 Route::delete('appointments/cancel/{appointment}', [App\Http\Controllers\AppointmentController::class, 'cancel'])->name('appointments.cancel')->middleware('auth');
 
+/* Administrator Routes */
+Route::group(['middleware' => 'role:ADMINISTRADOR'], function(){
+    Route::get('administrator', [App\Http\Controllers\AdministratorController::class, 'index'])->name('administrator.index');
+});
 
+/* Moderator Routes */
+
+Route::group(['middleware' => ['role:MODERADOR,ADMINISTRADOR']], function(){
+    Route::get('moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
+});
 
 /*Calendar route*/
+
 //Route::get('calendar', [App\Http\Controllers\CalendarController::class, 'view'])->name('calendar');
 Route::resource('calendar', App\Http\Controllers\CalendarController::class);
 
