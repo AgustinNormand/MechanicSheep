@@ -69,6 +69,8 @@ Route::post('appointments/request', [App\Http\Controllers\AppointmentController:
 
 Route::get('appointments/request/{selectedVehiculo?}', [App\Http\Controllers\AppointmentController::class, 'request'])->name('appointments.request')->middleware('auth');
 
+Route::delete('appointments/cancel/{appointment}', [App\Http\Controllers\AppointmentController::class, 'cancel'])->name('appointments.cancel')->middleware('auth');
+
 
 
 /*Calendar route*/

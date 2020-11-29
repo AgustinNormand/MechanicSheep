@@ -30,7 +30,11 @@
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                                 <td>
                                     <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
-                                    <a href="#" role="button"><button type="button" class="btn btn-secondary btn-sm">Cancelar</button> </a>
+                                    <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
+                                    </form>
                                 </td>
                             </tr>
                         @else
@@ -119,13 +123,26 @@
                     @else
                         <tr>
                             <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
-                            <td>Pendiente</td>
+                            <td>
+                                @if ($turno->ESTADO==1)
+                                    <p>Pendiente</p> 
+                                @else
+                                    <p>Cancelado</p>
+                                @endif
+                            </td>
                             <td>{{ $turno->vehiculo->PATENTE }}</td>
                             <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                             <td>
-                            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P) }}">Visualizar</button>
-                                <a href="#" role="button"><button type="button" class="btn btn-secondary btn-sm">Cancelar</button> </a>
+                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P) }}">Visualizar</button>
+                                @if ($turno->ESTADO==1)
+                                    <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
+                                    </form>
+                                @endif
                             </td>
+
                         </tr>
 
                         <div class="modal fade" id="exampleModal_{{ ($turno->ID_TURNO_P) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -189,7 +206,7 @@
                                     </div>
                                     
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        
                                     </div>
                                 </div>
                             </div>

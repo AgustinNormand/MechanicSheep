@@ -101,4 +101,28 @@ class AppointmentController extends Controller
             ]);
         }
     }
+
+    function cancel($turnoPendiente)
+    {
+        $turnoPendiente = Turno_pendiente::find($turnoPendiente);
+        
+        $this->authorize('cancel', [$turnoPendiente]);
+
+        if(!is_null($turnoPendiente)){
+            $turnoPendiente->ESTADO = 0;
+            $turnoPendiente->save();
+
+            $turnoConfirmado = Turno_confirmado::where([
+                ["ID_TURNO_P", $turnoPendiente->ID_TURNO_P],
+                ["ESTADO", 1]
+            ])->first();
+
+            if(!is_null($turnoConfirmado)){
+                $turnoConfirmado->ESTADO = 0;
+                $turnoConfirmado->save();
+            }
+        }
+        
+        return redirect()->route('appointments.index');
+    }
 }
