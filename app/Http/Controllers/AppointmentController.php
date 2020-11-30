@@ -52,7 +52,7 @@ class AppointmentController extends Controller
 
         $this->storeDaysOfPreference($daysOfPreference, $turnoPendiente->ID_TURNO_P);
         
-        return redirect()->route('appointments.index');
+        return redirect()->route('appointments.index')->with("success", "Turno registrado con éxito.");
     }
 
     private function verifyIfAlreadyHasAppointment($vehiculo, $idUsuario)
