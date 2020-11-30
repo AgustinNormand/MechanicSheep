@@ -7,10 +7,6 @@
 @endsection
 
 @section('content')
-    @if ($errors->has('verifications'))
-        <h4 class="alert alert-danger">{{$errors->first('verifications')}}</h4>
-    @endif
-
     <div class="container" id="app-form">
         <h1>Solicitud de turno</h1>
         <form action="{{route('appointments.store')}}" method="post">

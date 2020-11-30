@@ -8,6 +8,7 @@
 
 @section('content')
     <p>Moderator page</p>
+    <a href="{{route('moderator.appointments.index')}}">Moderar turnos</a>
 @endsection
 
 @section('scripts')

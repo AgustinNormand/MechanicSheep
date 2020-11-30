@@ -26,6 +26,7 @@
 <body>
     @include('web.header.header')
     <main role="main">
+        @include('web.parts.ErrorAndSuccess')
         @yield('content')
     </main>
     @include('web.footer.footer')
