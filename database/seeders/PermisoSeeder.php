@@ -19,5 +19,11 @@ class PermisoSeeder extends Seeder
         $Permiso->DESCRIPCION = "Permisos totales";
         $Permiso->ESTADO = TRUE;
         $Permiso->save();
+
+        $Permiso = new Permiso();
+        $Permiso->NOMBRE = "Moderador";
+        $Permiso->DESCRIPCION = "Permisos de moderador";
+        $Permiso->ESTADO = TRUE;
+        $Permiso->save();
     }
 }

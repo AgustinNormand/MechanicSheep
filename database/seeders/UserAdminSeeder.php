@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Persona;
+use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,7 @@ class UserAdminSeeder extends Seeder
         $user->Nombre = "Admin";
         $user->Apellido = "Admin";
         $user->password = Hash::make("administrador");
+        $user->descripcion = "Password: administrador";
         $user->email = "admin@admin.com";
         $user->estado = TRUE;
         $user->ID_PERSONA = Persona::where([
@@ -28,7 +30,23 @@ class UserAdminSeeder extends Seeder
         ])->first()->ID_PERSONA;
         $user->save();
 
-        $ID_USER = User::where('Nombre', 'LIKE', 'Admin')->first()->ID_USUARIO;
-        $user->rols()->attach($ID_USER);
+        $ID_ROL = Rol::where('Nombre', 'ADMINISTRADOR')->first()->ID_ROL;
+        $user->rols()->attach($ID_ROL);
+
+        $user = new User();
+        $user->Nombre = "Mod";
+        $user->Apellido = "Mod";
+        $user->password = Hash::make("moderador");
+        $user->descripcion = "Password: moderador";
+        $user->email = "mod@mod.com";
+        $user->estado = TRUE;
+        $user->ID_PERSONA = Persona::where([
+            ['NOMBRE', 'LIKE', 'Mod'],
+            ['APELLIDO', 'LIKE', 'Mod'],
+        ])->first()->ID_PERSONA;
+        $user->save();
+
+        $ID_ROL = Rol::where('Nombre', 'MODERADOR')->first()->ID_ROL;
+        $user->rols()->attach($ID_ROL);
     }
 }

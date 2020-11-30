@@ -19,5 +19,11 @@ class PersonaAdminSeeder extends Seeder
         $Persona->APELLIDO = "Admin";
         $Persona->ESTADO = TRUE;
         $Persona->save();
+
+        $Persona = new Persona();
+        $Persona->NOMBRE = "Mod";
+        $Persona->APELLIDO = "Mod";
+        $Persona->ESTADO = TRUE;
+        $Persona->save();
     }
 }
