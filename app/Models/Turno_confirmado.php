@@ -9,6 +9,8 @@ class Turno_confirmado extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $primaryKey = 'ID_TURNO_C';
 
     //Relacion uno a uno

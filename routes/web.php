@@ -78,8 +78,13 @@ Route::group(['middleware' => 'role:ADMINISTRADOR'], function(){
 
 /* Moderator Routes */
 
-Route::group(['middleware' => ['role:MODERADOR,ADMINISTRADOR']], function(){
+Route::group(['middleware' => 'auth', 'middleware' => ['role:MODERADOR,ADMINISTRADOR']], function(){
+
     Route::get('moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
+
+    Route::get('moderator/appointments', [App\Http\Controllers\ModeratorController::class, 'indexAppointments'])->name('moderator.appointments.index');
+
+    Route::post('moderator/appointments/set/{turnoPenddiente}', [App\Http\Controllers\ModeratorController::class, 'setAppointments'])->name('moderator.appointments.set');
 });
 
 /*Calendar route*/
