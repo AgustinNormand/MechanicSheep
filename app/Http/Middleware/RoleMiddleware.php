@@ -18,7 +18,7 @@ class RoleMiddleware
     {
         $roles = array_slice(func_get_args(), 2);
 
-        if(!$request->user()->hasAnyRole($roles)) {
+        if(is_null($request->user()) || !$request->user()->hasAnyRole($roles)) {
             abort(404);
        }
         return $next($request);
