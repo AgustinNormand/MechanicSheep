@@ -172,7 +172,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <button type="button" class="btn btn-secondary btn-lg">Cualquier dia y horario</button>
+                            <button type="button" class="btn btn-secondary btn-lg" id="buttonAny">Cualquier dia y horario</button>
                         </div>
                     </div>
                 </div>
@@ -204,5 +204,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/pedirTurno.js') }}"></script>
+    <script src="{{ asset('js/appointments-request.js') }}"></script>
 @endsection
