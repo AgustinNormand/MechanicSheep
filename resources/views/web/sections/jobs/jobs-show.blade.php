@@ -29,22 +29,26 @@
                             <td>{{$trabajo->KILOMETROS}}</td>
                             <td>{{$trabajo->servicio->NOMBRE}}</td>
                             <td>
-                                <a href="#" role="button"> <button type="button" class="btn btn-secondary btn-sm">Detalle</button> </a>
+                                <button type="button" class="btn btn-secondary btn-sm btnDetalles" value="{{$trabajo->NRO_TRABAJO}}">Detalle</button>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm">
-                <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-            </div>
+            @foreach ($trabajos as $trabajo)
+                <div class="col-sm d-none detalles" id="{{$trabajo->NRO_TRABAJO}}">
+                    <ul class="list-group">
+                        @foreach ($trabajo->detalle as $detalle)
+                            <li class="list-group-item">{{$detalle->DESCRIPCION}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach          
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/jobs-show.js') }}"></script>
 @endsection
