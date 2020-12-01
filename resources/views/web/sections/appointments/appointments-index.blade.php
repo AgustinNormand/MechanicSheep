@@ -8,8 +8,8 @@
 
 @section('content')
     <div class="container listAp">
-        <h1>Mis turnos</h1>
-        <table class="table table-hover">
+        <h1 class="tituloTurnos">Mis turnos</h1>
+        <table class="table table-hover tablaTurnos">
             <thead>
             <tr>
                 <th scope="col">Fecha</th>
@@ -38,7 +38,7 @@
                                 </td>
                             </tr>
                         @else
-                            <tr>
+                            <tr class="turnoCancelado d-none">
                                 <th scope="row">{{ $turno->turno_confirmado->FECHA_HORA }}</th>
                                 <td>Cancelado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
@@ -121,7 +121,11 @@
                         </div>
                         
                     @else
-                        <tr>
+                        @if($turno->ESTADO==0)
+                            <tr class="turnoCancelado d-none">
+                        @else
+                            <tr>
+                        @endif
                             <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
                             <td>
                                 @if ($turno->ESTADO==1)
@@ -225,7 +229,5 @@ Y hay que agregar una condición para indicar un aviso que diga "no hay turnos r
 @endsection
 
 @section('scripts')
-<script>
-    
-</script>   
+    <script src="{{ asset('js/appointments-index.js') }}"></script>
 @endsection
