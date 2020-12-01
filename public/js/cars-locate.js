@@ -25,11 +25,13 @@ function tagsHiddenAreVisible(areVisible){
         inputsHidden.forEach(inputHidden => {
             inputHidden.classList.remove("d-none");
         });
-        var form = document.querySelector(".formVehiculo");
-        form.action = "http://127.0.0.1:8000/cars";
+        document.querySelector(".formVehiculo").action = "http://127.0.0.1:8000/cars";
     }
     else
+    {
         inputsHidden.forEach(inputHidden => {
             inputHidden.classList.add("d-none");
         });
+        document.querySelector(".formVehiculo").action = "http://127.0.0.1:8000/cars/locate";
+    }
 }

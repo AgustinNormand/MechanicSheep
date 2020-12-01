@@ -49,10 +49,10 @@ class CarController extends Controller
             Vehiculo::setPersona($vehiculos[0], Auth::user()->persona->ID_PERSONA);
             return redirect()->route('cars.index');
         }
-        if(count($vehiculos) == 0){
-            $request->flashOnly("PATENTE");
-            return redirect()->route('cars.create')->withInput();
-        }
+        //if(count($vehiculos) == 0){
+        //    $request->flashOnly("PATENTE");
+        //    return redirect()->route('cars.create')->withInput();
+        //}
         if(count($vehiculos) > 1)
             return "Más de un vehiculo encontrado, tengo que darle a elegir";
     }
@@ -90,5 +90,13 @@ class CarController extends Controller
         $vehiculo->save();
 
         return redirect()->route('cars.index');
+    }
+
+    function getByPatente($patente){
+        $result = "";
+        $vehiculos = Vehiculo::getByPatente($patente);
+        if(count($vehiculos) > 0)
+            $result = json_encode($vehiculos[0]);
+        return $result;
     }
 }
