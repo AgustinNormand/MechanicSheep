@@ -8,6 +8,7 @@
 
 @section('content')
     <p>Administrator page</p>
+    <a href="{{route('configurations.index')}}">Administrar configuración</a>
 @endsection
 
 @section('scripts')

@@ -74,6 +74,8 @@ Route::delete('appointments/cancel/{appointment}', [App\Http\Controllers\Appoint
 /* Administrator Routes */
 Route::group(['middleware' => 'role:ADMINISTRADOR'], function(){
     Route::get('administrator', [App\Http\Controllers\AdministratorController::class, 'index'])->name('administrator.index');
+    Route::get('administrator/configurations', [App\Http\Controllers\AdministratorController::class, 'indexConfigurations'])->name('configurations.index');
+    Route::post('administrator/configurations', [App\Http\Controllers\AdministratorController::class, 'storeConfigurations'])->name('configurations.store');
 });
 
 /* Moderator Routes */
