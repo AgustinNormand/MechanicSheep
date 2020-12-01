@@ -88,6 +88,18 @@ class CarController extends Controller
     public function destroy(Vehiculo $vehiculo){
         $vehiculo->ID_PERSONA = null;
         $vehiculo->save();
+        $turnosPendientes = $vehiculo->turno_pendiente;
+        foreach($turnosPendientes as $turnoPendiente)
+        {
+            $turnoPendiente->ESTADO = 0;
+            $turnoPendiente->save();
+            $turnoConfirmado = $turnoPendiente->turno_confirmado;
+            if(!is_null($turnoConfirmado))
+            {
+                $turnoConfirmado->ESTADO = 0;
+                $turnoConfirmado->save();
+            }
+        }
 
         return redirect()->route('cars.index');
     }
