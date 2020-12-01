@@ -9,7 +9,7 @@
 @section('content')
     <div class="container cars-container" id="newCar-form">
         <h1>Agregar/localizar vehículo</h1>
-        <form action="{{route('cars.locate')}}" method="post">
+        <form class="formVehiculo" action="{{route('cars.locate')}}" method="post">
             @csrf
             <div class="form-group">
                 <label for="PATENTE">Patente</label>
@@ -20,11 +20,7 @@
             <small>*{{$message}}</small>
             <br>
             @enderror
-            <div class="form-group">
-                <a href="#" role="button"> <button type="submit" class="btn btn-secondary">Enviar</button> </a>
-            </div>
-
-            <div class="form-group">
+            <div class="form-group datosVehiculo d-none">
                 <label for="ANIO">Año</label>
                 <input name="ANIO" type="text" class="form-control" id="ANIO" value={{old('ANIO')}}>
             </div>
@@ -33,16 +29,25 @@
             <small>*{{$message}}</small>
             <br>
             @enderror
-            <div class="form-group">
-                <label for="modelo">Modelo</label>
-                <input type="text" class="form-control" id="modelo" value={{old('MODELO')}}>
+            <div class="form-group datosVehiculo d-none">
+                <label for="MARCA">Marca</label>
+                <input name ="MARCA" type="text" class="form-control" id="MARCA" value={{old('MARCA')}}>
+            </div>
+            @error('MARCA')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
+            <div class="form-group datosVehiculo d-none">
+                <label for="MODELO">Modelo</label>
+                <input name ="MODELO" type="text" class="form-control" id="MODELO" value={{old('MODELO')}}>
             </div>
             @error('MODELO')
             <br>
             <small>*{{$message}}</small>
             <br>
             @enderror
-            <div class="form-group">
+            <div class="form-group datosVehiculo d-none">
                 <label for="VIN">VIN</label>
                 <input name="VIN" type="text" class="form-control" id="VIN" value={{old('VIN')}}>
             </div>
@@ -51,7 +56,7 @@
             <small>*{{$message}}</small>
             <br>
             @enderror
-            <div class="form-group">
+            <div class="form-group datosVehiculo d-none">
                 <label for="NUMERO_MOTOR">Número de motor</label>
                 <input name="NUMERO_MOTOR" type="text" class="form-control" id="NUMERO_MOTOR" value={{old('NUMERO_MOTOR')}}>
             </div>
@@ -61,9 +66,15 @@
             <br>
             @enderror
             <div class="form-group">
-                <a href="#" role="button"> <button type="submit" class="btn btn-secondary">Enviar</button> </a>
+                <input class="btn btn-secondary" type="submit" value="Enviar">
             </div>
         </form>
     </div>
 
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/cars-locate.js') }}"></script>
+@endsection
+
+
