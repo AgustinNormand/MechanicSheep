@@ -9,5 +9,5 @@ class Evento extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'ID_EVENTO';
+    protected $primaryKey = 'id';
 }

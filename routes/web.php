@@ -93,6 +93,5 @@ Route::group(['middleware' => 'auth', 'middleware' => ['role:MODERADOR,ADMINISTR
 
 /*Calendar route*/
 
-//Route::get('calendar', [App\Http\Controllers\CalendarController::class, 'view'])->name('calendar');
-Route::resource('calendar', App\Http\Controllers\CalendarController::class);
+Route::resource('calendar', App\Http\Controllers\CalendarController::class)->middleware('auth');
 

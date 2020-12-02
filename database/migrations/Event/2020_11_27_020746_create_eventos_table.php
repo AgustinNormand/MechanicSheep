@@ -14,13 +14,13 @@ class CreateEventosTable extends Migration
     public function up()
     {
         Schema::create('eventos', function (Blueprint $table) {
-            $table->id('ID_EVENTO');
-            $table->string('TITLE', 255);
-            $table->text('DESCRIPTION');
-            $table->string('COLOR', 50);
-            $table->string('TEXT_COLOR', 50);
-            $table->dateTime('START');
-            $table->dateTime('END');
+            $table->id('id');
+            $table->string('title', 255);
+            $table->text('description');
+            $table->string('color', 50);
+            $table->string('textColor', 50);
+            $table->dateTime('start');
+            $table->dateTime('end');
 
             $table->timestamps();
         });

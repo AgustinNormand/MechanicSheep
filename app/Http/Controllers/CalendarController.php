@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evento;
 use Illuminate\Http\Request;
 
 class CalendarController extends Controller
@@ -35,8 +36,9 @@ class CalendarController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $dataEvent = request()->all();
+        //Para quitar los campos _token y _method y que no se inserten en la bd
+        $dataEvent = request()->except(['_token', '_method']);
+        Evento::insert($dataEvent);
         print_r($dataEvent);
     }
 
@@ -46,9 +48,11 @@ class CalendarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        $data['Eventos'] = Evento::all();
+        return response()->json($data['Eventos']);
     }
 
     /**
@@ -72,6 +76,9 @@ class CalendarController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $dataEvent = request()->except(['_token', '_method']);
+        $response = Evento::where('id','=',$id)->update($dataEvent);
+        return response()->json($response);
     }
 
     /**
@@ -83,5 +90,8 @@ class CalendarController extends Controller
     public function destroy($id)
     {
         //
+        $events = Evento::findOrFail($id);
+        Evento::destroy($id);
+        return response()->json($id);
     }
 }

@@ -8,57 +8,58 @@ document.addEventListener('DOMContentLoaded', function() {
         eventDisplay: 'block',
 
         headerToolbar:{
-            left: 'prev,next today customButton1',
+            left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        customButtons: {
-            customButton1: {
-                text: 'custom 1',
-                click: function () {
-                    alert('clicked custom button 1!');
-                    $('#exampleModal').modal();
-                }
-            },
-        },
 
         dateClick:function (info){
+            cleanForm();
+
             $('#txtDate').val(info.dateStr);
 
+            $('#btnAdd').prop("disabled", false);
+            $('#btnUpt').prop("disabled", true);
+            $('#btnDel').prop("disabled", true);
+
             $('#exampleModal').modal();
-            calendar.addEvent({
-                title:"Evento x",
-                date:info.dateStr,
-            });
         },
 
         eventClick:function (info){
-            console.log(info);
-            console.log(info.event.title);
-            console.log(info.event.start);
 
-            console.log(info.event.end);
-            console.log(info.event.textColor);
-            console.log(info.event.backgroundColor);
+            $('#btnAdd').prop("disabled", true);
+            $('#btnUpt').prop("disabled", false);
+            $('#btnDel').prop("disabled", false);
 
-            console.log(info.event.extendedProps.description);
+            $('#txtID').val(info.event.id);
+            $('#txtTitle').val(info.event.title);
+
+            month = (info.event.start.getMonth()+1);
+            day = (info.event.start.getDate());
+            year = (info.event.start.getFullYear());
+
+            month = (month < 10) ? "0"+month:month;
+            day  = (day < 10) ? "0"+day:day;
+
+            minutes = info.event.start.getMinutes();
+            hour = info.event.start.getHours();
+
+            minutes = (minutes < 10) ? "0"+minutes:minutes;
+            hour  = (hour < 10) ? "0"+hour:hour;
+
+            schedule = (hour + ":"+ minutes);
+
+            $('#txtDate').val(year + "-" + month + "-" + day);
+            $('#txtHour').val(schedule);
+            $('#txtColor').val(info.event.backgroundColor);
+
+            $('#txtDesc').val(info.event.extendedProps.description);
+
+            $('#exampleModal').modal();
         },
 
-        events:[
-            {
-                title:"Mi evento 1",
-                start:"2020-11-13 12:30:00",
-                textColor:"#000000",
-                description:"Descripción del evento 1",
-            }, {
-                title:"Mi evento 2",
-                start:"2020-11-14 12:30:00",
-                end:"2020-11-20 12:30:00",
-                color:"#FFCCAA",
-                textColor:"#000000",
-                description:"Descripción del evento 2",
-            }
-        ]
+        events:'/calendar/show'
+
 
     });
     calendar.setOption('locale', 'Es');
@@ -69,29 +70,39 @@ document.addEventListener('DOMContentLoaded', function() {
         sendInfo('', objEvent);
     });
 
+    $('#btnDel').click(function () {
+        objEvent = getDataGUI("DELETE");
+        sendInfo('/'+$('#txtID').val(), objEvent);
+    });
+
+    $('#btnUpt').click(function () {
+        objEvent = getDataGUI("PATCH");
+        sendInfo('/'+$('#txtID').val(), objEvent);
+    });
+
     function getDataGUI(method) {
         newEvent = {
-            ID_EVENTO: $('#txtID').val(),
-            TITLE: $('#txtTitle').val(),
-            DESCRIPTION: $('#txtDesc').val(),
-            COLOR: $('#txtColor').val(),
-            TEXT_COLOR: $('#FFFFFF'),
-            START: $('#txtDate').val() + " " + $('#txtHour').val(),
-            END: $('#txtDate').val() + " " + $('#txtHour').val(),
+            id: $('#txtID').val(),
+            title: $('#txtTitle').val(),
+            description: $('#txtDesc').val(),
+            color: $('#txtColor').val(),
+            textColor:'#FFFFFF',
+            start: $('#txtDate').val() + " " + $('#txtHour').val(),
+            end: $('#txtDate').val() + " " + $('#txtHour').val(),
             '_token':$("meta[name='csrf-token']").attr("content"),
             '_method':method,
         }
-
         return(newEvent);
     }
 
     function sendInfo(action, objEvent) {
         $.ajax({
             type:"POST",
-            url: "{{route('calendar')}}" + action,
+            url:"/calendar" + action,
             data: objEvent,
             success:function (msg) {
-                console.log(msg);
+                $('#exampleModal').modal('toggle');
+                calendar.refetchEvents();
             },
             error:function(error) {
                 alert("There is an error");
@@ -99,5 +110,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         }
         );
+    }
+
+    function cleanForm() {
+        $('#txtID').val("");
+        $('#txtTitle').val("");
+        $('#txtDate').val("");
+        $('#txtHour').val("07:00");
+        $('#txtColor').val("");
+        $('#txtDesc').val("");
     }
 });
