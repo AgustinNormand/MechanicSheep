@@ -12,7 +12,8 @@
         <table class="table table-hover tablaTurnos">
             <thead>
             <tr>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha Solicitud</th>
+                <th scope="col">Fecha Confirmada</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Vehículo</th>
                 <th scope="col">Servicio</th>
@@ -24,22 +25,26 @@
                     @if ($turno->turno_confirmado)
                         @if ($turno->turno_confirmado->ESTADO==1)
                             <tr>
-                                <th scope="row">{{ $turno->turno_confirmado->FECHA_HORA }}</th>
+                                <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
+                                <td>{{ $turno->turno_confirmado->FECHA_HORA }}</td>
                                 <td>Confirmado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
-                                    <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
-                                    </form>
+                                    <div class="row">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
+                                        <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
+                                        </form>
+                                    </div>              
                                 </td>
                             </tr>
                         @else
                             <tr class="turnoCancelado d-none">
-                                <th scope="row">{{ $turno->turno_confirmado->FECHA_HORA }}</th>
+                                <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
+                                <td> - </td>
                                 <td>Cancelado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
@@ -53,7 +58,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detalle de turno</h5>
+                                        <h4 class="modal-title text-center" id="exampleModalLabel">Detalle de turno</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -61,13 +66,13 @@
 
                                     <div class="modal-body">
                                         <form>
+                                            <h5 class="text-center">Fecha Confirmada</h5>
                                             <div class="form-group">
-                                                <label for="fecha" class="col-form-label">Fecha:</label>
                                                 <input type="text" class="form-control" id="fecha" value="{{ $turno->turno_confirmado->FECHA_HORA }}" readonly>
                                             </div>
                                         
+                                            <h5 class="text-center">Estado</h5>
                                             <div class="form-group">
-                                                <label for="estado" class="col-form-label">Estado:</label>
                                                 @if ($turno->turno_confirmado->ESTADO == 1)
                                                     <input type="text" class="form-control" id="estado" value="Confirmado" readonly>
                                                 @else    
@@ -75,45 +80,27 @@
                                                 @endif
                                             </div>
                 
-                                            <div class="form-group">
-                                                <label for="modelo" class="col-form-label">Modelo:</label>
-                                                <input type="text" class="form-control" id="modelo" value="{{ $turno->vehiculo->modelo->NOMBRE_FANTASIA }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="marca" class="col-form-label">Marca:</label>
-                                                <input type="text" class="form-control" id="marca" value="{{ $turno->vehiculo->modelo->marca->RAZON_SOCIAL }}" readonly>
-                                            </div>
+                                            <h5 class="text-center">Servicio</h5>
+                                            @foreach ($turno->servicios as $servicio)
+                                                <div class="form-group">
+                                                    <label for="servicio" class="col-form-label text-center"> Servicio N°: {{ $loop->iteration }}</label>
+                                                    <input type="text" class="form-control" id="servicio" value="{{ $servicio->NOMBRE }}" readonly>
+                                                </div>
+                                            @endforeach
+                                            
+                                            <h5 class="text-center">Vehiculo</h5>
                 
                                             <div class="form-group">
                                                 <label for="patente" class="col-form-label">Patente:</label>
                                                 <input type="text" class="form-control" id="patente" value="{{ $turno->vehiculo->PATENTE }}" readonly>
                                             </div>
-                
-                                            <div class="form-group">
-                                                <label for="vin" class="col-form-label">VIN:</label>
-                                                <input type="text" class="form-control" id="vin" value="{{ $turno->vehiculo->VIN }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="anio" class="col-form-label">Año:</label>
-                                                <input type="text" class="form-control" id="anio" value="{{ $turno->vehiculo->ANIO }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="numMotor" class="col-form-label">Numero de Motor:</label>
-                                                <input type="text" class="form-control" id="numMotor" value="{{ $turno->vehiculo->NUMERO_MOTOR }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="comentarios" class="col-form-label">Comentarios:</label>
-                                                <textarea class="form-control" id="comentarios" readonly>{{ $turno->COMENTARIOS }}</textarea>
-                                            </div>
+                                            
                 
                                         </form>
                                     </div>               
             
-                                    <div class="modal-footer">
+                                    <div class="modal-footer justify-content-between">
+                                        <a href="{{route('cars.show', $turno->vehiculo->ID_VEHICULO)}}" role="button"> <button type="button" class="btn btn-secondary">Ver Vehiculo</button> </a>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
@@ -127,6 +114,7 @@
                             <tr>
                         @endif
                             <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
+                            <td> - </td>
                             <td>
                                 @if ($turno->ESTADO==1)
                                     <p>Pendiente</p> 
@@ -137,14 +125,16 @@
                             <td>{{ $turno->vehiculo->PATENTE }}</td>
                             <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P) }}">Visualizar</button>
-                                @if ($turno->ESTADO==1)
-                                    <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
-                                    </form>
-                                @endif
+                                <div class="row">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P) }}">Visualizar</button>
+                                    @if ($turno->ESTADO==1)
+                                        <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
+                                        </form>
+                                    @endif
+                                </div>
                             </td>
 
                         </tr>
@@ -153,7 +143,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Detalle de turno</h5>
+                                        <h4 class="modal-title text-center" id="exampleModalLabel">Detalle de turno</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -161,56 +151,46 @@
                                     
                                     <div class="modal-body">
                                         <form>
+
+                                        <h5 class="pt-mt-5 text-center">Horarios de Preferencia</h5>
+                                        @foreach ($turno->pref_hora_turno as $preferencia)
+                                        <div class="conteiner">
                                             <div class="form-group">
-                                                <label for="recipient-name" class="col-form-label">Fecha:</label>
-                                                <input type="text" class="form-control" id="recipient-name" value="{{ $turno->FECHA_SOLICITUD }}" readonly>
+                                                <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
+                                                <div class="row justify-content-around"">
+                                                <input type="text" class="form-control col-md-5" id="recipient-name1" value="{{ $preferencia->DIA }}" readonly>
+                                                <input type="text" class="form-control col-md-5" id="recipient-name2" value="{{ $preferencia->HORA }}" readonly>
+                                                </div>
                                             </div>
-                
+                                        </div>
+                                        @endforeach
+
+                                            <h5 class="text-center">Estado</h5>
                                             <div class="form-group">
-                                                <label for="estado" class="col-form-label">Estado:</label>
                                                 <input type="text" class="form-control" id="estado" value="Pendiente" readonly>
                                             </div>
-                
-                                            <div class="form-group">
-                                                <label for="modelo" class="col-form-label">Modelo:</label>
-                                                <input type="text" class="form-control" id="modelo" value="{{ $turno->vehiculo->modelo->NOMBRE_FANTASIA }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="marca" class="col-form-label">Marca:</label>
-                                                <input type="text" class="form-control" id="marca" value="{{ $turno->vehiculo->modelo->marca->RAZON_SOCIAL }}" readonly>
-                                            </div>
+
+                                            <h5 class="text-center">Servicio</h5>
+                                            @foreach ($turno->servicios as $servicio)
+                                                <div class="form-group">
+                                                    <label for="servicio" class="col-form-label text-center"> Servicio N°: {{ $loop->iteration }}</label>
+                                                    <input type="text" class="form-control" id="servicio" value="{{ $servicio->NOMBRE }}" readonly>
+                                                </div>
+                                            @endforeach
+                                            
+                                            <h5 class="text-center">Vehiculo</h5>
                 
                                             <div class="form-group">
                                                 <label for="patente" class="col-form-label">Patente:</label>
                                                 <input type="text" class="form-control" id="patente" value="{{ $turno->vehiculo->PATENTE }}" readonly>
                                             </div>
                 
-                                            <div class="form-group">
-                                                <label for="vin" class="col-form-label">VIN:</label>
-                                                <input type="text" class="form-control" id="vin" value="{{ $turno->vehiculo->VIN }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="anio" class="col-form-label">Año:</label>
-                                                <input type="text" class="form-control" id="anio" value="{{ $turno->vehiculo->ANIO }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="numMotor" class="col-form-label">Numero de Motor:</label>
-                                                <input type="text" class="form-control" id="numMotor" value="{{ $turno->vehiculo->NUMERO_MOTOR }}" readonly>
-                                            </div>
-                
-                                            <div class="form-group">
-                                                <label for="comentarios" class="col-form-label">Comentarios:</label>
-                                                <textarea class="form-control" id="comentarios" readonly>{{ $turno->COMENTARIOS }}</textarea>
-                                            </div>
-                
                                         </form>
                                     </div>
                                     
-                                    <div class="modal-footer">
-                                        
+                                    <div class="modal-footer justify-content-between">
+                                        <a href="{{route('cars.show', $turno->vehiculo->ID_VEHICULO)}}" role="button"> <button type="button" class="btn btn-secondary">Ver Vehiculo</button> </a>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
