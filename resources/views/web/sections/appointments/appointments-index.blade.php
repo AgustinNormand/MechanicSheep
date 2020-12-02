@@ -31,7 +31,7 @@
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                                 <td>
-                                    <div class="row">
+                                    <div class="row justify-content-between">
                                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
                                         <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
                                             @csrf
@@ -44,12 +44,14 @@
                         @else
                             <tr class="turnoCancelado d-none">
                                 <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
-                                <td> - </td>
+                                <td>{{ $turno->turno_confirmado->FECHA_HORA }}</td>
                                 <td>Cancelado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
+                                    <div class="row justify-content-between">
+                                        <button type="button" class="btn btn-secondary justify-content-start btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
+                                    </div>    
                                 </td>
                             </tr>
                         @endif
@@ -125,7 +127,7 @@
                             <td>{{ $turno->vehiculo->PATENTE }}</td>
                             <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                             <td>
-                                <div class="row">
+                                <div class="row justify-content-between">
                                     <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P) }}">Visualizar</button>
                                     @if ($turno->ESTADO==1)
                                         <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
