@@ -7,7 +7,7 @@ inputPatente.addEventListener("input", ()=>{
 
 function ajax(patente){
     const http = new XMLHttpRequest();
-    const url = 'http://127.0.0.1:8000/cars/locate/'+patente;
+    const url = '/cars/locate/'+patente;
     http.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             tagsHiddenAreVisible(!this.responseText.length > 0);
@@ -25,13 +25,13 @@ function tagsHiddenAreVisible(areVisible){
         inputsHidden.forEach(inputHidden => {
             inputHidden.classList.remove("d-none");
         });
-        document.querySelector(".formVehiculo").action = "http://127.0.0.1:8000/cars";
+        document.querySelector(".formVehiculo").action = "/cars";
     }
     else
     {
         inputsHidden.forEach(inputHidden => {
             inputHidden.classList.add("d-none");
         });
-        document.querySelector(".formVehiculo").action = "http://127.0.0.1:8000/cars/locate";
+        document.querySelector(".formVehiculo").action = "/cars/locate";
     }
 }
