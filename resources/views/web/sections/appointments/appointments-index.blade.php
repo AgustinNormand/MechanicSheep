@@ -10,7 +10,7 @@
     <div class="container listAp">
         <h1 class="tituloTurnos">Mis turnos</h1>
         <table class="table table-hover tablaTurnos">
-            <thead>
+            <thead class="text-center">
             <tr>
                 <th scope="col">Fecha Solicitud</th>
                 <th scope="col">Fecha Confirmada</th>
@@ -20,7 +20,7 @@
                 <th scope="col">Acción</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
                 @foreach ($turnos as $turno)
                     @if ($turno->turno_confirmado)
                         @if ($turno->turno_confirmado->ESTADO==1)
