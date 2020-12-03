@@ -8,8 +8,11 @@ use App\Models\Taller;
 use App\Models\Turno_confirmado;
 use App\Models\Turno_pendiente;
 use App\Models\Vehiculo;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use stdClass;
+use Symfony\Component\Console\Input\Input;
 
 class AppointmentController extends Controller
 {
@@ -124,5 +127,32 @@ class AppointmentController extends Controller
         }
         
         return redirect()->route('appointments.index');
+    }
+
+    function getConfirmedAppointments(){
+        $objectsTurnosConfirmados = [];
+        $startDate = new DateTime($_GET['start']);
+        $endDate = new DateTime($_GET['end']);
+        $turnosConfirmados = Turno_confirmado::where([
+                                                ["ESTADO", 1],
+                                                ["FECHA_HORA", '<=', $endDate->format("Y-m-d G:i:s")],
+                                                ["FECHA_HORA", '>=', $startDate->format("Y-m-d G:i:s")],
+                                                ])->get();
+        foreach($turnosConfirmados as $turnoConfirmado)
+        {
+            $object = new stdClass();
+            $object->id = $turnoConfirmado->ID_TURNO_C;
+            $object->title = $turnoConfirmado->turno_pendiente->servicios->first()->NOMBRE;
+            $formatOfDescription = "Patente del vehiculo: %s\nNombre cliente: %s %s\nComentarios: %s\n";
+            $description = sprintf($formatOfDescription, $turnoConfirmado->turno_pendiente->vehiculo->PATENTE, $turnoConfirmado->turno_pendiente->user->persona->NOMBRE, $turnoConfirmado->turno_pendiente->user->persona->APELLIDO, $turnoConfirmado->turno_pendiente->COMENTARIOS);
+            $object->description = $description;
+            $object->start = $turnoConfirmado->FECHA_HORA;
+            $object->startFilter = $startDate->format("Y-m-d G:i:s");
+            $object->endFilter = $endDate->format("Y-m-d G:i:s");
+
+            $objectsTurnosConfirmados[] = $object;
+        }
+
+        return response()->json($objectsTurnosConfirmados);
     }
 }

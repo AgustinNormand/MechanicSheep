@@ -59,7 +59,15 @@ document.addEventListener('DOMContentLoaded', function() {
             $('#exampleModal').modal();
         },
 
-        events:'/calendar/show'
+        eventSources:
+        [
+            'moderator/appointments/confirmados',
+            '/calendar/show',
+        ]
+        
+            //
+            
+        
 
 
     });
