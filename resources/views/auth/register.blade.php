@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="tipo_dni" class="col-md-4 col-form-label text-md-right">{{ __('Tipo DNI') }}</label>
+                            <label for="tipo_dni" class="col-md-4 col-form-label text-md-right">{{ __('Tipo Documento') }}</label>
                             
                             <div class="col-md-6">
                                 <!--<input id="tipo_dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>-->
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
+                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('N° Documento') }}</label>
 
                             <div class="col-md-6">
                                 <input id="dni" type="dni" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
