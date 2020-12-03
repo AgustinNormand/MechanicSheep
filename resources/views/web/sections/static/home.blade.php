@@ -60,19 +60,19 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
         <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/Mechanic.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+            <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/home/Mechanic.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
             <h2>Service oficial</h2>
             <p>Consulta los servicios ofrecidos</p>
             <p><a class="btn btn-secondary" href="{{route('services')}}" role="button"> Ver servicios &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/Calendar.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+            <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/home/Calendar.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
             <h2>¡Saca tu turno!</h2>
             <p>No esperes más. Vení con nosotros</p>
             <p><a class="btn btn-secondary" href="{{route('appointments.request')}}" role="button"> ¡Solicitar! &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-            <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/Email.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+            <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/home/Email.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
             <h2>Contactanos</h2>
             <p>Elegí el medio que prefieras y despejá tus dudas</p>
             <p><a class="btn btn-secondary" href="{{route('contact')}}" role="button"> Enviar mensaje &raquo;</a></p>
