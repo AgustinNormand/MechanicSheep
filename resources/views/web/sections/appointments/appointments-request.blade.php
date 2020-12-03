@@ -30,7 +30,7 @@
                     <small>*{{$message}}</small>
                 @enderror
             </div>
-            
+
             <div class="form-group">
                 <label for="service">Seleccione un servicio</label>
                 <select name="select_servicios" class="form-control" id="service" required>
@@ -56,8 +56,8 @@
             <div class="container" id="time-preference">
                 <div class="row">
                     <div class="col-sm">
-                        <div class="form-check"> 
-                            <p>Lunes</p>     
+                        <div class="form-check">
+                            <p>Lunes</p>
                         </div>
                     </div>
                     <div class="col-sm">
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                                <p>Martes</p>     
+                                <p>Martes</p>
                         </div>
                     </div>
                     <div class="col-sm">
@@ -102,13 +102,13 @@
                 </div>
                 <div class="row">
                     <div class="col-sm">
-                        <div class="form-check"> 
-                                <p>Miércoles</p>     
+                        <div class="form-check">
+                                <p>Miercoles</p>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miércoles-8hs">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miercoles-8hs">
                             <label class="form-check-label" for="wednesday-8">
                                 8 AM
                             </label>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miércoles-14hs">
+                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miercoles-14hs">
                             <label class="form-check-label" for="wednesday-2">
                                 2 PM
                             </label>
@@ -126,7 +126,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                                <p>Jueves</p>     
+                                <p>Jueves</p>
                         </div>
                     </div>
                     <div class="col-sm">
@@ -149,7 +149,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                                <p>Viernes</p>     
+                                <p>Viernes</p>
                         </div>
                     </div>
                     <div class="col-sm">
@@ -172,7 +172,7 @@
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-check">
-                            <button type="button" class="btn btn-secondary btn-lg" id="buttonAny">Cualquier dia y horario</button>
+                            <button type="button" class="btn btn-secondary btn-sm" id="buttonAny">Cualquier dia y horario</button>
                         </div>
                     </div>
                 </div>

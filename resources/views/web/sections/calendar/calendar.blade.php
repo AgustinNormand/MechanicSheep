@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    <div class="container" id="calendar">
+    <div class="container" id="calendar-size">
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
