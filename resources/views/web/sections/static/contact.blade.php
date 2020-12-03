@@ -7,27 +7,35 @@
 @endsection
 
 @section('content')
+
+    @if(!empty($successMsg))
+        <div class="alert alert-success alert-dismissible fade show" role="alert"> {{ $successMsg }}</div>
+    @endif
+
     <div class="container" id="contact-form">
         <h1>Contacto</h1>
-        <form>
+        <form action="{{route('contact.store')}}" method="POST">
+
+            @csrf
+
             <div class="form-group">
                 <label for="fname">Nombre</label>
-                <input type="text" class="form-control" id="fname" placeholder="Juan">
+                <input type="text" name="nombre" class="form-control" id="fname" required>
             </div>
             <div class="form-group">
                 <label for="lname">Apellido</label>
-                <input type="text" class="form-control" id="lname" placeholder="Perez">
+                <input type="text" name="apellido" class="form-control" id="lname" required>
             </div>
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" placeholder="JuanPerez@example.com">
+                <input type="email" name="email" class="form-control" id="email" required>
             </div>
             <div class="form-group">
                 <label for="textConsult">Escriba aquí su consulta</label>
-                <textarea class="form-control" id="textConsult" rows="3"></textarea>
+                <textarea class="form-control" name="mensaje" id="textConsult" rows="3" required></textarea>
             </div>
             <div class="form-group">
-                <a href="#" role="button"> <button type="button" class="btn btn-secondary btn-lg">Enviar</button> </a>
+                <button type="submit" class="btn btn-secondary btn-lg">Enviar</button>
             </div>
         </form>
     </div>

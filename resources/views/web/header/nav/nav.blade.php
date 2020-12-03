@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{route('faq')}}">Preguntas frecuentes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('contact')}}">Contacto</a>
+                <a class="nav-link" href="{{route('contact.index')}}">Contacto</a>
             </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('about')}}">Acerca de nosotros</a>

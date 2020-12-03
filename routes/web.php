@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,13 @@ Route::get('about', function () {
     return view('web.sections.static.about');
 })->name('about');
 
-Route::get('contact', function () {
-    return view('web.sections.static.contact');
-})->name('contact');
+/* Contact Inicio */
+
+Route::get('contact', [App\Http\Controllers\ContactoController::class, 'index'])->name('contact.index');
+
+Route::post('contact', [App\Http\Controllers\ContactoController::class, 'store'])->name('contact.store');
+
+/* Contact Fin */
 
 Route::get('faq', function () {
     return view('web.sections.static.faq');

@@ -75,7 +75,7 @@
             <img class="bd-placeholder-img rounded-circle" width="200" height="200" src="{{asset('image/home/Email.png')}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
             <h2>Contactanos</h2>
             <p>Elegí el medio que prefieras y despejá tus dudas</p>
-            <p><a class="btn btn-secondary" href="{{route('contact')}}" role="button"> Enviar mensaje &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="{{route('contact.index')}}" role="button"> Enviar mensaje &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
