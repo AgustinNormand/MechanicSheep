@@ -36,13 +36,13 @@ body {
 }
 
 #two {
-    background-image: url("https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-image: url("https://autoblog.com.ar/wp-content/uploads/2020/09/2020-New-Renault-ARKANA-R.S.-Line.jpg");
     background-size: cover;
     background-position: center;
 }
 
 #three {
-    background-image: url("https://images.pexels.com/photos/4489737/pexels-photo-4489737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-image: url("https://autoblog.com.ar/wp-content/uploads/2020/09/2020-New-Renault-ARKANA-R.S.-Line-1.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -123,4 +123,9 @@ body {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
+}
+
+/*custom*/
+.background{
+    background-color: rgba(49, 61, 87, 0.5);
 }
