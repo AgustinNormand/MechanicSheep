@@ -27,12 +27,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('contact.index')}}">Contacto</a>
             </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('about')}}">Acerca de nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('calendar.index')}}">Calendario</a>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('about')}}">Acerca de nosotros</a>
+            </li>
         </ul>
     </div>
 </nav>

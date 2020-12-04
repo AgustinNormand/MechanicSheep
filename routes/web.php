@@ -96,9 +96,7 @@ Route::group(['middleware' => 'auth', 'middleware' => ['role:MODERADOR,ADMINISTR
     Route::post('moderator/appointments/set/{turnoPenddiente}', [App\Http\Controllers\ModeratorController::class, 'setAppointments'])->name('moderator.appointments.set');
 
     Route::get('moderator/appointments/confirmados', [App\Http\Controllers\AppointmentController::class, 'getConfirmedAppointments'])->name('moderator.appointments.getConfirmed');
+
+    Route::resource('calendar', App\Http\Controllers\CalendarController::class)->middleware('auth');
+
 });
-
-/*Calendar route*/
-
-Route::resource('calendar', App\Http\Controllers\CalendarController::class)->middleware('auth');
-
