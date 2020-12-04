@@ -97,7 +97,7 @@
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
-                        <td>{{$turnoConfirmado->turno_pendiente->servicios->NOMBRE}}</td>
+                        <td>{{$turnoConfirmadoCancelado->turno_pendiente->servicios->first()->NOMBRE}}</td>
                     </tr>
                 @endforeach
                 </tbody>
