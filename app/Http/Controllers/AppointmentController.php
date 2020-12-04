@@ -47,7 +47,7 @@ class AppointmentController extends Controller
 
         $error = $this->verifyIfAlreadyHasAppointment($vehiculo, Auth::user()->ID_USUARIO);
         if(!is_null($error))
-            return redirect()->route('appointments.request')->withErrors(array("verifications" => $error));
+            return redirect()->route('appointments.request')->withErrors(array("verifications" => $error))->withInput();
 
         $turnoPendiente = $this->storeTurnoPendiente($vehiculo->ID_VEHICULO, $comentarios);
 
