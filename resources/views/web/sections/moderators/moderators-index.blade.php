@@ -70,7 +70,7 @@
                         <td>{{$turnoConfirmado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
-                        <td>{{$turnoConfirmado->turno_pendiente->servicios->NOMBRE}}</td>
+                        <td>{{$turnoConfirmado->turno_pendiente->servicios->first()->NOMBRE}}</td>
                     </tr>
                   <p>{{$turnoConfirmado}}</p>
                 @endforeach
