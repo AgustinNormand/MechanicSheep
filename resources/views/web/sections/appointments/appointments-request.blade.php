@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Lunes-8hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Lunes-8hs" @if( is_array(old('preferencia_horaria')) && in_array('Lunes-8hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="monday-8">
                                 8 AM
                             </label>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Lunes-14hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Lunes-14hs" @if( is_array(old('preferencia_horaria')) && in_array('Lunes-14hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="monday-2">
                                 2 PM
                             </label>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Martes-8hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Martes-8hs" @if( is_array(old('preferencia_horaria')) && in_array('Martes-8hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="tuesday-8">
                                 8 AM
                             </label>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Martes-14hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Martes-14hs" @if( is_array(old('preferencia_horaria')) && in_array('Martes-14hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="tuesday-2">
                                 2 PM
                             </label>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miercoles-8hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Miercoles-8hs" @if( is_array(old('preferencia_horaria')) && in_array('Miercoles-8hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="wednesday-8">
                                 8 AM
                             </label>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Miercoles-14hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Miercoles-14hs" @if( is_array(old('preferencia_horaria')) && in_array('Miercoles-14hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="wednesday-2">
                                 2 PM
                             </label>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Jueves-8hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Jueves-8hs" @if( is_array(old('preferencia_horaria')) && in_array('Jueves-8hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="thursday-8">
                                 8 AM
                             </label>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Jueves-14hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Jueves-14hs" @if( is_array(old('preferencia_horaria')) && in_array('Jueves-14hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="thursday-2">
                                 2 PM
                             </label>
@@ -154,7 +154,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Viernes-8hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Viernes-8hs" @if( is_array(old('preferencia_horaria')) && in_array('Viernes-8hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="friday-8">
                                 8 AM
                             </label>
@@ -162,7 +162,7 @@
                     </div>
                     <div class="col-sm">
                         <div class="form-check">
-                            <input name="days_of_preference[]" class="form-check-input" type="checkbox" value="Viernes-14hs">
+                            <input name="preferencia_horaria[]" class="form-check-input" type="checkbox" value="Viernes-14hs" @if( is_array(old('preferencia_horaria')) && in_array('Viernes-14hs', old('preferencia_horaria'))) checked @endif>
                             <label class="form-check-label" for="friday-2">
                                 2 PM
                             </label>
@@ -178,7 +178,7 @@
                 </div>
             </div>
 
-            @error('days_of_preference')
+            @error('preferencia_horaria')
                 <small>*{{$message}}</small>
             @enderror
 

@@ -22,7 +22,7 @@ el.addEventListener('change', () => {
 var buttonAny = document.querySelector("#buttonAny");
 
 buttonAny.addEventListener("click", ()=>{
-    var checkboxes = document.querySelectorAll("input[name=\"days_of_preference[]\"]");
+    var checkboxes = document.querySelectorAll("input[name=\"preferencia_horaria[]\"]");
     checkboxes.forEach(checkbox => {
         checkbox.checked = true;
     });

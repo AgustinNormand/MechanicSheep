@@ -37,12 +37,12 @@ class AppointmentController extends Controller
         $request->validate([
             'select_vehiculo' => 'required',
             'select_servicios' => 'required',
-            'days_of_preference' => 'required'
+            'preferencia_horaria' => 'required'
         ]);
 
         $vehiculo = Vehiculo::find($request->select_vehiculo);
         $idServicio = $request->select_servicios;
-        $daysOfPreference = $request->days_of_preference;
+        $daysOfPreference = $request->preferencia_horaria;
         $comentarios = $request->additional_comments;
 
         $error = $this->verifyIfAlreadyHasAppointment($vehiculo, Auth::user()->ID_USUARIO);
