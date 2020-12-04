@@ -11,13 +11,14 @@ class AdministratorController extends Controller
 {
     function index()
     {
-        return view('web.sections.administrators.administrators-index');
+        $configurations = Configuration::all();
+        return view('web.sections.administrators.administrators-index', compact('configurations'));
     }
 
-    function indexConfigurations(){
-        $configurations = Configuration::all();
-        return view('web.sections.administrators.administrators-configurations', compact('configurations'));
-    }
+//    function indexConfigurations(){
+//        $configurations = Configuration::all();
+//        return view('web.sections.administrators.administrators-configurations', compact('configurations'));
+//    }
 
     function storeConfigurations(Request $request){
         $keys = array_keys($request->all());

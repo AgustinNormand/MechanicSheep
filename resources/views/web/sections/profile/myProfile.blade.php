@@ -40,7 +40,7 @@
                                     @else
                                         <option value="{{$tipoDeDoc->ID_TIPO_DOC}}">{{$tipoDeDoc->NOMBRE}}</option>
                                     @endif
-                                    @endforeach                            
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -58,9 +58,9 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-secondary btn-lg">Guardar</button>
                             </div>
-                        </fieldset>             
-                </div>
-                <div class="col-6">
+                        </fieldset>
+                    </div>
+                    <div class="col-6">
                         <fieldset disabled>
                             <div class="form-group">
                                 <label for="address">Dirección</label>

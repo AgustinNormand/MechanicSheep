@@ -38,7 +38,7 @@
                                             @method('delete')
                                             <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
                                         </form>
-                                    </div>              
+                                    </div>
                                 </td>
                             </tr>
                         @else
@@ -51,7 +51,7 @@
                                 <td>
                                     <div class="row justify-content-between">
                                         <button type="button" class="btn btn-secondary justify-content-start btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
-                                    </div>    
+                                    </div>
                                 </td>
                             </tr>
                         @endif
@@ -72,16 +72,16 @@
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="fecha" value="{{ $turno->turno_confirmado->FECHA_HORA }}" readonly>
                                             </div>
-                                        
+
                                             <h5 class="text-center">Estado</h5>
                                             <div class="form-group">
                                                 @if ($turno->turno_confirmado->ESTADO == 1)
                                                     <input type="text" class="form-control" id="estado" value="Confirmado" readonly>
-                                                @else    
+                                                @else
                                                     <input type="text" class="form-control" id="estado" value="Rechazado" readonly>
                                                 @endif
                                             </div>
-                
+
                                             <h5 class="text-center">Servicio</h5>
                                             @foreach ($turno->servicios as $servicio)
                                                 <div class="form-group">
@@ -89,18 +89,18 @@
                                                     <input type="text" class="form-control" id="servicio" value="{{ $servicio->NOMBRE }}" readonly>
                                                 </div>
                                             @endforeach
-                                            
+
                                             <h5 class="text-center">Vehiculo</h5>
-                
+
                                             <div class="form-group">
                                                 <label for="patente" class="col-form-label">Patente:</label>
                                                 <input type="text" class="form-control" id="patente" value="{{ $turno->vehiculo->PATENTE }}" readonly>
                                             </div>
-                                            
-                
+
+
                                         </form>
-                                    </div>               
-            
+                                    </div>
+
                                     <div class="modal-footer justify-content-between">
                                         <a href="{{route('cars.show', $turno->vehiculo->ID_VEHICULO)}}" role="button"> <button type="button" class="btn btn-secondary">Ver Vehiculo</button> </a>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     @else
                         @if($turno->ESTADO==0)
                             <tr class="turnoCancelado d-none">
@@ -119,7 +119,7 @@
                             <td> - </td>
                             <td>
                                 @if ($turno->ESTADO==1)
-                                    <p>Pendiente</p> 
+                                    <p>Pendiente</p>
                                 @else
                                     <p>Cancelado</p>
                                 @endif
@@ -150,7 +150,7 @@
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    
+
                                     <div class="modal-body">
                                         <form>
 
@@ -159,9 +159,9 @@
                                         <div class="conteiner">
                                             <div class="form-group">
                                                 <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
-                                                <div class="row justify-content-around"">
-                                                <input type="text" class="form-control col-md-5" id="recipient-name1" value="{{ $preferencia->DIA }}" readonly>
-                                                <input type="text" class="form-control col-md-5" id="recipient-name2" value="{{ $preferencia->HORA }}" readonly>
+                                                <div class="row justify-content-around">
+                                                <input type="text" class="form-control col-md-5" id="recipient-day{{ $loop->iteration }}" value="{{ $preferencia->DIA }}" readonly>
+                                                <input type="text" class="form-control col-md-5" id="recipient-hour{{ $loop->iteration }}" value="{{ $preferencia->HORA }}" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,17 +179,17 @@
                                                     <input type="text" class="form-control" id="servicio" value="{{ $servicio->NOMBRE }}" readonly>
                                                 </div>
                                             @endforeach
-                                            
+
                                             <h5 class="text-center">Vehiculo</h5>
-                
+
                                             <div class="form-group">
                                                 <label for="patente" class="col-form-label">Patente:</label>
                                                 <input type="text" class="form-control" id="patente" value="{{ $turno->vehiculo->PATENTE }}" readonly>
                                             </div>
-                
+
                                         </form>
                                     </div>
-                                    
+
                                     <div class="modal-footer justify-content-between">
                                         <a href="{{route('cars.show', $turno->vehiculo->ID_VEHICULO)}}" role="button"> <button type="button" class="btn btn-secondary">Ver Vehiculo</button> </a>
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
