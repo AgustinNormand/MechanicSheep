@@ -27,8 +27,10 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-    expose:
-      - "3306"
+    ports:
+      - 8179:3306
+      #   expose:
+      #- "3306"
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
