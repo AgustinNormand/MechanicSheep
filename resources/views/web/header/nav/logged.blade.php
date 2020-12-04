@@ -6,10 +6,10 @@
         <a class="dropdown-item" href="{{route('appointments.index')}}">Mis Turnos</a>
         <!--<a class="dropdown-item" href="#">Trabajos realizados</a>-->
         <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{{route('change.password')}}">Cambiar Contraseña</a>
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();
            document.getElementById('logout-form').submit();">Cerrar sesión</a>
-        <a class="dropdown-item" href="{{route('change.password')}}">Cambiar Contraseña</a>
         <form method="POST" id="logout-form" action="{{ route('logout') }}">
             @csrf
         </form>
