@@ -1,5 +1,5 @@
 #calendar-size {
-    max-width: 60%;
+    width: 60%;
     padding: 2em;
 }
 
@@ -25,4 +25,10 @@
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
+}
+
+@media screen and (max-width:768px) {
+    #calendar-size {
+        width: 100%;
+    }
 }
