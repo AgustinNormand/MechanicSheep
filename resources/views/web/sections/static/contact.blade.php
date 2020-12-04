@@ -22,18 +22,38 @@
                 <label for="fname">Nombre</label>
                 <input type="text" name="nombre" class="form-control" id="fname" required>
             </div>
+            @error('nombre')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
             <div class="form-group">
                 <label for="lname">Apellido</label>
                 <input type="text" name="apellido" class="form-control" id="lname" required>
             </div>
+            @error('apellido')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
                 <input type="email" name="email" class="form-control" id="email" required>
             </div>
+            @error('email')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
             <div class="form-group">
                 <label for="textConsult">Escriba aquí su consulta</label>
                 <textarea class="form-control" name="mensaje" id="textConsult" rows="3" required></textarea>
             </div>
+            @error('mensaje')
+            <br>
+            <small>*{{$message}}</small>
+            <br>
+            @enderror
             <div class="form-group">
                 <button type="submit" class="btn btn-secondary btn-lg">Enviar</button>
             </div>

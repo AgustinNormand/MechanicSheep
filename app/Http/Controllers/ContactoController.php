@@ -15,11 +15,14 @@ class ContactoController extends Controller
     public function store(Request $request){
 
         $request->validate([
-            'name'
+            'nombre' => 'required|max:20',
+            'apellido' => 'required|max:20',
+            'email' => 'required|email:rfc,dns',
+            'mensaje' => 'required|max:350'
         ]);
 
         $correo = new ContactoFormMailable($request->all());
-        Mail::to('germanf.08@hotmail.com')->send($correo);
-        return view('web.sections.static.contact')->with('successMsg','Property is updated .');;
+        Mail::to(env('MAIL_REPLY_ADDRESS'))->send($correo);
+        return view('web.sections.static.contact')->with('successMsg','Mensaje enviado con éxito');
     }
 }

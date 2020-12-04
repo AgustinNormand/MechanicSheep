@@ -147,7 +147,23 @@ return [
     */
 
     'attributes' => [
-        'password' => 'contraseña'
+        'password' => 'contraseña',
+        'PATENTE' => 'patente',
+        'VIN' => 'vin',
+        'ANIO' => 'año',
+        'NUMERO_MOTOR' => 'numero de motor',
+        'MARCA' => 'marca',
+        'MODELO' => 'modelo',
+        'name' => 'nombre',
+        'born' => 'fecha de nacimiento',
+        'email' => 'correo electrónico',
+        'address' => 'dirección',
+        'addressNumber' => 'numero de domicilio',
+        'city' => 'ciudad',
+        'tel' => 'teléfono',
+        'codPos' => 'código postal',
     ],
+
+        
 
 ];

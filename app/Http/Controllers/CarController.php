@@ -18,6 +18,15 @@ class CarController extends Controller
 
     public function store(Request $request){ //Despues debe ser un StoreCar o StoreVehiculo
 
+        $request->validate([
+            'PATENTE' => 'required|min:6|max:7',
+            "VIN" => 'required',
+            "ANIO" => 'required',
+            "NUMERO_MOTOR" => 'required',
+            "MARCA" => 'required',
+            "MODELO" => 'required'
+        ]);
+
         $marca = Marca::firstOrCreate(["RAZON_SOCIAL" => $request->MARCA]);
 
         $modelo = Modelo::firstOrCreate(["NOMBRE_FANTASIA" => $request->MODELO], ["ID_MARCA" => $marca->ID_MARCA]);
@@ -44,6 +53,11 @@ class CarController extends Controller
     }
 
     public function pushLocate(Request $request){ //Despues debe ser un StoreCar o StoreVehiculo
+        
+        $request->validate([
+            'PATENTE' => 'required|min:6|max:7'
+        ]);
+        
         $vehiculos = Vehiculo::getByPatente($request->PATENTE);
         if(count($vehiculos) == 1){
             Vehiculo::setPersona($vehiculos[0], Auth::user()->persona->ID_PERSONA);

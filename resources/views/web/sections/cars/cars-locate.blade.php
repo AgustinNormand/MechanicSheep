@@ -13,7 +13,7 @@
             @csrf
             <div class="form-group">
                 <label for="PATENTE">Patente</label>
-                <input name="PATENTE" type="text" class="form-control" id="PATENTE" value={{old('PATENTE')}}>
+                <input name="PATENTE" type="text" class="form-control" id="PATENTE" value='{{old('PATENTE')}}' required>
             </div>
             @error('PATENTE')
             <br>

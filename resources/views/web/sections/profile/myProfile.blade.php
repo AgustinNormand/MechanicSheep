@@ -49,11 +49,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="born">Fecha Nacimiento</label>
-                                <input type="text" id="born" name="born" class="form-control" placeholder="yyyy-mm-dd" value="{{$persona->FECHA_NAC}}">
+                                <input type="text" id="born" name="born" class="form-control" placeholder="yyyy-mm-dd" value="{{$persona->FECHA_NAC}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$persona->EMAIL}}">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$persona->EMAIL}}" required>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-secondary btn-lg">Guardar</button>
@@ -64,27 +64,27 @@
                         <fieldset disabled>
                             <div class="form-group">
                                 <label for="address">Dirección</label>
-                                <input type="text" id="address" name="address" class="form-control" placeholder="Dirección" value="{{$persona->CALLE}}">
+                                <input type="text" id="address" name="address" class="form-control" placeholder="Dirección" value="{{$persona->CALLE}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="addressNumber">Número</label>
-                                <input type="number" id="addressNumber" name="addressNumber" class="form-control" placeholder="Número" value="{{$persona->NRO_CALLE}}">
+                                <input type="number" id="addressNumber" name="addressNumber" class="form-control" placeholder="Número" value="{{$persona->NRO_CALLE}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="city">Localidad</label>
-                                <input type="text" id="city" name="city" class="form-control" placeholder="Localidad" value="{{$persona->LOCALIDAD}}">
+                                <input type="text" id="city" name="city" class="form-control" placeholder="Localidad" value="{{$persona->LOCALIDAD}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="pais">Pais</label>
-                                <input type="text" id="pais" name="pais" class="form-control" placeholder="Pais" value="{{$persona->PAIS}}">
+                                <input type="text" id="pais" name="pais" class="form-control" placeholder="Pais" value="{{$persona->PAIS}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="tel">Teléfono</label>
-                                <input type="text" id="tel" name="tel" class="form-control" placeholder="Teléfono" value="{{$persona->TELEFONO}}">
+                                <input type="text" id="tel" name="tel" class="form-control" placeholder="Teléfono" value="{{$persona->TELEFONO}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="codPos">Codigo Postal</label>
-                                <input type="number" id="codPos" name="codPos" class="form-control" placeholder="Codigo Postal" value="{{$persona->CODIGO_POSTAL}}">
+                                <input type="number" id="codPos" name="codPos" class="form-control" placeholder="Codigo Postal" value="{{$persona->CODIGO_POSTAL}}" required>
                             </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-secondary btn-lg" id="boton-cancelar">Cancelar</button>

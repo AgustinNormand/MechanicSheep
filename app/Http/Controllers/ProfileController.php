@@ -13,7 +13,7 @@ class ProfileController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
 
 
@@ -28,18 +28,18 @@ class ProfileController extends Controller
     {
         $persona = Auth::user()->persona;
         $request->validate([
-            'fname' => 'required',
-            'lname' => 'required',
-            'tdoc' => 'required',
-            'ndoc' => 'required',
-            'born' => '',
-            'email' => '',
-            'address' => '',
-            'addressNumber' => '',
-            'city' => '',
-            'pais' => '',
-            'tel' => '',
-            'codPos' => ''
+            'fname' => 'required|max:20',
+            'lname' => 'required|max:20',
+            'tdoc' => 'required|max:150',
+            'ndoc' => 'required|max:150',
+            'born' => 'required',
+            'email' => 'required|email:rfc,dns',
+            'address' => 'required|max:40',
+            'addressNumber' => 'required',
+            'city' => 'required|max:40',
+            'pais' => 'required|max:40',
+            'tel' => 'required|max:150',
+            'codPos' => 'required|max:10'
         ]);
         $persona->update([
             'NOMBRE' => $request->input('fname'),
