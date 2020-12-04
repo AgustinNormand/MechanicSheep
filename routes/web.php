@@ -40,46 +40,45 @@ Route::get('services', function () {
 })->name('services');
 
 
-/* Dynamic Views */
-
 Auth::routes();
 
-Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index'])->name('change.password');
+/* Logged Routes */
 
-Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
+Route::group(['middleware' => 'auth'], function(){
 
-/* Profile Routes */
+    /* Change Password Routes*/
+    Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index'])->name('change.password');
+    Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
-Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    /* Profile Routes */
 
-/* Cars Routes */
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-Route::get("cars/locate", [App\Http\Controllers\CarController::class, 'getLocate'])->name('cars.locate');
 
-Route::post("cars/locate", [App\Http\Controllers\CarController::class, 'pushLocate'])->name('cars.locate');
+    /* Cars Routes */
+    Route::get("cars/locate", [App\Http\Controllers\CarController::class, 'getLocate'])->name('cars.locate');
+    Route::post("cars/locate", [App\Http\Controllers\CarController::class, 'pushLocate'])->name('cars.locate');
+    Route::get("cars/locate/{patente}", [App\Http\Controllers\CarController::class, 'getByPatente'])->name('cars.getByPatente');
+    Route::resource("cars", App\Http\Controllers\CarController::class)->parameters(['cars' => 'vehiculo']);
 
-Route::get("cars/locate/{patente}", [App\Http\Controllers\CarController::class, 'getByPatente'])->name('cars.getByPatente');
+    /* Appointments Routes */
 
-Route::resource("cars", App\Http\Controllers\CarController::class)->parameters(['cars' => 'vehiculo']);
+    Route::get('appointments', [App\Http\Controllers\AppointmentController::class, 'index'])->name('appointments.index');
+    Route::post('appointments/request', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointments.store');
+    Route::get('appointments/request/{selectedVehiculo?}', [App\Http\Controllers\AppointmentController::class, 'request'])->name('appointments.request');
+    Route::delete('appointments/cancel/{appointment}', [App\Http\Controllers\AppointmentController::class, 'cancel'])->name('appointments.cancel');
 
-/* Jobs Routes */
+    /* Jobs Routes */
 
-Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show')->middleware('auth');
+    Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show');
 
-/* Appointments Routes */
+});
 
-Route::get('appointments', [App\Http\Controllers\AppointmentController::class, 'index'])->name('appointments.index')->middleware('auth');
-
-Route::post('appointments/request', [App\Http\Controllers\AppointmentController::class, 'store'])->name('appointments.store')->middleware('auth');
-
-Route::get('appointments/request/{selectedVehiculo?}', [App\Http\Controllers\AppointmentController::class, 'request'])->name('appointments.request')->middleware('auth');
-
-Route::delete('appointments/cancel/{appointment}', [App\Http\Controllers\AppointmentController::class, 'cancel'])->name('appointments.cancel')->middleware('auth');
 
 /* Administrator Routes */
-Route::group(['middleware' => 'role:ADMINISTRADOR'], function(){
+Route::group(['middleware' => 'auth', 'middleware' => 'role:ADMINISTRADOR'], function(){
     Route::get('administrator', [App\Http\Controllers\AdministratorController::class, 'index'])->name('administrator.index');
     Route::get('administrator/configurations', [App\Http\Controllers\AdministratorController::class, 'indexConfigurations'])->name('configurations.index');
     Route::post('administrator/configurations', [App\Http\Controllers\AdministratorController::class, 'storeConfigurations'])->name('configurations.store');
@@ -97,6 +96,6 @@ Route::group(['middleware' => 'auth', 'middleware' => ['role:MODERADOR,ADMINISTR
 
     Route::get('moderator/appointments/confirmados', [App\Http\Controllers\AppointmentController::class, 'getConfirmedAppointments'])->name('moderator.appointments.getConfirmed');
 
-    Route::resource('calendar', App\Http\Controllers\CalendarController::class)->middleware('auth');
+    Route::resource('calendar', App\Http\Controllers\CalendarController::class);
 
 });
