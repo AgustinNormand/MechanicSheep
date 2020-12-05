@@ -183,8 +183,8 @@
             @enderror
 
             <div class="form-group">
-                <label for="additional-comments">Comentarios/Aclaraciones adicionales</label>
-                <textarea name="additional-comments" class="form-control" id="additional-comments" rows="3"></textarea>
+                <label for="additional_comments">Comentarios/Aclaraciones adicionales</label>
+                <textarea name="additional_comments" class="form-control" id="additional_comments" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <input class="btn btn-secondary btn-lg" type="submit" value="Solicitar">
