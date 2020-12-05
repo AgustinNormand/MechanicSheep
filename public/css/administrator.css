@@ -7,4 +7,15 @@
     text-align: center;
 }
 
+.buttons {
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 3em;
+}
+
+.buttons .btn {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
 
