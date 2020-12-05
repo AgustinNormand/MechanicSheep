@@ -37,13 +37,22 @@ class AppointmentController extends Controller
         $request->validate([
             'select_vehiculo' => 'required',
             'select_servicios' => 'required',
-            'preferencia_horaria' => 'required'
+            'problem' => 'required_if:select_servicios,13',
+            'preferencia_horaria' => 'required',
+            'additional_comments' => 'max:200',
+
         ]);
 
         $vehiculo = Vehiculo::find($request->select_vehiculo);
         $idServicio = $request->select_servicios;
         $daysOfPreference = $request->preferencia_horaria;
-        $comentarios = $request->additional_comments;
+
+        if(is_null($request->problem)){
+            $comentarios = $request->additional_comments;
+        }else{
+            $comentarios = "Problema: ".$request->problem." Comentarios: ".$request->additional_comments;
+        }
+        
 
         $error = $this->verifyIfAlreadyHasAppointment($vehiculo, Auth::user()->ID_USUARIO);
         if(!is_null($error))
@@ -83,13 +92,15 @@ class AppointmentController extends Controller
         return $errorReturn;
     }
 
-    private function storeTurnoPendiente($idVehiculo)
+    private function storeTurnoPendiente($idVehiculo,$comentarios)
     {
         $turnoPendiente = Turno_pendiente::create([
             "FECHA_SOLICITUD" => date("Y-m-d G:i:s"), //Ese es el formato MySql
+            "COMENTARIOS" => $comentarios,
             "ESTADO" => 1,
             "ID_USUARIO" => Auth::user()->ID_USUARIO,
             "ID_VEHICULO" => $idVehiculo,
+            
         ]);
         return $turnoPendiente;
     }
