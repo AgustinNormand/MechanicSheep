@@ -24,7 +24,7 @@
 
         <div class="table-moderator" id="ap-pending">
             <h3>Turnos Pendientes</h3>
-            <table class="table table-hover">
+            <table id="tablaPending" class="table table-hover table-striped table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Fecha Solicitud</th>
@@ -113,7 +113,7 @@
 
         <div class="table-moderator" id="ap-approved">
             <h3>Turnos Confirmados</h3>
-            <table class="table table-hover">
+            <table id="tablaApproved" class="table table-hover table-striped table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Fecha/Hora</th>
@@ -139,7 +139,7 @@
 
         <div class="table-moderator" id="ap-approved-cancel">
             <h3>Turnos Confirmados - Cancelados</h3>
-            <table class="table table-hover">
+            <table id="tableApprovedCancel" class="table table-hover table-striped table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Fecha/Hora</th>
@@ -165,7 +165,7 @@
 
         <div class="table-moderator" id="ap-pending-cancel">
             <h3>Turnos Pendientes - Cancelados</h3>
-            <table class="table table-hover">
+            <table id="tablaPendingCancel" class="table table-hover table-striped table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">Fecha Solicitud</th>
