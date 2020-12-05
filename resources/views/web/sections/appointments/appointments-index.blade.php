@@ -156,7 +156,7 @@
 
                                         <h5 class="pt-mt-5 text-center">Horarios de Preferencia</h5>
                                         @foreach ($turno->pref_hora_turno as $preferencia)
-                                        <div class="conteiner">
+
                                             <div class="form-group">
                                                 <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
                                                 <div class="row justify-content-around">
@@ -164,7 +164,7 @@
                                                 <input type="text" class="form-control col-md-5" id="recipient-hour{{ $loop->iteration }}" value="{{ $preferencia->HORA }}" readonly>
                                                 </div>
                                             </div>
-                                        </div>
+
                                         @endforeach
 
                                             <h5 class="text-center">Estado</h5>

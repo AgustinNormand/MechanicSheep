@@ -31,6 +31,7 @@
                     <th scope="col">Cliente</th>
                     <th scope="col">Modelo</th>
                     <th scope="col">Marca</th>
+                    <th scope="col">Servicio</th>
                     <th scope="col">Acción</th>
                 </tr>
                 </thead>
@@ -41,11 +42,70 @@
                         <td>{{$turnoPendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoPendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoPendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
+                        <td>{{$turnoPendiente->servicios->first()->NOMBRE}}</td>
                         <td>
-                            <a href="#" role="button"> <button type="button" class="btn btn-secondary btn-sm">Ver detalles</button> </a>
+                            <button type="button" data-target="#exampleModal_{{ ($turnoPendiente->ID_TURNO_P)}}" data-toggle="modal" class="btn btn-secondary btn-sm">Ver detalles</button>
                         </td>
 
                     </tr>
+
+                    <div class="modal fade" id="exampleModal_{{ ($turnoPendiente->ID_TURNO_P) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-center" id="exampleModalLabel">Detalle de turno</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                        <h5 class="pt-mt-5 text-center">Horarios de Preferencia</h5>
+                                        @foreach ($turnoPendiente->pref_hora_turno as $preferencia)
+                                            <div class="form-group">
+                                                <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
+                                                <div class="row justify-content-around">
+                                                    <input type="text" class="form-control col-md-5" id="recipient-day{{ $loop->iteration }}" value="{{ $preferencia->DIA }}" readonly>
+                                                    <input type="text" class="form-control col-md-5" id="recipient-hour{{ $loop->iteration }}" value="{{ $preferencia->HORA }}" readonly>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                        @if ($turnoPendiente->COMENTARIOS)
+                                        <h5 class="text-center">Comentarios</h5>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="coments" readonly>{{$turnoPendiente->COMENTARIOS}}</textarea>
+                                        </div>
+                                        @endif
+
+                                        <form action="{{route('moderator.appointments.set', $turnoPendiente)}}" method="POST">
+                                            @csrf
+                                            <div class="form-group">
+                                                <input class="form-control" type="date" name="fecha_turno" id="fecha_turno">
+                                                <input class="form-control" type="time" name="hora_turno" id="hora_turno">
+                                                <button class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
+                                                <button class="btn btn-secondary btn-sm">Rechazar</button>
+                                            </div>
+                                        </form>
+
+                                        <h5 class="text-center">Vehiculo</h5>
+
+                                        <div class="form-group">
+                                            <label for="patente" class="col-form-label">Patente:</label>
+                                            <input type="text" class="form-control" id="patente" value="{{ $turnoPendiente->vehiculo->PATENTE }}" readonly>
+                                        </div>
+
+
+                                </div>
+
+                                <div class="modal-footer justify-content-between">
+                                    <a href="{{route('cars.show', $turnoPendiente->vehiculo->ID_VEHICULO)}}" role="button"> <button type="button" class="btn btn-secondary">Ver Vehiculo</button> </a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
                 </tbody>
             </table>
@@ -56,7 +116,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Fecha/Hora</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Modelo</th>
                     <th scope="col">Marca</th>
@@ -72,7 +132,6 @@
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->servicios->first()->NOMBRE}}</td>
                     </tr>
-                  <p>{{$turnoConfirmado}}</p>
                 @endforeach
                 </tbody>
             </table>
@@ -83,7 +142,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Fecha</th>
+                    <th scope="col">Fecha/Hora</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Modelo</th>
                     <th scope="col">Marca</th>
@@ -113,6 +172,7 @@
                     <th scope="col">Cliente</th>
                     <th scope="col">Modelo</th>
                     <th scope="col">Marca</th>
+                    <th scope="col">Servicio</th>
                     <th scope="col">Visualizar</th>
                 </tr>
                 </thead>
@@ -123,8 +183,57 @@
                         <td>{{$turnoPendienteCancelado->user->persona->NOMBRE}}</td>
                         <td>{{$turnoPendienteCancelado->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoPendienteCancelado->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
-                        <td><a href="#" role="button"> <button type="button" class="btn btn-secondary btn-sm">Ver detalles</button> </a></td>
+                        <td>{{$turnoPendienteCancelado->servicios->first()->NOMBRE}}</td>
+                        <td><a href="#" role="button"> <button type="button" class="btn btn-secondary btn-sm" data-target="#exampleModal_{{ ($turnoPendienteCancelado->ID_TURNO_P)}}" data-toggle="modal" >Ver detalles</button> </a></td>
                     </tr>
+
+                    <div class="modal fade" id="exampleModal_{{ ($turnoPendienteCancelado->ID_TURNO_P) }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-center" id="exampleModalLabel">Detalle de turno</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    <h5 class="pt-mt-5 text-center">Horarios de Preferencia</h5>
+                                    @foreach ($turnoPendienteCancelado->pref_hora_turno as $preferencia)
+                                        <div class="form-group">
+                                            <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
+                                            <div class="row justify-content-around">
+                                                <input type="text" class="form-control col-md-5" id="recipient-day{{ $loop->iteration }}" value="{{ $preferencia->DIA }}" readonly>
+                                                <input type="text" class="form-control col-md-5" id="recipient-hour{{ $loop->iteration }}" value="{{ $preferencia->HORA }}" readonly>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+                                    @if ($turnoPendienteCancelado->COMENTARIOS)
+                                        <h5 class="text-center">Comentarios</h5>
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="coments" value="{{$turnoPendienteCancelado->COMENTARIOS}}" readonly> </textarea>
+                                        </div>
+                                    @endif
+
+                                    <h5 class="text-center">Vehiculo</h5>
+
+                                    <div class="form-group">
+                                        <label for="patente" class="col-form-label">Patente:</label>
+                                        <input type="text" class="form-control" id="patente" value="{{ $turnoPendienteCancelado->vehiculo->PATENTE }}" readonly>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="modal-footer justify-content-between">
+                                    <a href="{{route('cars.show', $turnoPendienteCancelado->vehiculo->ID_VEHICULO)}}" role="button"> <button type="button" class="btn btn-secondary">Ver Vehiculo</button> </a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 @endforeach
                 </tbody>
@@ -132,21 +241,6 @@
         </div>
 
     </div>
-
-
-
-    <h3>Turnos Pendientes</h3>
-    @foreach ($turnosPendientes as $turnoPendiente)
-        <p>{{$turnoPendiente}}
-            {{$turnoPendiente->pref_hora_turno}}
-            <form action="{{route('moderator.appointments.set', $turnoPendiente)}}" method="post">
-                @csrf
-                <input type="date" name="fecha_turno" id="fecha_turno">
-                <input type="time" name="hora_turno" id="hora_turno">
-                <button class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
-            </form>
-        </p>
-    @endforeach
 
 @endsection
 
