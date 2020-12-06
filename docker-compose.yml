@@ -42,7 +42,7 @@ services:
       - mechanicsheep
     environment:
       - VIRTUAL_HOST=www.mechanicsheep.com.ar, mechanicsheep.com.ar
-      - LETSENCRYPT_HOST=seminariounlu.duckdns.org
+      - LETSENCRYPT_HOST=www.mechanicsheep.com.ar
       - LETSENCRYPT_EMAIL=normandagustin@gmail.com
     depends_on:
       - nginx-proxy
