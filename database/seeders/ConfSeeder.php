@@ -83,5 +83,10 @@ class ConfSeeder extends Seeder
         $configuracion->NAME = "VERIFY_MODIFICATIONS_TIMER";
         $configuracion->VALUE = "10";
         $configuracion->save();
+
+        $configuracion = new Configuration();
+        $configuracion->NAME = "MODERATED_EMAILS";
+        $configuracion->VALUE = "true";
+        $configuracion->save();
     }
 }
