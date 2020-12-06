@@ -6,6 +6,7 @@ use App\Models\Estimacion;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Mail\ContactanosMailable;
+use App\Models\Configuration;
 use DateTime;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,28 +30,36 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            /* Obtengo el día de hoy en formato date*/
             $today = new DateTime('NOW');
             
             $estimaciones = Estimacion::where([
-                ["MAIL_ENVIADO",0],
+                ["ACTIVADA", 1],
+                ["MAIL_ENVIADO", 0],
                 ["FECHA_ESTIMADA_AVISO","<=",$today->format("Y-m-d G:i:s")]
             ])->get();
-           
-            /*foreach ($estimaciones as $estimacion) {
-                $nombre_persona = $estimacion->vehiculo->persona->NOMBRE;
-                
-                $email_persona = $estimacion->vehiculo->persona->EMAIL;
-                $correo = new ContactanosMailable($nombre_persona);
 
-                Mail::to($email_persona)->send($correo);
 
-                
+            $moderatedEmails = Configuration::where('NAME', 'MODERATED_EMAILS')->first()->VALUE;
+
+            /*
+            if($moderatedEmails == 'true')
+                $this->enviarMails($estimaciones);
+            else
+                $this->marcarMailsParaEnviar();
+            */
+            foreach ($estimaciones as $estimacion) {
+                $nombre = ucfirst(strtolower($estimacion->vehiculo->persona->NOMBRE));
+                $email = $estimacion->vehiculo->persona->EMAIL;
+                $vehiculo = $estimacion->vehiculo;
+                $correo = new ContactanosMailable($nombre, $vehiculo, $estimacion->PROMEDIO != 0);
+
+                Mail::to($email)->send($correo);
+
                 $estimacion->MAIL_ENVIADO = 1;
                 $estimacion->save();
 
                 $correo->build(); 
-            }*/
+            }
         })->everyMinute();
     }
 
