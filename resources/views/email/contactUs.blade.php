@@ -8,15 +8,20 @@
     <title>Contact Us - Appointment</title>
     <link href="{{ asset('css/contactUs.css') }}" rel="stylesheet">
 </head>
-<body>
-    <p>
-        <span id="name"> Hola {{ $nombre_persona }} </span> <br>
-        ¡Esperamos te encuentres bien! <br>
-        Según nuestros cálculos, estás cerca de tu próximo service ;)<br>
-
-        No te olvides que podes sacar un turno desde nuestra página. <br>
-
-        <span>Sacá tu turno <a href="https://github.com/AgustinNormand/MechanicSheep" target="_blank">acá</a></span>
-    </p>
-</body>
+    <body>
+        <br>
+        <p>Hola {{$nombre_persona}},</p>
+        <p>¡Esperamos que te encuentres bien!</p>
+        @if($esEstimado)
+            <p>Según nuestros cálculos, tu {{ucfirst(strtolower($vehiculo->modelo->marca->RAZON_SOCIAL))}} {{ucfirst(strtolower($vehiculo->modelo->NOMBRE_FANTASIA))}} está cerca de su próximo service!.</p>
+        @else
+            <p>Ya pasó 1 año desde que realizaste el service a tu {{ucfirst(strtolower($vehiculo->modelo->marca->RAZON_SOCIAL))}} {{ucfirst(strtolower($vehiculo->modelo->NOMBRE_FANTASIA))}}, es necesario hacerle el próximo service!.</p>
+        @endif
+        <p>No te olvides que podes sacar un turno desde nuestro sitio web.</p>
+        <p>Ingresá, registrate, y solicitanos un turno!.</p>
+        <p>Hacé click <a href="www.mechanicsheep.com.ar" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
+        <br>
+        <p>Saludos,</p>
+        <p>MechanicSheep, Agentes Oficiales Renault.</p>
+    </body>
 </html>
