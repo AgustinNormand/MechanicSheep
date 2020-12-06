@@ -12,7 +12,7 @@
 * composer install
 * cp .env.example .env
 * Crear una base de datos
-* editar .env con los valores deseados y/o válidos
+* Editar .env con los valores deseados
 * Ejecutar migraciones: php artisan migrate
 * Ejecutar: php artisan key:generate
 * Ejecutar: php artisan serve
@@ -21,6 +21,8 @@
 
 * git clone https://github.com/AgustinNormand/MechanicSheep.git
 * cd MechanicSheep
+* cp .env.example .env
+* Editar .env con los valores deseados
 * docker-compose build app
 * docker-compose up -d
 
