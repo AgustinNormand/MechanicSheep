@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-
+    <h1 class="tituloVehiculos">Mis vehiculos</h1>
     <div class="container cars-container">
-        <table class="table table-hover">
+        <table id="tableCars" class="table table-hover table-striped table-bordered">
             <thead>
-            <tr>
+            <tr class="text-center">
                 <th scope="col">Patente</th>
                 <th scope="col">Año</th>
                 <th scope="col">Opciones</th>
@@ -24,15 +24,19 @@
                     <td>{{$vehiculo->PATENTE}}</td>
                     <td>{{$vehiculo->ANIO}}</td>
                     <td>
-                        <a href="{{route('cars.show', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Visualizar</button> </a>
-                        <form action="{{route('cars.destroy', $vehiculo)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-secondary btn-sm">Eliminar</button>
-                        </form>
+                        <div class="row justify-content-around">
+                            <a href="{{route('cars.show', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Visualizar</button> </a>
+                            <form action="{{route('cars.destroy', $vehiculo)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-secondary btn-sm">Eliminar</button>
+                            </form>
+                        </div>
                     </td>
                     <td>
-                        <a href="{{route('appointments.request', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
+                        <div class="row justify-content-around">
+                            <a href="{{route('appointments.request', $vehiculo)}}" role="button"> <button type="button" class="btn btn-secondary btn-sm">Pedir turno</button> </a>
+                        </div>
                     </td>
                 </tr>
             @endforeach
@@ -48,4 +52,8 @@
     </div>
 
 
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/cars-index.js') }}"></script>
 @endsection
