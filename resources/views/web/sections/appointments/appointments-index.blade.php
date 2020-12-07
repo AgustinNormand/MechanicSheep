@@ -9,7 +9,7 @@
 @section('content')
     <div class="container listAp">
         <h1 class="tituloTurnos">Mis turnos</h1>
-        <table class="table table-hover tablaTurnos">
+        <table id="tableMisTurnos" class="table table-hover table-striped table-bordered tablaTurnos">
             <thead class="text-center">
             <tr>
                 <th scope="col">Fecha Solicitud</th>
@@ -31,7 +31,7 @@
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                                 <td>
-                                    <div class="row justify-content-between">
+                                    <div class="row justify-content-around">
                                         <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
                                         <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
                                             @csrf
@@ -49,7 +49,7 @@
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                                 <td>
-                                    <div class="row justify-content-between">
+                                    <div class="row justify-content-around">
                                         <button type="button" class="btn btn-secondary justify-content-start btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P)}}">Visualizar</button>
                                     </div>
                                 </td>
@@ -127,7 +127,7 @@
                             <td>{{ $turno->vehiculo->PATENTE }}</td>
                             <td>{{ $turno->servicios->first()->NOMBRE }}</td>
                             <td>
-                                <div class="row justify-content-between">
+                                <div class="row justify-content-around">
                                     <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_{{ ($turno->ID_TURNO_P) }}">Visualizar</button>
                                     @if ($turno->ESTADO==1)
                                         <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
@@ -153,19 +153,16 @@
 
                                     <div class="modal-body">
                                         <form>
-
-                                        <h5 class="pt-mt-5 text-center">Horarios de Preferencia</h5>
-                                        @foreach ($turno->pref_hora_turno as $preferencia)
-
-                                            <div class="form-group">
-                                                <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
-                                                <div class="row justify-content-around">
-                                                <input type="text" class="form-control col-md-5" id="recipient-day{{ $loop->iteration }}" value="{{ $preferencia->DIA }}" readonly>
-                                                <input type="text" class="form-control col-md-5" id="recipient-hour{{ $loop->iteration }}" value="{{ $preferencia->HORA }}" readonly>
+                                            <h5 class="pt-mt-5 text-center">Horarios de Preferencia</h5>
+                                            @foreach ($turno->pref_hora_turno as $preferencia)
+                                                <div class="form-group">
+                                                    <label for="recipient-name1" class="col-form-label ml-1"> Horario N°: {{ $loop->iteration }}</label>
+                                                    <div class="row justify-content-around">
+                                                    <input type="text" class="form-control col-md-5" id="recipient-day{{ $loop->iteration }}" value="{{ $preferencia->DIA }}" readonly>
+                                                    <input type="text" class="form-control col-md-5" id="recipient-hour{{ $loop->iteration }}" value="{{ $preferencia->HORA }}" readonly>
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                        @endforeach
+                                            @endforeach
 
                                             <h5 class="text-center">Estado</h5>
                                             <div class="form-group">
@@ -203,11 +200,6 @@
         </table>
     </div>
 
-
-{{--
-Acá hay que tener en cuenta la posibilidad de una paginación (o scroll infinito estaría mejor)
-Y hay que agregar una condición para indicar un aviso que diga "no hay turnos registrados hasta el momento o bien, que muestre la tabla
---}}
 @endsection
 
 @section('scripts')
