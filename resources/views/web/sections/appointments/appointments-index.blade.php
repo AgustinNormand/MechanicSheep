@@ -82,6 +82,13 @@
                                                 @endif
                                             </div>
 
+                                            @if ($turno->COMENTARIOS)
+                                                <h5 class="text-center">Comentarios</h5>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="comentsMisTurnos" readonly>{{$turno->COMENTARIOS}}</textarea>
+                                                </div>
+                                            @endif
+
                                             <h5 class="text-center">Servicio</h5>
                                             @foreach ($turno->servicios as $servicio)
                                                 <div class="form-group">
@@ -168,6 +175,13 @@
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="estado" value="Pendiente" readonly>
                                             </div>
+
+                                            @if ($turno->COMENTARIOS)
+                                                <h5 class="text-center">Comentarios</h5>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="comentsMisTurnos" readonly>{{$turno->COMENTARIOS}}</textarea>
+                                                </div>
+                                            @endif
 
                                             <h5 class="text-center">Servicio</h5>
                                             @foreach ($turno->servicios as $servicio)

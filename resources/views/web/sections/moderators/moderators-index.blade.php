@@ -213,7 +213,7 @@
                                     @if ($turnoPendienteCancelado->COMENTARIOS)
                                         <h5 class="text-center">Comentarios</h5>
                                         <div class="form-group">
-                                            <textarea class="form-control" id="coments" value="{{$turnoPendienteCancelado->COMENTARIOS}}" readonly> </textarea>
+                                            <textarea class="form-control" id="coments" readonly>{{$turnoPendienteCancelado->COMENTARIOS}}</textarea>
                                         </div>
                                     @endif
 
