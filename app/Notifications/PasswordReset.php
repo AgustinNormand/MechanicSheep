@@ -48,6 +48,7 @@ class PasswordReset extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->subject('Cambio de contraseña')
             ->line('Recibió este correo electrónico porque recibimos una solicitud de restablecimiento de contraseña para su cuenta.') // Here are the lines you can safely override
             ->action('Restablecer Contraseña', url('password/reset', $this->token))
             ->line('Si no solicitó un restablecimiento de contraseña, no se requiere ninguna otra acción.');
