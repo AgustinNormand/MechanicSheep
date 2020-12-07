@@ -48,7 +48,7 @@ class ModeratorController extends Controller
         ]);
 
         $correo = new TurnoMailable($turnoPendiente,$fechaTurno);
-        Mail::to(env('MAIL_REPLY_ADDRESS'))->send($correo);
+        Mail::to($turnoPendiente->user->email)->send($correo);
 
         return redirect()->back()->with("success", "Turno confirmado con éxito.");
     }
