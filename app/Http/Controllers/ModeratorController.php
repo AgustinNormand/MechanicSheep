@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TurnoMailable;
 use App\Models\Turno_confirmado;
 use App\Models\Turno_pendiente;
 use CreateTurnoConfirmadosTable;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ModeratorController extends Controller
 {
@@ -44,6 +46,9 @@ class ModeratorController extends Controller
             "ID_TURNO_P" => $idTurnoPendiente,
             "ESTADO" => 1,
         ]);
+
+        $correo = new TurnoMailable($turnoPendiente,$fechaTurno);
+        Mail::to(env('MAIL_REPLY_ADDRESS'))->send($correo);
 
         return redirect()->back()->with("success", "Turno confirmado con éxito.");
     }
