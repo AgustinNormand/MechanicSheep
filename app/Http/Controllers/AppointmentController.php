@@ -50,7 +50,7 @@ class AppointmentController extends Controller
         if(is_null($request->problem)){
             $comentarios = $request->additional_comments;
         }else{
-            $comentarios = "Problema: ".$request->problem." Comentarios: ".$request->additional_comments;
+            $comentarios = "Problema: ".$request->problem."\nComentarios: ".$request->additional_comments;
         }
         
 
