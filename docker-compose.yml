@@ -22,9 +22,11 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-    expose:
-      - "3306"
+      #expose:
+    ports:
+      - "8179:3306"
     volumes:
+      - /var/lib/mysql:/var/lib/mysql
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
       - mechanicsheep
@@ -41,8 +43,8 @@ services:
     networks:
       - mechanicsheep
     environment:
-      - VIRTUAL_HOST=www.mechanicsheep.com.ar, mechanicsheep.com.ar
-      - LETSENCRYPT_HOST=www.mechanicsheep.com.ar
+      - VIRTUAL_HOST=www.seminariounlu.duckdns.org, seminariounlu.duckdns.org
+      - LETSENCRYPT_HOST=seminariounlu.duckdns.org
       - LETSENCRYPT_EMAIL=normandagustin@gmail.com
     depends_on:
       - nginx-proxy
@@ -74,6 +76,15 @@ services:
       - vhostd:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - mechanicsheep
+
+  adminer:
+    image: adminer
+    container_name: mechanicsheep-db-adminer
+    restart: unless-stopped
+    ports:
+      - 8080:8080
     networks:
       - mechanicsheep
 
