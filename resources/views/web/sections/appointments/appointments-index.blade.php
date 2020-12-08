@@ -36,7 +36,7 @@
                                         <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
+                                            <input class="btn btn-secondary btn-sm" onclick="return myFunction();" type="submit" value="Cancelar">
                                         </form>
                                     </div>
                                 </td>
@@ -140,7 +140,7 @@
                                         <form action="{{route('appointments.cancel', $turno->ID_TURNO_P)}}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <input class="btn btn-secondary btn-sm" type="submit" value="Cancelar">
+                                            <input class="btn btn-secondary btn-sm" onclick="return myFunction();" type="submit" value="Cancelar">
                                         </form>
                                     @endif
                                 </div>
@@ -218,4 +218,10 @@
 
 @section('scripts')
     <script src="{{ asset('js/appointments-index.js') }}"></script>
+    <script>
+        function myFunction() {
+            if(!confirm("Esta seguro que desea cancelar?"))
+            event.preventDefault();
+        }
+    </script>
 @endsection
