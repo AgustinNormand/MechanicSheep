@@ -38,7 +38,10 @@ class ModeratorController extends Controller
         ]);
 
         $turnoPendiente = Turno_pendiente::find($idTurnoPendiente);
-        $datetime = new DateTime($request->fecha_turno);
+
+        $dateTimeInput = $request->fecha_turno.' '.$request->hora_turno;
+        
+        $datetime = new DateTime($dateTimeInput);
         $fechaTurno = $datetime->format("Y-m-d G:i:s");
 
         Turno_confirmado::create([
