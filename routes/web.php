@@ -40,7 +40,7 @@ Route::get('services', function () {
 })->name('services');
 
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 /* Logged Routes */
 
@@ -50,13 +50,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'index'])->name('change.password');
     Route::post('change-password', [App\Http\Controllers\Auth\ChangePasswordController::class, 'store'])->name('change.password');
 
+
     /* Profile Routes */
 
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');  
-});
+    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function(){
+
     /* Cars Routes */
     Route::get("cars/locate", [App\Http\Controllers\CarController::class, 'getLocate'])->name('cars.locate');
     Route::post("cars/locate", [App\Http\Controllers\CarController::class, 'pushLocate'])->name('cars.locate');
@@ -73,7 +73,9 @@ Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function(){
     /* Jobs Routes */
 
     Route::get("jobs/{vehiculo}", [App\Http\Controllers\JobController::class, 'show'])->name('jobs.show');
+
 });
+
 
 /* Administrator Routes */
 Route::group(['middleware' => 'auth', 'middleware' => 'role:ADMINISTRADOR'], function(){
