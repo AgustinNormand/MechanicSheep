@@ -85,7 +85,13 @@
                                                 <input class="form-control" type="date" name="fecha_turno" id="fecha_turno">
                                                 <input class="form-control" type="time" name="hora_turno" id="hora_turno">
                                                 <button class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
-                                                <button class="btn btn-secondary btn-sm">Rechazar</button>
+                                            </div>
+                                        </form>
+                                        <form action="{{route('appointments.cancel', $turnoPendiente->ID_TURNO_P)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <div class="form-group">
+                                                <button class="btn btn-secondary btn-sm" onclick="return myFunction();" type="submit">Rechazar</button>
                                             </div>
                                         </form>
 
@@ -246,4 +252,10 @@
 
 @section('scripts')
     <script src="{{ asset('js/moderator.js') }}"></script>
+    <script>
+        function myFunction() {
+            if(!confirm("Esta seguro que desea cancelar?"))
+            event.preventDefault();
+        }
+    </script>
 @endsection

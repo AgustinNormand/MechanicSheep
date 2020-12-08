@@ -22,6 +22,7 @@ class PendingAppointmentPolicy
 
     public function cancel(User $user, Turno_pendiente $turnoPendiente)
     {
-        return $user->persona->ID_PERSONA === $turnoPendiente->vehiculo->persona->ID_PERSONA;
+        
+        return (($user->persona->ID_PERSONA === $turnoPendiente->vehiculo->persona->ID_PERSONA)||($user->hasAnyRole(['ADMINISTRADOR','MODERADOR'])));
     }
 }

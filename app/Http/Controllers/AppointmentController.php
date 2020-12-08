@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TurnoCanceladoMailable;
 use App\Models\Pref_hora_turno;
 use App\Models\Sector;
 use App\Models\Taller;
@@ -11,6 +12,7 @@ use App\Models\Vehiculo;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use stdClass;
 use Symfony\Component\Console\Input\Input;
 
@@ -136,7 +138,10 @@ class AppointmentController extends Controller
                 $turnoConfirmado->save();
             }
         }
-        
+
+        $correo = new TurnoCanceladoMailable($turnoPendiente);
+        Mail::to($turnoPendiente->user->email)->send($correo);
+
         return redirect()->route('appointments.index');
     }
 
