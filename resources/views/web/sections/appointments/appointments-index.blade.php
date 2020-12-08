@@ -25,8 +25,8 @@
                     @if ($turno->turno_confirmado)
                         @if ($turno->turno_confirmado->ESTADO==1)
                             <tr>
-                                <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
-                                <td>{{ $turno->turno_confirmado->FECHA_HORA }}</td>
+                                <th scope="row">{{\Carbon\Carbon::parse($turno->FECHA_SOLICITUD)->format('j/m/Y')}}</th>
+                                <td>{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
                                 <td>Confirmado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
@@ -43,8 +43,8 @@
                             </tr>
                         @else
                             <tr class="turnoCancelado d-none">
-                                <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
-                                <td>{{ $turno->turno_confirmado->FECHA_HORA }}</td>
+                                <th scope="row">{{\Carbon\Carbon::parse($turno->FECHA_SOLICITUD)->format('j/m/Y')}}</th>
+                                <td>{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
                                 <td>Cancelado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
@@ -70,7 +70,7 @@
                                         <form>
                                             <h5 class="text-center">Fecha Confirmada</h5>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="fecha" value="{{ $turno->turno_confirmado->FECHA_HORA }}" readonly>
+                                                <input type="text" class="form-control" id="fecha" value="{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:m')}}" readonly>
                                             </div>
 
                                             <h5 class="text-center">Estado</h5>
@@ -122,7 +122,7 @@
                         @else
                             <tr>
                         @endif
-                            <th scope="row">{{ $turno->FECHA_SOLICITUD }}</th>
+                            <th scope="row">{{\Carbon\Carbon::parse($turno->FECHA_SOLICITUD)->format('j/m/Y')}}</th>
                             <td> - </td>
                             <td>
                                 @if ($turno->ESTADO==1)

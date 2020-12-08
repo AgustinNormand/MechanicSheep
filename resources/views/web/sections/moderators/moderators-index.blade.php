@@ -38,7 +38,7 @@
                 <tbody>
                 @foreach ($turnosPendientes as $turnoPendiente)
                     <tr>
-                        <td>{{$turnoPendiente->FECHA_SOLICITUD}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoPendiente->FECHA_SOLICITUD)->format('j/m/Y')}}</td>
                         <td>{{$turnoPendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoPendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoPendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
@@ -126,7 +126,7 @@
                 <tbody>
                 @foreach ($turnosConfirmados as $turnoConfirmado)
                     <tr>
-                        <td>{{$turnoConfirmado->FECHA_HORA}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoConfirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
@@ -152,7 +152,7 @@
                 <tbody>
                 @foreach ($turnosConfirmadosCancelados as $turnoConfirmadoCancelado)
                     <tr>
-                        <td>{{$turnoConfirmadoCancelado->FECHA_HORA}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoConfirmadoCancelado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
@@ -179,7 +179,7 @@
                 <tbody>
                 @foreach ($turnosPendientesCancelados as $turnoPendienteCancelado)
                     <tr>
-                        <td>{{$turnoPendienteCancelado->FECHA_SOLICITUD}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoPendienteCancelado->FECHA_SOLICITUD)->format('j/m/Y')}}</td>
                         <td>{{$turnoPendienteCancelado->user->persona->NOMBRE}}</td>
                         <td>{{$turnoPendienteCancelado->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoPendienteCancelado->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
