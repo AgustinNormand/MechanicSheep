@@ -7,8 +7,8 @@
 @endsection
 
 @section('content')
-    <h1 class="tituloVehiculos">Mis vehiculos</h1>
     <div class="container cars-container">
+        <h1>Mis vehiculos</h1>
         <table id="tableCars" class="table table-hover table-striped table-bordered">
             <thead>
             <tr class="text-center">
