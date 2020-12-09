@@ -91,4 +91,10 @@ class CarPolicy
     {
         return false;
     }
+    
+    public function storeTurno(User $user, Vehiculo $vehiculo)
+    {   
+
+        return ($vehiculo->ID_PERSONA === $user->persona->ID_PERSONA);
+    }
 }

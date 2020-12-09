@@ -45,6 +45,12 @@ class AppointmentController extends Controller
 
         ]);
 
+        $vehiculo = Vehiculo::where([
+            ["ID_VEHICULO", $request->select_vehiculo]
+        ])->first();
+
+        $this->authorize('storeTurno', [$vehiculo]);
+
         $vehiculo = Vehiculo::find($request->select_vehiculo);
         $idServicio = $request->select_servicios;
         $daysOfPreference = $request->preferencia_horaria;
