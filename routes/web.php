@@ -90,7 +90,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'role:ADMINISTRADOR'], fun
 
 Route::group(['middleware' => 'auth', 'middleware' => ['role:MODERADOR,ADMINISTRADOR']], function(){
 
-    Route::get('moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
+    Route::get('moderator/emails', [App\Http\Controllers\ModeratorController::class, 'indexEmails'])->name('moderator.emails.index');
 
     Route::get('moderator/appointments', [App\Http\Controllers\ModeratorController::class, 'indexAppointments'])->name('moderator.appointments.index');
 

@@ -251,7 +251,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/moderator.js') }}"></script>
+    <script src="{{ asset('js/moderator-ap.js') }}"></script>
     <script>
         function myFunction() {
             if(!confirm("Esta seguro que desea cancelar?"))
