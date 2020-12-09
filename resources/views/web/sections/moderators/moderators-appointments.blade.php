@@ -82,16 +82,16 @@
                                         <form action="{{route('moderator.appointments.set', $turnoPendiente)}}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <input class="form-control" type="date" name="fecha_turno" id="fecha_turno">
-                                                <input class="form-control" type="time" name="hora_turno" id="hora_turno">
-                                                <button class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
+                                                <input class="form-control date-time-confirm" type="date" name="fecha_turno" id="fecha_turno">
+                                                <input class="form-control date-time-confirm" type="time" name="hora_turno" id="hora_turno">
+                                                <button class="btn btn-secondary btn-sm form-control" type="submit">Confirmar</button>
                                             </div>
                                         </form>
                                         <form action="{{route('appointments.cancel', $turnoPendiente->ID_TURNO_P)}}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <div class="form-group">
-                                                <button class="btn btn-secondary btn-sm" onclick="return myFunction();" type="submit">Rechazar</button>
+                                                <button class="btn btn-secondary btn-sm form-control" onclick="return myFunction();" type="submit">Rechazar</button>
                                             </div>
                                         </form>
 

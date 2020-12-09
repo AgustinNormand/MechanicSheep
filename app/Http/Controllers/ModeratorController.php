@@ -51,4 +51,12 @@ class ModeratorController extends Controller
 
         return redirect()->back()->with("success", "Turno confirmado con éxito.");
     }
+
+    function setEmails(Request $request, $idCorreoPendiente){
+        return "HOLA ESTO ES UNA PRUEBA";
+    }
+
+    function refuseEmails(Request $request, $idCorreoPendiente){
+        return "HOLA ESTO ES UNA PRUEBA REFUSE";
+    }
 }

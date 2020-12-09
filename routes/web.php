@@ -96,6 +96,10 @@ Route::group(['middleware' => 'auth', 'middleware' => ['role:MODERADOR,ADMINISTR
 
     Route::post('moderator/appointments/set/{turnoPenddiente}', [App\Http\Controllers\ModeratorController::class, 'setAppointments'])->name('moderator.appointments.set');
 
+    Route::post('moderator/emails/set/{correoPendiente}', [App\Http\Controllers\ModeratorController::class, 'setEmails'])->name('moderator.emails.set');
+
+    Route::post('moderator/emails/refuse/{correoPendiente}', [App\Http\Controllers\ModeratorController::class, 'refuseEmails'])->name('moderator.emails.refuse');
+
     Route::get('moderator/appointments/confirmados', [App\Http\Controllers\AppointmentController::class, 'getConfirmedAppointments'])->name('moderator.appointments.getConfirmed');
 
     Route::resource('calendar', App\Http\Controllers\CalendarController::class);
