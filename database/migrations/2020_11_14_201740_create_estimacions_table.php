@@ -18,6 +18,7 @@ class CreateEstimacionsTable extends Migration
             $table->date('FECHA_ESTIMADA_AVISO');
             $table->float('PROMEDIO');
             $table->boolean('MAIL_ENVIADO');
+            $table->boolean('PENDIENTE_ENVIO');
             $table->date('FECHA_ULTIMO_TRABAJO');
             $table->boolean('ACTIVADA');
             $table->unsignedBigInteger('ID_VEHICULO');
