@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             $today = new DateTime('NOW');
-            
+
             $estimaciones = Estimacion::where([
                 ["ACTIVADA", 1],
                 ["MAIL_ENVIADO", 0],
@@ -49,7 +49,7 @@ class Kernel extends ConsoleKernel
             */
             foreach ($estimaciones as $estimacion) {
                 $nombre = ucfirst(strtolower($estimacion->vehiculo->persona->NOMBRE));
-                $email = $estimacion->vehiculo->persona->EMAIL;
+                $email = $estimacion->vehiculo->persona->user->email;
                 $vehiculo = $estimacion->vehiculo;
                 $correo = new ContactanosMailable($nombre, $vehiculo, $estimacion->PROMEDIO != 0);
 
@@ -58,7 +58,7 @@ class Kernel extends ConsoleKernel
                 $estimacion->MAIL_ENVIADO = 1;
                 $estimacion->save();
 
-                $correo->build(); 
+                $correo->build();
             }
         })->everyMinute();
     }

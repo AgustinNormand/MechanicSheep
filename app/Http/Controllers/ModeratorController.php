@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactanosMailable;
 use App\Mail\TurnoMailable;
 use App\Models\Estimacion;
 use App\Models\Turno_confirmado;
@@ -52,11 +53,31 @@ class ModeratorController extends Controller
         return redirect()->back()->with("success", "Turno confirmado con éxito.");
     }
 
-    function setEmails(Request $request, $idCorreoPendiente){
-        return "HOLA ESTO ES UNA PRUEBA";
+    function setEmails($idCorreoPendiente){
+        $correoPendiente = Estimacion::find($idCorreoPendiente);
+
+//        $this->authorize('cancel', [$turnoPendiente]);
+
+        if(!is_null($correoPendiente)){
+            $correoPendiente->PENDIENTE_ENVIO = 0;
+            $correoPendiente->save();
+        }
+        $correo = new ContactanosMailable($correoPendiente->vehiculo->persona->NOMBRE, $correoPendiente->vehiculo, $correoPendiente->PROMEDIO != 0);
+        Mail::to($correoPendiente->vehiculo->persona->user->email)->send($correo);
+
+        return redirect()->route('moderator.emails.index');
     }
 
-    function refuseEmails(Request $request, $idCorreoPendiente){
-        return "HOLA ESTO ES UNA PRUEBA REFUSE";
+    function refuseEmails($idCorreoPendiente){
+        $correoPendiente = Estimacion::find($idCorreoPendiente);
+
+//        $this->authorize('cancel', [$turnoPendiente]);
+
+        if(!is_null($correoPendiente)){
+            $correoPendiente->PENDIENTE_ENVIO = 0;
+            $correoPendiente->save();
+        }
+
+        return redirect()->route('moderator.emails.index');
     }
 }
