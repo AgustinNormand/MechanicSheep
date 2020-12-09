@@ -40,7 +40,7 @@ Route::get('services', function () {
 })->name('services');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 /* Logged Routes */
 
@@ -55,7 +55,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
     Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});
 
+Route::group(['middleware' => 'auth', 'middleware' => 'verified'], function(){
 
     /* Cars Routes */
     Route::get("cars/locate", [App\Http\Controllers\CarController::class, 'getLocate'])->name('cars.locate');
