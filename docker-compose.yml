@@ -26,8 +26,8 @@ services:
     ports:
       - "8179:3306"
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
-      - /etc/mysql/mysql.conf.d/:/etc/mysql/mysql.conf.d/
+      - ./docker-compose/mysql/var/lib/mysql:/var/lib/mysql
+      - ./docker-compose/mysql/etc/mysql/mysql.conf.d/:/etc/mysql/mysql.conf.d/
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
       - mechanicsheep

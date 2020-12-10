@@ -18,3 +18,4 @@ yarn-error.log
 .idea/vcs.xml
 .idea/workspace.xml
 *.sql
+docker-compose/mysql/*
