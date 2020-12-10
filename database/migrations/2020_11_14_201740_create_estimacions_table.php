@@ -17,10 +17,10 @@ class CreateEstimacionsTable extends Migration
             $table->id('ID_ESTIMACION');
             $table->date('FECHA_ESTIMADA_AVISO');
             $table->float('PROMEDIO');
-            $table->boolean('MAIL_ENVIADO');
-            $table->boolean('PENDIENTE_ENVIO');
+            $table->boolean('MAIL_ENVIADO')->default(0);
+            $table->boolean('PENDIENTE_ENVIO')->default(0);
             $table->date('FECHA_ULTIMO_TRABAJO');
-            $table->boolean('ACTIVADA');
+            $table->boolean('ACTIVADA')->default(1);
             $table->unsignedBigInteger('ID_VEHICULO');
             $table->foreign('ID_VEHICULO')->references('ID_VEHICULO')->on('vehiculos')->onDelete('cascade');
             $table->timestamps();
