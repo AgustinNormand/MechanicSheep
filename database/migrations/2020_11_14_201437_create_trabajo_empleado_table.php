@@ -19,7 +19,7 @@ class CreateTrabajoEmpleadoTable extends Migration
             $table->unsignedBigInteger('ID_EMPLEADO');
             $table->string('DESCRIPCION',200)->nullable();
             $table->index(['ID_TRABAJO','ID_EMPLEADO']);
-            $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos');
+            $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajos')->onDelete('cascade');
             $table->timestamps();
         });
     }

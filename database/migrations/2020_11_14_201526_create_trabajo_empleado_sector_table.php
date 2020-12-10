@@ -20,7 +20,7 @@ class CreateTrabajoEmpleadoSectorTable extends Migration
             $table->unsignedBigInteger('ID_SECTOR');
             $table->string('OBSERVACIONES',200)->nullable();
             $table->index(['ID_TRABAJO','ID_EMPLEADO','ID_SECTOR']);
-            $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajo_empleado');
+            $table->foreign('ID_TRABAJO')->references('ID_TRABAJO')->on('trabajo_empleado')->onDelete('cascade');
             $table->timestamps();
         });
     }
