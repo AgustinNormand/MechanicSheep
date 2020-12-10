@@ -1,6 +1,1 @@
-Data directory and certificate directory.
-
-Certificates: 
-servidor-cert.pem
-servidor-key.pem
-ac.pem
+Data directory, do not place anything here

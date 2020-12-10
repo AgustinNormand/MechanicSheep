@@ -26,9 +26,10 @@ services:
     ports:
       - "8179:3306"
     volumes:
+      - ./docker-compose/mysql/etc/mysql/certs/:/etc/mysql/certs/
       - ./docker-compose/mysql/var/lib/mysql:/var/lib/mysql
       - ./docker-compose/mysql/etc/mysql/mysql.conf.d/:/etc/mysql/mysql.conf.d/
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./docker-compose/mysql/entrypoint:/docker-entrypoint-initdb.d
     networks:
       - mechanicsheep
 
@@ -44,8 +45,8 @@ services:
     networks:
       - mechanicsheep
     environment:
-      - VIRTUAL_HOST=www.seminariounlu.duckdns.org, seminariounlu.duckdns.org
-      - LETSENCRYPT_HOST=seminariounlu.duckdns.org
+      - VIRTUAL_HOST=www.mechanicsheep.duckdns.org, mechanicsheep.duckdns.org
+      - LETSENCRYPT_HOST=mechanicsheep.duckdns.org
       - LETSENCRYPT_EMAIL=normandagustin@gmail.com
     depends_on:
       - nginx-proxy
