@@ -59,12 +59,12 @@ return [
             'strict' => true,
             'engine' => null,
             'sslmode' => env('DB_SSLMODE', 'prefer'),
-            'options' => env('DB_SSLMODE') != 'disable' ? array_filter([
+            'options' => env('DB_SSLMODE') != 'disable' ? [
                 PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
                 PDO::MYSQL_ATTR_SSL_KEY => env('DB_CERTIFICATES_PATH', '').'client-key.pem',
                 PDO::MYSQL_ATTR_SSL_CERT => env('DB_CERTIFICATES_PATH', '').'client-cert.pem',
                 PDO::MYSQL_ATTR_SSL_CA => env('DB_CERTIFICATES_PATH', '').'ca.pem',
-            ]) : [],
+            ] : [],
         ],
 
         'pgsql' => [
