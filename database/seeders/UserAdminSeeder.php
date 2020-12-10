@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Persona;
 use App\Models\Rol;
 use App\Models\User;
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,6 +18,8 @@ class UserAdminSeeder extends Seeder
      */
     public function run()
     {
+        $now = new DateTime("NOW");
+
         $user = new User();
         $user->Nombre = "Admin";
         $user->Apellido = "Admin";
@@ -28,6 +31,7 @@ class UserAdminSeeder extends Seeder
             ['NOMBRE', 'LIKE', 'Admin'],
             ['APELLIDO', 'LIKE', 'Admin'],
         ])->first()->ID_PERSONA;
+        $user->email_verified_at = $now->format("Y-m-d G:i:s");
         $user->save();
 
         $ID_ROL = Rol::where('Nombre', 'ADMINISTRADOR')->first()->ID_ROL;
@@ -44,6 +48,7 @@ class UserAdminSeeder extends Seeder
             ['NOMBRE', 'LIKE', 'Mod'],
             ['APELLIDO', 'LIKE', 'Mod'],
         ])->first()->ID_PERSONA;
+        $user->email_verified_at = $now->format("Y-m-d G:i:s");
         $user->save();
 
         $ID_ROL = Rol::where('Nombre', 'MODERADOR')->first()->ID_ROL;
