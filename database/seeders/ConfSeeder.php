@@ -21,7 +21,7 @@ class ConfSeeder extends Seeder
 
         $configuracion = new Configuration();
         $configuracion->NAME = "DBF_FILES_PATH";
-        $configuracion->VALUE = "/home/agustin/Test/MechanicSheepAPI/DATABASES/DBS/";
+        $configuracion->VALUE = 'C:\Users\Windows\Desktop\Sistema Mechanic Sheep\Core (CREO)\visual\OVEJA\\';
         $configuracion->save();
 
         $configuracion = new Configuration();
