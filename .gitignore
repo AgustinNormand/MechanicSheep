@@ -18,5 +18,7 @@ yarn-error.log
 .idea/vcs.xml
 .idea/workspace.xml
 *.sql
-docker-compose/mysql/*
+*.cnf
 *.pem
+/docker-compose/mysql/var/lib/mysql/*
+!/docker-compose/mysql/var/lib/mysql/README.md
