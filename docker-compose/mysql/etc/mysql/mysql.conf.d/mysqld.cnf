@@ -37,7 +37,7 @@ log-error	= /var/log/mysql/error.log
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 
-require_secure_transport=ON
+#require_secure_transport=ON
 #max_allowed_packet = 512M
 #connect_timeout = 60
 #net_read_timeout = 120
