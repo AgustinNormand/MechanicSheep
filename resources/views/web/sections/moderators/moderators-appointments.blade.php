@@ -82,7 +82,7 @@
                                         <form action="{{route('moderator.appointments.set', $turnoPendiente)}}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <input class="form-control date-time-confirm" type="date" name="fecha_turno" id="fecha_turno">
+                                                <input class="form-control date-time-confirm" type="date" name="fecha_turno" id="fecha_turno" min={{ ($today)->format('Y-m-j') }}>
                                                 <input class="form-control date-time-confirm" type="time" name="hora_turno" id="hora_turno">
                                                 <button class="btn btn-secondary btn-sm form-control" type="submit">Confirmar</button>
                                             </div>
