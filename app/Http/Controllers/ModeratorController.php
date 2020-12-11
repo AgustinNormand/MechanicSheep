@@ -25,7 +25,10 @@ class ModeratorController extends Controller
 
 
     function indexEmails(){
-        $correosPendientesDeEnvio = Estimacion::where("PENDIENTE_ENVIO", 1)->get();
+        $correosPendientesDeEnvio = Estimacion::where([
+            ["PENDIENTE_ENVIO", 1],
+            ["ACTIVADA", 1]
+        ])->get();
         return view('web.sections.moderators.moderators-emails', compact('correosPendientesDeEnvio'));
     }
 
