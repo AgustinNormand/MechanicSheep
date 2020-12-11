@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$persona->EMAIL}}" required>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{$persona->EMAIL}}" required disabled>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-secondary btn-lg">Guardar</button>

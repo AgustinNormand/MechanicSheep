@@ -104,6 +104,10 @@ class RegisterController extends Controller
                 //"CREATED_FROM_WEB => true,
             ])->ID_PERSONA;
 
+        $persona = Persona::where('ID_PERSONA', '=', $idPersona)->firstOrFail();
+        $persona->EMAIL = $data['email'];
+        $persona->save();
+
         return User::create([
             'nombre' => $data['nombre'],
             'apellido' => $data['apellido'],
