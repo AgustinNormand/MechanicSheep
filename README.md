@@ -24,10 +24,11 @@
 * cp .env.example .env
 * Editar .env con los valores deseados obligatoriamente en APP_URL, DB_CERTIFICATES_PATH, DB_SSLMODE, MAIL_PASSWORD
 * Modificar el docker-compose con los valores correspondientes en VIRTUAL_HOST y LETSENCRYPT_HOST.
-* Generar y copiar los certificados del cliente de la base de datos en /MechanicSheep/certs (ca.pem, client-cert.pem, client-key.pem)
+* Generar y copiar los certificados del cliente de la base de datos en /MechanicSheep/certs (ca.pem, client-cert.pem, client-key.pem) con chmod 777
 * docker-compose build app
+* Generar y copiar los certificados del servidor de base de datos en /MechanicSheep/docker-compose/mysq/etc/mysql/certs/ (ac.pem, servidor-cert.pem, servidor-key.pem) con chmod 777
+* Crear el directorio 'mysql' en ./docker-compose/mysql/var/lib/
 * docker-compose up -d
-* Generar y copiar los certificados del servidor de base de datos en /MechanicSheep/docker-compose/mysq/var/lib/
 
 
 ## Vulnerabilidades de seguridad

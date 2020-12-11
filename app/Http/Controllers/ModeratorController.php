@@ -63,7 +63,7 @@ class ModeratorController extends Controller
             $correoPendiente->save();
         }
         $correo = new ContactanosMailable($correoPendiente->vehiculo->persona->NOMBRE, $correoPendiente->vehiculo, $correoPendiente->PROMEDIO != 0);
-        Mail::to($correoPendiente->vehiculo->persona->user->email)->send($correo);
+        Mail::to($correoPendiente->vehiculo->persona->EMAIL)->send($correo);
 
         return redirect()->route('moderator.emails.index');
     }
