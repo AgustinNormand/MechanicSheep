@@ -41,26 +41,37 @@ class Kernel extends ConsoleKernel
 
             $moderatedEmails = Configuration::where('NAME', 'MODERATED_EMAILS')->first()->VALUE;
 
-            /*
             if($moderatedEmails == 'true')
                 $this->enviarMails($estimaciones);
             else
-                $this->marcarMailsParaEnviar();
-            */
-            foreach ($estimaciones as $estimacion) {
-                $nombre = ucfirst(strtolower($estimacion->vehiculo->persona->NOMBRE));
-                $email = $estimacion->vehiculo->persona->user->email;
-                $vehiculo = $estimacion->vehiculo;
-                $correo = new ContactanosMailable($nombre, $vehiculo, $estimacion->PROMEDIO != 0);
-
-                Mail::to($email)->send($correo);
-
-                $estimacion->MAIL_ENVIADO = 1;
-                $estimacion->save();
-
-                $correo->build();
-            }
+                $this->marcarMailsParaEnviar($estimaciones);
+            
         })->everyMinute();
+    }
+
+    private function enviarMails($estimaciones)
+    {
+        foreach ($estimaciones as $estimacion) {
+            $nombre = ucfirst(strtolower($estimacion->vehiculo->persona->NOMBRE));
+            $email = $estimacion->vehiculo->persona->EMAIL;
+            $vehiculo = $estimacion->vehiculo;
+            $correo = new ContactanosMailable($nombre, $vehiculo, $estimacion->PROMEDIO != 0);
+
+            Mail::to($email)->send($correo);
+
+            $estimacion->MAIL_ENVIADO = 1;
+            $estimacion->save();
+
+            $correo->build();
+        }
+    }
+
+    private function marcarMailsParaEnviar($estimaciones)
+    {
+        foreach ($estimaciones as $estimacion) {
+            $estimacion->PENDIENTE_ENVIO = 1;
+            $estimacion->save();
+        }
     }
 
     /**
