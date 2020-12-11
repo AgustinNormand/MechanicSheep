@@ -60,6 +60,7 @@ class ModeratorController extends Controller
 
         if(!is_null($correoPendiente)){
             $correoPendiente->PENDIENTE_ENVIO = 0;
+            $correoPendiente->MAIL_ENVIADO = 1;
             $correoPendiente->save();
         }
         $correo = new ContactanosMailable($correoPendiente->vehiculo->persona->NOMBRE, $correoPendiente->vehiculo, $correoPendiente->PROMEDIO != 0);
