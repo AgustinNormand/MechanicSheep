@@ -22,9 +22,13 @@
 * git clone https://github.com/AgustinNormand/MechanicSheep.git
 * cd MechanicSheep
 * cp .env.example .env
-* Editar .env con los valores deseados
+* Editar .env con los valores deseados obligatoriamente en APP_URL, DB_CERTIFICATES_PATH, DB_SSLMODE, MAIL_PASSWORD
+* Modificar el docker-compose con los valores correspondientes en VIRTUAL_HOST y LETSENCRYPT_HOST.
+* Generar y copiar los certificados del cliente de la base de datos en /MechanicSheep/certs (ca.pem, client-cert.pem, client-key.pem)
 * docker-compose build app
 * docker-compose up -d
+* Generar y copiar los certificados del servidor de base de datos en /MechanicSheep/docker-compose/mysq/var/lib/
+
 
 ## Vulnerabilidades de seguridad
 
