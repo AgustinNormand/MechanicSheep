@@ -19,7 +19,7 @@
         @endif
         <p>No te olvides que podes sacar un turno desde nuestro sitio web.</p>
         <p>Ingresá, registrate, y solicitanos un turno!.</p>
-        <p>Hacé click <a href="www.mechanicsheep.com.ar" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
+        <p>Hacé click <a href="https://www.mechanicsheep.com.ar/" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
         <br>
         <p>Saludos,</p>
         <p>MechanicSheep, Agentes Oficiales Renault.</p>
