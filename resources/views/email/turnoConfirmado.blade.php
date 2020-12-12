@@ -19,7 +19,7 @@
         <p>Servicio: {{$turno->servicios->first()->NOMBRE}}</p>
         <br>
         <p>* No olvide que ante cualquier inconveniente podrá cancelarlo hasta 48hs antes del mismo sin penalización</p>
-        <p>Hacé click <a href="www.mechanicsheep.com.ar" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
+        <p>Hacé click <a href="https://www.mechanicsheep.com.ar/" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
         <br>
         <p>Saludos,</p>
         <p>MechanicSheep, Agentes Oficiales Renault.</p>

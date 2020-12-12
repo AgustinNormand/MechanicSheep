@@ -82,7 +82,7 @@
                                         <form action="{{route('moderator.appointments.set', $turnoPendiente)}}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <input class="form-control date-time-confirm" type="date" name="fecha_turno" id="fecha_turno">
+                                                <input class="form-control date-time-confirm" type="date" name="fecha_turno" id="fecha_turno" min={{ ($today)->format('Y-m-j') }}>
                                                 <input class="form-control date-time-confirm" type="time" name="hora_turno" id="hora_turno">
                                                 <button class="btn btn-secondary btn-sm form-control" type="submit">Confirmar</button>
                                             </div>
@@ -132,7 +132,7 @@
                 <tbody>
                 @foreach ($turnosConfirmados as $turnoConfirmado)
                     <tr>
-                        <td>{{\Carbon\Carbon::parse($turnoConfirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoConfirmado->FECHA_HORA)->format('j/m/Y H:i')}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
@@ -158,7 +158,7 @@
                 <tbody>
                 @foreach ($turnosConfirmadosCancelados as $turnoConfirmadoCancelado)
                     <tr>
-                        <td>{{\Carbon\Carbon::parse($turnoConfirmadoCancelado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoConfirmadoCancelado->FECHA_HORA)->format('j/m/Y H:i')}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>

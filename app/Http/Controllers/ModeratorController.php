@@ -20,7 +20,8 @@ class ModeratorController extends Controller
         $turnosConfirmados = Turno_confirmado::where('ESTADO', 1)->get();
         $turnosConfirmadosCancelados = Turno_confirmado::where('ESTADO', 0)->get();
         $turnosPendientesCancelados = Turno_pendiente::whereRaw('ESTADO = 0 and not exists(select * from turno_confirmados where ID_TURNO_P = turno_pendientes.ID_TURNO_P)')->get();
-        return view('web.sections.moderators.moderators-appointments', compact('turnosPendientes', 'turnosConfirmados', 'turnosConfirmadosCancelados', 'turnosPendientesCancelados'));
+        $today = new DateTime('NOW');
+        return view('web.sections.moderators.moderators-appointments', compact('turnosPendientes', 'turnosConfirmados', 'turnosConfirmadosCancelados', 'turnosPendientesCancelados', 'today'));
     }
 
 

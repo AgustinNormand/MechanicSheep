@@ -12,7 +12,7 @@
         <p> <strong>¡Hola {{$turno->user->persona->NOMBRE}} {{$turno->user->persona->APELLIDO}}! </strong></p>
         <p> <strong>Tú turno ha sido cancelado</strong></p>
         <br>
-        <p>Hacé click <a href="www.mechanicsheep.com.ar" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
+        <p>Hacé click <a href="https://www.mechanicsheep.com.ar/" target="_blank">acá</a> para ingresar a nuestro sitio.</p>
         <br>
         <p>Saludos,</p>
         <p>MechanicSheep, Agentes Oficiales Renault.</p>

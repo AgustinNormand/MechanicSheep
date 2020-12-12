@@ -26,7 +26,7 @@
                         @if ($turno->turno_confirmado->ESTADO==1)
                             <tr>
                                 <th scope="row">{{\Carbon\Carbon::parse($turno->FECHA_SOLICITUD)->format('j/m/Y')}}</th>
-                                <td>{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
+                                <td>{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:i')}}</td>
                                 <td>Confirmado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
@@ -44,7 +44,7 @@
                         @else
                             <tr class="turnoCancelado d-none">
                                 <th scope="row">{{\Carbon\Carbon::parse($turno->FECHA_SOLICITUD)->format('j/m/Y')}}</th>
-                                <td>{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
+                                <td>{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:i')}}</td>
                                 <td>Cancelado</td>
                                 <td>{{ $turno->vehiculo->PATENTE }}</td>
                                 <td>{{ $turno->servicios->first()->NOMBRE }}</td>
@@ -70,7 +70,7 @@
                                         <form>
                                             <h5 class="text-center">Fecha Confirmada</h5>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="fecha" value="{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:m')}}" readonly>
+                                                <input type="text" class="form-control" id="fecha" value="{{\Carbon\Carbon::parse($turno->turno_confirmado->FECHA_HORA)->format('j/m/Y H:i')}}" readonly>
                                             </div>
 
                                             <h5 class="text-center">Estado</h5>

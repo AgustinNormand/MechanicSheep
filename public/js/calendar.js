@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
+
+        
+
         initialView: 'dayGridMonth',
 
         eventColor: '#FCB705',
@@ -13,7 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
 
-
+        buttonText: {
+            today:    'hoy',
+            month:    'mes',
+            week:     'semana',
+            day:      'dia',
+        },
         dateClick:function (info){
             cleanForm();
 
