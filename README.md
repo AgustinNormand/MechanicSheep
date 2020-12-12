@@ -1,5 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://lh3.googleusercontent.com/proxy/7fZt14QvAaP2TEmzjxK0cOeTNLdvM0_j2IWOZaUuqgkFlyHc1d3y8EUP7NwuqDb0vtf8_nJPlpkziVsBqUmBplGSdUmQjQ0Iv8Z16I-prgORXLGRfzhiEhxbapEpPSQ" width="100"></a></p>
-
 <h1 align="center">Seminario de Integración Profesional - MechanicSheep</h1>
 <p align="center">
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
@@ -38,3 +36,19 @@ Si descrubre una vulnerabilidad de seguridad dentro del proyecto, envíe un corr
 ## Licencia
 
 El proyecto es un software de código abierto con licencia bajo la [MIT license](https://opensource.org/licenses/MIT).
+
+## Documentación
+
+[DocumentaciónFinal](Documentacion/)
+
+## Credenciales 
+
+### Rol de usuario administrador
+
+* admin@admin.com
+* administrador
+
+### Rol de usuario moderador
+
+* mod@mod.com
+* moderador
