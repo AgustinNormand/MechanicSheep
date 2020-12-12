@@ -132,7 +132,7 @@
                 <tbody>
                 @foreach ($turnosConfirmados as $turnoConfirmado)
                     <tr>
-                        <td>{{\Carbon\Carbon::parse($turnoConfirmado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoConfirmado->FECHA_HORA)->format('j/m/Y H:i')}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
@@ -158,7 +158,7 @@
                 <tbody>
                 @foreach ($turnosConfirmadosCancelados as $turnoConfirmadoCancelado)
                     <tr>
-                        <td>{{\Carbon\Carbon::parse($turnoConfirmadoCancelado->FECHA_HORA)->format('j/m/Y H:m')}}</td>
+                        <td>{{\Carbon\Carbon::parse($turnoConfirmadoCancelado->FECHA_HORA)->format('j/m/Y H:i')}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->user->persona->NOMBRE}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$turnoConfirmadoCancelado->turno_pendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
