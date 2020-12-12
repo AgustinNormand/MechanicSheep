@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{\Carbon\Carbon::parse($correoPendiente->FECHA_ESTIMADA_AVISO)->format('j/m/Y')}}</td>
                         <td>{{$correoPendiente->PROMEDIO}} días</td>
-                        <td>{{$correoPendiente->FECHA_ULTIMO_TRABAJO}}</td>
+                        <td>{{\Carbon\Carbon::parse($correoPendiente->FECHA_ULTIMO_TRABAJO)->format('j/m/Y')}}</td>
                         <td>{{$correoPendiente->vehiculo->modelo->NOMBRE_FANTASIA}}</td>
                         <td>{{$correoPendiente->vehiculo->modelo->marca->RAZON_SOCIAL}}</td>
                         <td>{{$correoPendiente->vehiculo->persona->NOMBRE}} {{$correoPendiente->vehiculo->persona->APELLIDO}}</td>
