@@ -29,7 +29,7 @@
                             <form action="{{route('cars.destroy', $vehiculo)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-secondary btn-sm">Eliminar</button>
+                                <button type="submit" class="btn btn-secondary btn-sm" onclick="return myFunction();">Eliminar</button>
                             </form>
                         </div>
                     </td>
@@ -56,4 +56,10 @@
 
 @section('scripts')
     <script src="{{ asset('js/cars-index.js') }}"></script>
+    <script>
+        function myFunction() {
+            if(!confirm("Esta seguro que desea cancelar?"))
+            event.preventDefault();
+        }
+    </script>
 @endsection
