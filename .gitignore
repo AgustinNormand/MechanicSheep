@@ -21,3 +21,5 @@ yarn-error.log
 *.pem
 /docker-compose/mysql/var/lib/mysql/*
 !/docker-compose/mysql/var/lib/mysql/README.md
+/.vscode/
+/.idea/
